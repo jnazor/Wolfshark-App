@@ -1,14 +1,41 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity" >
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world" />
-
-</RelativeLayout>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:orientation="vertical" 
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent" 
+    android:background="@color/background" 
+    android:gravity="center" 
+    android:padding="30dip">
+    
+	<TextView 
+	    android:text="@string/main_title" 
+	    android:layout_height="wrap_content"
+	    android:layout_width="wrap_content" 
+	    android:layout_marginBottom="25dip" 
+	    android:textSize="24.5sp"/>
+	
+	<Button 
+	    android:id="@+id/route" 
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="@string/route"/>
+	
+	<Button 
+	    android:id="@+id/map" 
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="@string/map"/>
+	
+	<Button 
+	    android:id="@+id/favorites" 
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="@string/favorites"/>
+	
+	<Button 
+	    android:id="@+id/about" 
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="@string/about"/>
+	
+</LinearLayout>
