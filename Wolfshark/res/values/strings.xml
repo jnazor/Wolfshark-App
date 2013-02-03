@@ -2,10 +2,16 @@
 
 <resources>
     <string name="app_name">CampusPaths</string>
-	<string name="main_title">Campus Paths</string>
+	<string name="main_title">CampusPaths</string>
     
     <string name="route">Route</string>
     <string name="favorites">Favorites</string>
     <string name="map">Map</string>
     <string name="about">About</string>
+    <string name="go">GO!</string>
+    <string name="darBase">Darwin Basement Floor Plan</string>
+    <string name="darRmDest">Room 31 is in the basement of Darwin</string>
+	<string name="newPath">New Path</string>
+    
+	<color name="white">#ffffff</color>
 </resources>
