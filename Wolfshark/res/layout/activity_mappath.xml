@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/darwin_basement"
+    android:id="@+id/dar_basement" >
+
+
+           
+	    <TextView 
+		    android:text="@string/darRmDest" 
+		    android:layout_height="wrap_content"
+		    android:layout_width="wrap_content" 
+		    android:layout_marginTop="100dip"
+		    android:layout_marginLeft="10dip"
+		    android:layout_marginRight="200dip"
+		    android:layout_marginBottom="25dip"
+		    android:textColor="@color/white" 
+		    android:textSize="24.5sp"/>
+	    
+	    <Button 
+		    android:id="@+id/newPath" 
+		    android:layout_width="fill_parent" 
+		    android:layout_height="wrap_content" 
+		    android:text="@string/newPath"
+		    android:layout_marginRight="195dip"
+		    android:layout_marginLeft="15dip"
+		    android:layout_marginTop="140dip"
+		    android:textColor="@color/white"
+		    android:onClick="onNewPath"/>
+	    
+
+
+</LinearLayout>
