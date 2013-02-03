@@ -18,7 +18,8 @@
 	    android:id="@+id/route" 
 	    android:layout_width="fill_parent" 
 	    android:layout_height="wrap_content" 
-	    android:text="@string/route"/>
+	    android:text="@string/route"
+	    android:onClick="onRoute"/>
 	
 	<Button 
 	    android:id="@+id/map" 
