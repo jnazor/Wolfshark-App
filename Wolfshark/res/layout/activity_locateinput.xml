@@ -19,18 +19,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/autoCompleteTextView2"
         android:layout_below="@+id/Start_text"
         android:ems="10"
-        android:textColor="@color/gray"
-        android:text="Darwin 21" />
+        android:text="Darwin 21"
+        android:textColor="@color/gray" />
+
+    <Button
+        android:id="@+id/startFav"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/autoCompleteTextView1"
+        android:layout_toRightOf="@+id/autoCompleteTextView1"
+        android:text="Favorites" />
+
+    <Button
+        android:id="@+id/endFav"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/autoCompleteTextView2"
+        android:layout_alignBottom="@+id/autoCompleteTextView2"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/autoCompleteTextView2"
+        android:text="Favorites" />
 
     <TextView
         android:id="@+id/starttext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/autoCompleteTextView1"
+        android:layout_below="@+id/startFav"
         android:layout_margin="10dp"
         android:text="End"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -40,19 +61,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/autoCompleteTextView1"
         android:layout_below="@+id/starttext"
         android:ems="10"
-        android:textColor="@color/gray"
-        android:text="Darwin 31" />
+        android:text="Darwin 31"
+        android:textColor="@color/gray" />
 
     <Button
         android:id="@+id/locateInput"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/autoCompleteTextView2"
-        android:layout_marginTop="67dp"
         android:onClick="onGo"
         android:text="@string/go" />
 
