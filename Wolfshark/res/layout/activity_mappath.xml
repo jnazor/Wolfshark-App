@@ -5,8 +5,6 @@
     android:orientation="vertical"
     android:background="@drawable/darwin_basement"
     android:id="@+id/dar_basement" >
-
-
            
 	    <TextView 
 		    android:text="@string/darRmDest" 
@@ -18,18 +16,14 @@
 		    android:layout_marginBottom="25dip"
 		    android:textColor="@color/white" 
 		    android:textSize="24.5sp"/>
-	    
-	    <Button 
-		    android:id="@+id/newPath" 
-		    android:layout_width="fill_parent" 
-		    android:layout_height="wrap_content" 
-		    android:text="@string/newPath"
-		    android:layout_marginRight="195dip"
-		    android:layout_marginLeft="15dip"
-		    android:layout_marginTop="140dip"
-		    android:textColor="@color/white"
-		    android:onClick="onNewPath"/>
-	    
 
+	    <Button
+	        android:id="@+id/newPath"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="100dip"
+	        android:onClick="onNewPath"
+	        android:text="@string/newPath"
+	        android:textColor="@color/white" />
 
 </LinearLayout>

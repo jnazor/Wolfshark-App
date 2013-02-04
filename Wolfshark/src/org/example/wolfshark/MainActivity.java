@@ -1,7 +1,9 @@
 package org.example.wolfshark;
 
 import android.os.Bundle;
+import android.view.View;
 import android.app.Activity;
+import android.content.Intent;
 
 public class MainActivity extends Activity {
 
@@ -11,4 +13,9 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 	}
 
+	public void onRoute(View v)
+	{
+		Intent locateActivity = new Intent(this, LocateInputActivity.class);
+		startActivity(locateActivity);
+	}
 }
