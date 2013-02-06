@@ -31,7 +31,8 @@
 	    android:id="@+id/favorites" 
 	    android:layout_width="fill_parent" 
 	    android:layout_height="wrap_content" 
-	    android:text="@string/favorites"/>
+	    android:text="@string/favorites"
+	    android:onClick="onFavorites"/>
 	
 	<Button 
 	    android:id="@+id/about" 
