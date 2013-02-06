@@ -18,4 +18,13 @@ public class MainActivity extends Activity {
 		Intent locateActivity = new Intent(this, LocateInputActivity.class);
 		startActivity(locateActivity);
 	}
+	
+	
+	
+	
+	public void onFavorites(View v)
+	{
+		Intent favoritesActivity = new Intent (this, FavoritesActivity.class);
+		startActivity(favoritesActivity);
+	}
 }
