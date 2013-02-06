@@ -12,6 +12,8 @@
     <string name="darBase">Darwin Basement Floor Plan</string>
     <string name="darRmDest">Room 31 is in the basement of Darwin</string>
 	<string name="newPath">New Path</string>
+	<string name="favs_title">Favorites</string>
+	<string name="edit_favs">Edit Favorites</string>
     
-	<color name="white">#ffffff</color>
+	
 </resources>
