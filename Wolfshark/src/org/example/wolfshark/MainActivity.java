@@ -20,11 +20,15 @@ public class MainActivity extends Activity {
 	}
 	
 	
-	
-	
 	public void onFavorites(View v)
 	{
 		Intent favoritesActivity = new Intent (this, FavoritesActivity.class);
 		startActivity(favoritesActivity);
+	}
+	
+	public void onAbout(View v)
+	{
+		Intent AboutActivity = new Intent (this, AboutActivity.class);
+		startActivity(AboutActivity);
 	}
 }

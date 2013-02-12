@@ -19,7 +19,7 @@ public class OpeningActivity extends Activity {
 		Thread mythread = new Thread(){
 			public void run(){
 				try{
-					sleep(3000);    //3000 milliseconds == 3 seconds
+					sleep(2000);    //3000 milliseconds == 2 seconds
 				}catch(InterruptedException e){
 					//print to console, not to Android device
 					System.out.println("Error occurred on Opening Screen.");

@@ -15,3 +15,4 @@
 	    android:textSize="24.5sp"/>
     
 </LinearLayout>
+    <menu xmlns:android="http://schemas.android.com/apk/res/android"></menu>
