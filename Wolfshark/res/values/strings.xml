@@ -3,24 +3,29 @@
 <resources>
     <string name="app_name">CampusPaths</string>
 	<string name="main_title">CampusPaths</string>
-    
+   
     <string name="route">Route</string>
-    <string name="temp">Temp</string>
+    <string name="go">GO!</string>
     <string name="favorites">Favorites</string>
     <string name="map">Map</string>
     <string name="about">About</string>
-    <string name="go">GO!</string>
+    
+    <string name="temp">Temp</string>
+    
     <string name="darBase">Darwin Basement Floor Plan</string>
     <string name="darRmDest">Room 31 is in the basement of Darwin</string>
 	<string name="newPath">New Path</string>
 	<string name="favs_title">Favorites</string>
 	<string name="edit_favs">Edit Favorites</string>
-	<string name="about_text">"Welcome to CampusPaths!\n
-	    This app is dedicated to helping you get around campus easier than ever before. To begin simply choose 
-	    your beginning and endind destinations, then press "GO!" The subsequent screen will give you three route 
-	    options optimized to get you to your destination the quickest.\n
-	    To zoom in on your destination just tap on the pin- a screen showing you the precise location of your
-	    destination will appear. You can also save favorites so you don't have to worry about finding that crumpled up
-	    post it note you wrote your schedule on."</string>
-	
+	<string name="about_text"><b>"Welcome to CampusPaths!</b>\n
+	    This app is dedicated to helping you get around campus easier than ever before. To begin simply choose your beginning and ending destinations, then press "GO!" The subsequent screen will give you three route options optimized to get you to your destination the quickest.\n
+	    To zoom in on your destination just tap on the pin- a screen showing you the precise location of your destination will appear. You can also save favorites so you don't have to worry about finding that crumpled up post it note you wrote your schedule on."\n
+	    \n\n
+	   	<b>ABOUT THE TEAM</b>\n
+	    Jolie Nazor - 
+	    Micah Gemmell-
+	    Lauryn Loudermilk -
+	    Mark Griffith - 
+	    Jake Neugass -  
+	    </string>	
 </resources>

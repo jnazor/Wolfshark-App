@@ -62,12 +62,12 @@ public final class R {
         public static final int edit_favs=0x7f05000c;
         public static final int favorites=0x7f050004;
         public static final int favs_title=0x7f05000b;
-        public static final int go=0x7f050007;
+        public static final int go=0x7f050003;
         public static final int main_title=0x7f050001;
         public static final int map=0x7f050005;
         public static final int newPath=0x7f05000a;
         public static final int route=0x7f050002;
-        public static final int temp=0x7f050003;
+        public static final int temp=0x7f050007;
     }
     public static final class style {
         /** 

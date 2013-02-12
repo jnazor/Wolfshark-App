@@ -13,7 +13,6 @@ public class FavoritesActivity extends Activity {
 	Button favs4;
 	Button favs5;
 	
-	
 	//Button objects have been created and set up in this file 
 	//using setText() so that their values can be changed later
 	//in the program.  The buttons are currently set up with
@@ -23,7 +22,7 @@ public class FavoritesActivity extends Activity {
 		setContentView(R.layout.activity_favs);
 		
 		favs1 = (Button) findViewById(R.id.favs1);
-		favs1.setText("Darwin 31");
+		favs1.setText("Darwin 31"); //How are we planning on making these dynamic?
 		
 		favs2 = (Button) findViewById(R.id.favs2);
 		favs2.setText("Darwin 109");
@@ -37,9 +36,6 @@ public class FavoritesActivity extends Activity {
 		favs5 = (Button) findViewById(R.id.favs5);
 		favs5.setText("Ives 41");
 	}
-	
-	
-	
 	
 	//Used in place of calling the onClick listener - much easier!
 	//The button in the activity_favs.xml file must have the attribute:

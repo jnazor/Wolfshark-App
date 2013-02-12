@@ -13,6 +13,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
         <activity
             android:name="org.example.wolfshark.MainActivity"
             android:label="@string/app_name" >
@@ -58,6 +59,16 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.FAVORITESACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+         <activity
+            android:name="org.example.wolfshark.AboutActivity"
+            android:label="@string/about_text" >
+            <intent-filter>
+                <action android:name="android.intent.action.ABOUTACTIVITY" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
