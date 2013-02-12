@@ -51,11 +51,7 @@ public final class R {
         public static final int activity_open=0x7f030005;
     }
     public static final class menu {
-<<<<<<< HEAD
-        public static final int activity_main=0x7f070000;
-=======
         public static final int menu=0x7f070000;
->>>>>>> Fixed the weird menu.xml issue
     }
     public static final class string {
         public static final int about=0x7f050006;
