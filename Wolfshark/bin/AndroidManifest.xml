@@ -74,6 +74,16 @@
             </intent-filter>
         </activity>
         
+                  <activity
+            android:name="org.example.wolfshark.MapActivity"
+            android:label="@string/about_text" >
+            <intent-filter>
+                <action android:name="android.intent.action.ABOUTACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
     </application>
 
 </manifest>

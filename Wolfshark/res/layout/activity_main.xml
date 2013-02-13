@@ -25,7 +25,8 @@
 	    android:id="@+id/map" 
 	    android:layout_width="fill_parent" 
 	    android:layout_height="wrap_content" 
-	    android:text="@string/map"/>
+	    android:text="@string/map"
+	    android:onClick="onMap"/>
 	
 	<Button 
 	    android:id="@+id/favorites" 

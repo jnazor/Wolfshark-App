@@ -26,6 +26,12 @@ public class MainActivity extends Activity {
 		startActivity(favoritesActivity);
 	}
 	
+	public void onMap(View v)
+	{
+		Intent mapView = new Intent (this, MapActivity.class);
+		startActivity(mapView);
+	}
+	
 	public void onAbout(View v)
 	{
 		Intent AboutActivity = new Intent (this, AboutActivity.class);
