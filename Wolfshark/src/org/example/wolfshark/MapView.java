@@ -41,7 +41,6 @@ public class MapView extends View {
 	{
 		mapX = inputX;
 		mapY = inputY;
-		
 	}
 	
 	public float getMapX()
