@@ -74,11 +74,19 @@
             </intent-filter>
         </activity>
         
+<<<<<<< HEAD
                   <activity
             android:name="org.example.wolfshark.MapActivity"
             android:label="@string/about_text" >
             <intent-filter>
                 <action android:name="android.intent.action.ABOUTACTIVITY" />
+=======
+         <activity
+            android:name="org.example.wolfshark.EditfavsActivity"
+            android:label="@string/edit_favs" >
+            <intent-filter>
+                <action android:name="android.intent.action.EDITFAVSACTIVITY" />
+>>>>>>> testBranch
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

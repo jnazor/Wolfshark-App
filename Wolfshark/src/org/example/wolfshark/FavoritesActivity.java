@@ -1,6 +1,7 @@
 package org.example.wolfshark;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,7 +43,8 @@ public class FavoritesActivity extends Activity {
 	//    android:onClick="onEditFavs"
 	public void onEditFavs(View v)
 	{
-		//Add Intent Code here for Screen 6
+		Intent EditFavsActivity = new Intent (this, EditFavsActivity.class);
+		startActivity(EditFavsActivity);
 	}
 
 }
