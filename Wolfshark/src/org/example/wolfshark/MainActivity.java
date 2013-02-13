@@ -19,7 +19,6 @@ public class MainActivity extends Activity {
 		startActivity(locateActivity);
 	}
 	
-	
 	public void onFavorites(View v)
 	{
 		Intent favoritesActivity = new Intent (this, FavoritesActivity.class);

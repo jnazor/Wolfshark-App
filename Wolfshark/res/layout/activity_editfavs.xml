@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:gravity="center" 
+    android:orientation="vertical" >
+    
+    <TextView 
+	    android:text="@string/edit_favs" 
+	    android:layout_height="wrap_content"
+	    android:layout_width="wrap_content" 
+	    android:layout_marginBottom="25dip" 
+	    android:textSize="24.5sp"/>
+
+    <EditText
+        android:id="@+id/favs1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" />
+    
+    <EditText
+        android:id="@+id/favs2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" />
+    
+    <EditText
+        android:id="@+id/favs3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" />
+    
+    <EditText
+        android:id="@+id/favs4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" />
+    
+    <EditText
+        android:id="@+id/favs5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" />
+    
+    <Button 
+	    android:id="@+id/saveFavs" 
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="@string/save_favs"
+	    android:layout_marginTop="30dip"
+	    android:onClick="onSaveFavs"/>
+    
+</LinearLayout>
