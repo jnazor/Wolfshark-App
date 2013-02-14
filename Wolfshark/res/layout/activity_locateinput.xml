@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/endtext"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="top|left"
@@ -14,57 +15,13 @@
         android:text="Start"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView1"
+    <Spinner
+        android:id="@+id/building_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/autoCompleteTextView2"
         android:layout_below="@+id/Start_text"
-        android:ems="10"
-        android:text="Darwin 21"
-        android:textColor="@color/gray" />
-
-    <Button
-        android:id="@+id/startFav"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/autoCompleteTextView1"
-        android:layout_toRightOf="@+id/autoCompleteTextView1"
-        android:text="Favorites" />
-
-    <Button
-        android:id="@+id/endFav"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/autoCompleteTextView2"
-        android:layout_alignBottom="@+id/autoCompleteTextView2"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/autoCompleteTextView2"
-        android:text="Favorites" />
-
-    <TextView
-        android:id="@+id/starttext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/startFav"
-        android:layout_margin="10dp"
-        android:text="End"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/starttext"
-        android:ems="10"
-        android:text="Darwin 31"
-        android:textColor="@color/gray" />
+        android:layout_toLeftOf="@+id/startFav" />
 
     <Button
         android:id="@+id/locateInput"
@@ -74,5 +31,60 @@
         android:layout_alignParentLeft="true"
         android:onClick="onGo"
         android:text="@string/go" />
+
+    <Button
+        android:id="@+id/startFav"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/building_start"
+        android:text="Favorites" />
+        <!--android:onClick="onEndFavs" -->
+
+    <Spinner
+        android:id="@+id/start_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/startFav"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/building_start" />
+
+    <Spinner
+        android:id="@+id/end_building"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/endtext"
+        android:layout_toLeftOf="@+id/startFav" />
+
+    <TextView
+        android:id="@+id/endtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/startFav"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:text="End"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/end_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/end_building"
+        android:layout_toRightOf="@+id/end_building" />
+
+    <Button
+        android:id="@+id/endFav"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/end_room"
+        android:text="Favorites" />
+        <!-- android:onClick="onEndFavs" -->
 
 </RelativeLayout>

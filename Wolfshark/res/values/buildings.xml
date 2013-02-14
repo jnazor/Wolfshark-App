@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="buildings_array">
+        <item>Anthropological Studies Center</item>
+		<item>Art Building</item>
+		<item>Beaujolais Village</item>
+		<item>Boiler Plant</item>
+		<item>Building 49</item>
+		<item>Cabernet Village</item>
+		<item>Carson Hall</item>
+		<item>Children\'s School</item>
+		<item>Commons</item>
+		<item>Cooperage</item>
+		<item>Darwin Hall</item>
+		<item>Environmental Technology Center</item>
+		<item>Evert B. Person Theatre</item>
+		<item>Facilities Services</item>
+		<item>Fieldhouse</item>
+		<item>Green Music Center</item>
+		<item>Gymnasium</item>
+		<item>Information Booth North</item>
+        <item>Information Booth South</item>
+        <item>Ives Hall</item>
+        <item>Lakes</item>
+        <item>Nichols Hall</item>
+        <item>Observatory</item>
+        <item>Parking Lot A</item>
+        <item>Parking Lot C, D</item>
+        <item>Parking Lot E</item>
+        <item>Parking Lot F</item>
+        <item>Parking Lot G</item>
+        <item>Parking Lot H</item>
+        <item>Parking Lot J</item>
+        <item>Parking Lot Juniper Lane</item>
+        <item>Parking Lot L, M, N, O</item>
+        <item>Police and Parking Services</item>
+        <item>Recreation Center</item>
+        <item>Salazar Hall</item>
+        <item>Sauvignon Village</item>
+        <item>Schultz Information Center</item>
+        <item>Seawolf Shops</item>
+        <item>Seawolf Stadium</item>
+        <item>Stevenson Hall</item>
+        <item>Student Health Center</item>
+        <item>Student Union</item>
+        <item>Toast</item>
+        <item>Tuscany Village</item>
+        <item>Verdot Village</item>
+        <item>Zinfandel Village</item>        
+    </string-array>
+</resources>
