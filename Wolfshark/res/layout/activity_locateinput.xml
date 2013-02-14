@@ -87,4 +87,15 @@
         android:text="Favorites" />
         <!-- android:onClick="onEndFavs" -->
 
+    <org.example.wolfshark.InstantAutoComplete
+        android:id="@+id/AutoText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/startFav"
+        android:layout_alignBottom="@+id/startFav"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/startFav"
+        android:completionThreshold="1"
+        android:text="TextView" />
+
 </RelativeLayout>
