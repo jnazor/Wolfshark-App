@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/endtext"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="top|left"
     android:background="@color/background" >
+    <!-- android:id="@+id/endtext"    //had been inside RelativeLayout & caused problems -->
 
     <TextView
         android:id="@+id/Start_text"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:layout_margin="10dp"
-        android:text="Start"
+        android:text="@string/start"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Spinner
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/building_start"
-        android:text="Favorites" />
+        android:text="@string/favs_title" />
         <!--android:onClick="onEndFavs" -->
 
     <Spinner
@@ -66,7 +66,7 @@
         android:layout_below="@+id/startFav"
         android:layout_margin="10dp"
         android:layout_marginTop="20dp"
-        android:text="End"
+        android:text="@string/end"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Spinner
@@ -84,9 +84,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/end_room"
-        android:text="Favorites" />
+        android:text="@string/favs_title" />
         <!-- android:onClick="onEndFavs" -->
-
+<!-- 
     <org.example.wolfshark.InstantAutoComplete
         android:id="@+id/AutoText1"
         android:layout_width="wrap_content"
@@ -97,5 +97,6 @@
         android:layout_toLeftOf="@+id/startFav"
         android:completionThreshold="1"
         android:text="TextView" />
+-->
 
 </RelativeLayout>
