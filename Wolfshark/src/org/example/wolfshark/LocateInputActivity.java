@@ -21,13 +21,13 @@ public class LocateInputActivity extends Activity {
 	
 		//code for AutoCompletetext.
 		// Get a reference to the AutoCompleteTextView in the layout
-		InstantAutoComplete textView = (InstantAutoComplete) findViewById(R.id.AutoText1);
+		//InstantAutoComplete textView = (InstantAutoComplete) findViewById(R.id.AutoText1);
 		// Get the string array
 		String[] buildings = getResources().getStringArray(R.array.buildings_array);
 		// Create the adapter and set it to the AutoCompleteTextView 
 		ArrayAdapter<String> adapter = 
 	        new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, buildings);
-		textView.setAdapter(adapter);
+		//textView.setAdapter(adapter);
 		//end autocomplete
 	
 		//Spinner code.
