@@ -20,6 +20,9 @@
 	<string name="edit_favs">Edit Favorites</string>
 	<string name="save_favs">Save Favorites</string>
 	
+	<string name="start">Start</string>
+	<string name="end">End</string>
+	
 	<string name="about_text">"<b>Welcome to CampusPaths!</b>\n
 	    This app is dedicated to helping you get around campus easier than ever before. To begin select \"Route\", simply choose your beginning and ending destinations, then select \"GO!\" The subsequent screen will give you three route options optimized to get you to your destination the quickest and easiest.\n
 	    To zoom in on your destination just tap on the marker- a screen showing you the precise location of your destination will appear. You can also save favorites so you never have to worry about finding that crumpled up post it note you wrote your schedule on again.\n\n
