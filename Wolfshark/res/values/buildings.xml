@@ -48,4 +48,21 @@
         <item>Verdot Village</item>
         <item>Zinfandel Village</item>        
     </string-array>
+    
+    <string-array name="darwin_array">
+        <item>003</item>
+        <item>004</item>
+        <item>006</item>
+        <item>021</item>
+        <item>022</item>
+        <item>023</item>
+        <item>024</item>
+        <item>025</item>
+        <item>028</item>
+        <item>029</item>
+        <item>030</item>
+        <item>031</item>
+        <item>037</item>
+        <item>038</item>
+    </string-array>
 </resources>
