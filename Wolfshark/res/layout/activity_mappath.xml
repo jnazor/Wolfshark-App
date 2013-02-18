@@ -3,11 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/darwin_basement"
+    android:background="@drawable/campus_map"
     android:id="@+id/dar_basement" >
+    
+        <TextView 
+	        android:id="@+id/testOutput" 
+		    android:layout_height="wrap_content"
+		    android:layout_width="wrap_content" 
+		    android:layout_marginTop="10dip"
+		    android:layout_marginLeft="15dip"
+		    android:layout_marginRight="5dip"
+		    android:layout_marginBottom="0dip"
+		    android:textColor="@color/white" 
+		    android:textSize="24.5sp"/>
            
 	    <TextView 
 		    android:text="@string/darRmDest" 
+		    android:id="@+id/roomInstr"
 		    android:layout_height="wrap_content"
 		    android:layout_width="wrap_content" 
 		    android:layout_marginTop="100dip"
@@ -16,6 +28,8 @@
 		    android:layout_marginBottom="25dip"
 		    android:textColor="@color/white" 
 		    android:textSize="24.5sp"/>
+	    
+	    
 
 	    <Button
 	        android:id="@+id/newPath"
@@ -25,5 +39,7 @@
 	        android:onClick="onNewPath"
 	        android:text="@string/newPath"
 	        android:textColor="@color/white" />
+	    
+	    
 
 </LinearLayout>
