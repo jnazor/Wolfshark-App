@@ -10,6 +10,7 @@ package org.example.wolfshark;
 public final class R {
     public static final class array {
         public static final int buildings_array=0x7f040000;
+        public static final int darwin_array=0x7f040001;
     }
     public static final class attr {
     }
@@ -19,8 +20,9 @@ public final class R {
         public static final int white=0x7f050002;
     }
     public static final class drawable {
-        public static final int darwin_basement=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
+        public static final int campus_map=0x7f020000;
+        public static final int darwin_basement=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
         public static final int Start_text=0x7f090008;
@@ -41,12 +43,14 @@ public final class R {
         public static final int favs5=0x7f090005;
         public static final int locateInput=0x7f09000b;
         public static final int map=0x7f090012;
-        public static final int newPath=0x7f090016;
+        public static final int newPath=0x7f090018;
+        public static final int roomInstr=0x7f090017;
         public static final int route=0x7f090011;
         public static final int saveFavs=0x7f090006;
-        public static final int settings=0x7f090017;
+        public static final int settings=0x7f090019;
         public static final int startFav=0x7f09000a;
         public static final int start_room=0x7f09000c;
+        public static final int testOutput=0x7f090016;
     }
     public static final class layout {
         public static final int activity_about=0x7f030000;
