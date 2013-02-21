@@ -7,20 +7,31 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 
 public class MapView extends View {
 
 	Paint imgPaint;
 	Bitmap mapGraphic = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_basement);
 	
-	private float mapX = 0;
-	private float mapY = 0;
-	private float mapZ;
+
+	int mapX = 0;
+	int mapY = 0;
 	
+	int testx = 0;
+	int testy = 0;
+	
+	public int offsetX = 0;
+	public int offsetY = 0;
+
+	private int mapZ;
+	int startX;
+	int startY;
+	
+	boolean moved = false;
 	
 	public MapView(Context context)
 	{
@@ -33,22 +44,22 @@ public class MapView extends View {
 	protected void onDraw(Canvas canvas)
 	{
 		
-		canvas.drawBitmap(mapGraphic, mapX, mapY, imgPaint);
+		canvas.drawBitmap(mapGraphic, mapX + offsetX, mapY + offsetY, imgPaint);
 	
 	}
 	
-	public void moveMap(float inputX, float inputY)
+	public void moveMap(int inputX, int inputY)
 	{
-		mapX = inputX;
-		mapY = inputY;
+
+
 	}
 	
-	public float getMapX()
+	public int getMapX()
 	{
 		return mapX;
 	}
 	
-	public float getMapY()
+	public int getMapY()
 	{
 		return mapY;
 	}
