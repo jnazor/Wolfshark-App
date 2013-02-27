@@ -5,6 +5,11 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.AutoCompleteTextView;
 
+
+//Most of the code for this class has been written by the user Destil, 
+//posted to StackOverflow on April 25, 2011, and can be found at:
+//http://stackoverflow.com/questions/2126717/android-autocompletetextview-show-suggestions-when-no-text-entered
+//  - as of February 26, 2013
 public class InstantAutoComplete extends AutoCompleteTextView {
 
     public InstantAutoComplete(Context context) {

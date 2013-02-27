@@ -1,55 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:gravity="center" 
-    android:orientation="vertical" >
-    
-    <TextView 
-	    android:text="@string/edit_favs" 
-	    android:layout_height="wrap_content"
-	    android:layout_width="wrap_content" 
-	    android:layout_marginBottom="25dip" 
-	    android:textSize="24.5sp"/>
+    android:layout_gravity="top|left"
+    android:background="@color/background" >
+    <!-- android:id="@+id/endtext"    //had been inside RelativeLayout & caused problems -->
 
-    <EditText
+    <TextView
+        android:id="@+id/edit_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dip"
+        android:layout_marginTop="20dip"
+        android:text="@string/edit_favs"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+     <org.example.wolfshark.InstantAutoComplete
         android:id="@+id/favs1"
-        android:layout_width="match_parent"
+        android:layout_width="235dip"
         android:layout_height="wrap_content"
-        android:ems="10" />
-    
-    <EditText
+        android:layout_below="@+id/edit_Title"
+        android:layout_alignParentLeft="true"
+        android:completionThreshold="1"
+        android:text="TextView" />
+     
+     <Spinner
+        android:id="@+id/room1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/favs1"
+        android:layout_toRightOf="@+id/favs1" />
+     
+     <org.example.wolfshark.InstantAutoComplete
         android:id="@+id/favs2"
-        android:layout_width="match_parent"
+        android:layout_width="235dip"
         android:layout_height="wrap_content"
-        android:ems="10" />
-    
-    <EditText
+        android:layout_below="@+id/favs1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="35dip"
+        android:completionThreshold="1"
+        android:text="TextView" />
+     
+     <Spinner
+        android:id="@+id/room2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/favs2"
+        android:layout_toRightOf="@+id/favs2" />
+     
+    <org.example.wolfshark.InstantAutoComplete
         android:id="@+id/favs3"
-        android:layout_width="match_parent"
+        android:layout_width="235dip"
         android:layout_height="wrap_content"
-        android:ems="10" />
-    
-    <EditText
+        android:layout_below="@+id/favs2"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="35dip"
+        android:completionThreshold="1"
+        android:text="TextView" />
+     
+     <Spinner
+        android:id="@+id/room3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/favs3"
+        android:layout_toRightOf="@+id/favs3" />
+     
+     <org.example.wolfshark.InstantAutoComplete
         android:id="@+id/favs4"
-        android:layout_width="match_parent"
+        android:layout_width="235dip"
         android:layout_height="wrap_content"
-        android:ems="10" />
-    
-    <EditText
+        android:layout_below="@+id/favs3"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="35dip"
+        android:completionThreshold="1"
+        android:text="TextView" />
+     
+     <Spinner
+        android:id="@+id/room4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/favs4"
+        android:layout_toRightOf="@+id/favs4" />
+     
+     <org.example.wolfshark.InstantAutoComplete
         android:id="@+id/favs5"
-        android:layout_width="match_parent"
+        android:layout_width="235dip"
         android:layout_height="wrap_content"
-        android:ems="10" />
-    
-    <Button 
-	    android:id="@+id/saveFavs" 
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content" 
-	    android:text="@string/save_favs"
-	    android:layout_marginTop="30dip"
-	    android:onClick="onSaveFavs"/>
-    
-</LinearLayout>
+        android:layout_below="@+id/favs4"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="35dip"
+        android:completionThreshold="1"
+        android:text="TextView" />
+     
+     <Spinner
+        android:id="@+id/room5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/favs5"
+        android:layout_toRightOf="@+id/favs5" />
+     
+    <Button
+        android:id="@+id/saveFavs"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dip"
+        android:layout_below="@+id/favs5"
+        android:onClick="onSaveFavs"
+        android:text="@string/save_favs" />
+
+</RelativeLayout>
