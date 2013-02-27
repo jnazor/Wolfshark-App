@@ -45,12 +45,12 @@ public class Building {
         this.bldgX = bldgX;
     }
     
- // getting roomY
+ // getting bldgX
     public int getbldgY(){
         return this.bldgY;
     }
  
-    // setting roomY
+    // setting bldgX
     public void setbldgY(int bldgY){
         this.bldgY = bldgY;
     }
