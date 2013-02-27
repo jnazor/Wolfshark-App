@@ -78,30 +78,5 @@ public class FavoritesActivity extends Activity {
 		Intent EditFavsActivity = new Intent (this, EditFavsActivity.class);
 		startActivity(EditFavsActivity);
 	}
-	
-	
-	
-	
-//	public void onResume()
-//	{
-//		build_1 = myPrefs.getString("build_1", "None");
-//        build_2 = myPrefs.getString("build_2", "None");
-//        build_3 = myPrefs.getString("build_3", "None");
-//        build_4 = myPrefs.getString("build_4", "None");
-//        build_5 = myPrefs.getString("build_5", "None");
-//        
-//        room_1 = myPrefs.getString("room_1", "00");
-//        room_2 = myPrefs.getString("room_2", "00");
-//        room_3 = myPrefs.getString("room_3", "00");
-//        room_4 = myPrefs.getString("room_4", "00");
-//        room_5 = myPrefs.getString("room_5", "00");
-//        
-//		favs1.setText("" + build_1 + " " + room_1);
-//		favs2.setText("" + build_2 + " " + room_2);
-//		favs3.setText("" + build_3 + " " + room_3);
-//		favs4.setText("" + build_4 + " " + room_4);
-//		favs5.setText("" + build_5 + " " + room_5);      
-//        
-//	}
 
 }

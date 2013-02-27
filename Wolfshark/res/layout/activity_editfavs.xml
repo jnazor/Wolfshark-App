@@ -111,7 +111,7 @@
         android:id="@+id/saveFavs"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dip"
+        android:layout_marginTop="25dip"
         android:layout_below="@+id/favs5"
         android:onClick="onSaveFavs"
         android:text="@string/save_favs" />
