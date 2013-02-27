@@ -33,22 +33,22 @@ public class Favorite {
         this.id = id;
     }
  
-    // getting name
+    // getting room
     public String getRoom(){
         return this.room;
     }
  
-    // setting name
+    // setting room
     public void setRoom(String room){
         this.room = room;
     }
  
-    // getting phone number
+    // getting building
     public String getBuilding(){
         return this.building;
     }
  
-    // setting phone number
+    // setting building
     public void setBuilding(String building){
         this.building = building;
     }
