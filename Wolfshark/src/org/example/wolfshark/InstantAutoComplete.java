@@ -3,6 +3,7 @@ package org.example.wolfshark;
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.widget.AutoCompleteTextView;
 
 
@@ -30,12 +31,19 @@ public class InstantAutoComplete extends AutoCompleteTextView {
     }
 
     @Override
+    public boolean onTouchEvent(MotionEvent event) {
+    	requestFocus();
+    	setText("");
+    	showDropDown();
+    	return true;
+    }
+    @Override
     protected void onFocusChanged(boolean focused, int direction,
             Rect previouslyFocusedRect) {
         super.onFocusChanged(focused, direction, previouslyFocusedRect);
         if (focused) {
-        	setText(""); // need to change, but for now demonstrates my idea.
             performFiltering(getText(), 0);
-        }
+            //showDropDown();
+        } 
     }
 } 
