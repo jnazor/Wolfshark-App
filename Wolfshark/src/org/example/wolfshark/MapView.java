@@ -8,10 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.Window;
 
 public class MapView extends View {
 
@@ -29,7 +26,6 @@ public class MapView extends View {
 	public int offsetX = 0;
 	public int offsetY = 0;
 
-	private int mapZ;
 	int startX;
 	int startY;
 	

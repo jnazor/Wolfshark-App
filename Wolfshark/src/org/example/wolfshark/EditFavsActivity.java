@@ -6,10 +6,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Toast;
 
 public class EditFavsActivity extends Activity {
 	
@@ -27,7 +28,6 @@ public class EditFavsActivity extends Activity {
 	private Spinner roomSpin_3;
 	private Spinner roomSpin_4;
 	private Spinner roomSpin_5;
-
 		
 	private String[] build_arr;
 	private int[] darRooms_primArr;
@@ -301,34 +301,31 @@ public class EditFavsActivity extends Activity {
     }
 	
 	
-	
-	
-	
-	
-	
-	
 	public void onSaveFavs(View v)
 	{
-		myEditor.putString("build_1", favs1.getText().toString());
-		myEditor.putString("build_2", favs2.getText().toString());
-		myEditor.putString("build_3", favs3.getText().toString());
-		myEditor.putString("build_4", favs4.getText().toString());
-		myEditor.putString("build_5", favs5.getText().toString());
+		DatabaseHandler db = new DatabaseHandler(this);
 		
-		myEditor.putString("room_1", room_1);
-		myEditor.putString("room_2", room_2);
-		myEditor.putString("room_3", room_3);
-		myEditor.putString("room_4", room_4);
-		myEditor.putString("room_5", room_5);
-    	
-    	myEditor.commit();
+		Favorite fav1 = new Favorite(1, room_1, favs1.getText().toString());
+		Favorite fav2 = new Favorite(2, room_2, favs2.getText().toString());
+		Favorite fav3 = new Favorite(3, room_3, favs3.getText().toString());
+		Favorite fav4 = new Favorite(4, room_4, favs4.getText().toString());
+		Favorite fav5 = new Favorite(5, room_5, favs5.getText().toString());
+		
+		db.addFavorite(fav1);
+		db.addFavorite(fav2);
+		db.addFavorite(fav3);
+		db.addFavorite(fav4);
+		db.addFavorite(fav5);
 				
-		Intent SaveFavsActivity = new Intent (this, FavoritesActivity.class);
-		startActivity(SaveFavsActivity);
+		Toast.makeText(this, "You favorites have been saved",Toast.LENGTH_SHORT).show();
+		
+		
+		//For Testing
+		Intent saveActivity = new Intent (this, FavoritesActivity.class);
+		startActivity(saveActivity);
+		
+		//Intent goToMainActivity = new Intent (this, MainActivity.class);
+		//startActivity(goToMainActivity);
 	}
 	
-	
-	
-	
-
 }
