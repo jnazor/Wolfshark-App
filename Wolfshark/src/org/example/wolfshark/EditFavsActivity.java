@@ -3,6 +3,7 @@ package org.example.wolfshark;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.CursorIndexOutOfBoundsException;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -305,17 +306,23 @@ public class EditFavsActivity extends Activity {
 	{
 		DatabaseHandler db = new DatabaseHandler(this);
 		
-		Favorite fav1 = new Favorite(1, room_1, favs1.getText().toString());
-		Favorite fav2 = new Favorite(2, room_2, favs2.getText().toString());
-		Favorite fav3 = new Favorite(3, room_3, favs3.getText().toString());
-		Favorite fav4 = new Favorite(4, room_4, favs4.getText().toString());
-		Favorite fav5 = new Favorite(5, room_5, favs5.getText().toString());
-		
-		db.addFavorite(fav1);
-		db.addFavorite(fav2);
-		db.addFavorite(fav3);
-		db.addFavorite(fav4);
-		db.addFavorite(fav5);
+		try {
+			Favorite fav1 = new Favorite(1, room_1, favs1.getText().toString());
+			Favorite fav2 = new Favorite(2, room_2, favs2.getText().toString());
+			Favorite fav3 = new Favorite(3, room_3, favs3.getText().toString());
+			Favorite fav4 = new Favorite(4, room_4, favs4.getText().toString());
+			Favorite fav5 = new Favorite(5, room_5, favs5.getText().toString());
+			
+			db.addFavorite(fav1);
+			db.addFavorite(fav2);
+			db.addFavorite(fav3);
+			db.addFavorite(fav4);
+			db.addFavorite(fav5);
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block	
+		} catch (CursorIndexOutOfBoundsException e) {
+			// TODO Auto-generated catch block
+		} 
 				
 		Toast.makeText(this, "You favorites have been saved",Toast.LENGTH_SHORT).show();
 		

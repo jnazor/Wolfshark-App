@@ -49,14 +49,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     	// Query to create Favorites table
         String CREATE_FAVORITES_TABLE = "CREATE TABLE " + TABLE_FAV + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_ROOM + " TEXT,"
-                + KEY_BUILD + " TEXT" + ")";
+                + KEY_BUILD + " TEXT " + ")";
         db.execSQL(CREATE_FAVORITES_TABLE);
         
         // Query to create Room table with compound primary key
         String CREATE_ROOM_TABLE = "CREATE TABLE " + TABLE_ROOM + "("
         		+ KEY_NUM + " INTEGER," + KEY_BLDG + " TEXT,"
         		+ KEY_ROOMX + " INTEGER, " + KEY_ROOMY + " INTEGER, "
-        		+ KEY_IMAGE + " TEXT" + "PRIMARY KEY (" + KEY_NUM + ", " + KEY_BLDG + "))";
+        		+ KEY_IMAGE + " TEXT, " + "PRIMARY KEY (" + KEY_NUM + ", " + KEY_BLDG + "))";
         db.execSQL(CREATE_ROOM_TABLE);
         
         // Query to create Building table
@@ -194,9 +194,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public Room getRoom(int roomNum) {
         SQLiteDatabase db = this.getReadableDatabase();
      
-        Cursor cursor = db.query(TABLE_ROOM, new String[] { KEY_NUM,
-                KEY_BLDG, KEY_ROOMX, KEY_ROOMY, KEY_IMAGE }, KEY_NUM + "=?",
-                new String[] { String.valueOf(roomNum) }, null, null, null, null);
+        Cursor cursor = db.query(TABLE_ROOM, 
+        						new String[] { KEY_NUM, KEY_BLDG, KEY_ROOMX, KEY_ROOMY, KEY_IMAGE }, 
+        						KEY_NUM + "=?",
+        						new String[] { String.valueOf(roomNum) }, 
+        						null, null, null);
         
         // move to the beginning of the list of values
         if (cursor != null)
