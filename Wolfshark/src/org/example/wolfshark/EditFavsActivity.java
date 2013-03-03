@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.lang.Integer;
 
 public class EditFavsActivity extends Activity {
 	
@@ -313,11 +314,31 @@ public class EditFavsActivity extends Activity {
 			Favorite fav4 = new Favorite(4, room_4, favs4.getText().toString());
 			Favorite fav5 = new Favorite(5, room_5, favs5.getText().toString());
 			
-			db.addFavorite(fav1);
-			db.addFavorite(fav2);
-			db.addFavorite(fav3);
-			db.addFavorite(fav4);
-			db.addFavorite(fav5);
+			if (fav1.getBuilding().equals("") || fav1.getBuilding().equals(null))
+			    db.addFavorite(fav1);
+			else
+				db.updateFavorite(fav1);
+			
+			if (fav2.getBuilding().equals("") || fav2.getBuilding().equals(null))
+			    db.addFavorite(fav2);
+			else
+				db.updateFavorite(fav2);
+			
+			if (fav3.getBuilding().equals("") || fav3.getBuilding().equals(null))
+			    db.addFavorite(fav3);
+			else
+				db.updateFavorite(fav3);
+			
+			if (fav4.getBuilding().equals("") || fav4.getBuilding().equals(null))
+			    db.addFavorite(fav4);
+			else
+				db.updateFavorite(fav4);
+			
+			if (fav5.getBuilding().equals("") || fav5.getBuilding().equals(null))
+			    db.addFavorite(fav5);
+			else
+				db.updateFavorite(fav5);
+			
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block	
 		} catch (CursorIndexOutOfBoundsException e) {
