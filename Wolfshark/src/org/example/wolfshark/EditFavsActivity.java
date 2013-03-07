@@ -151,24 +151,24 @@ public class EditFavsActivity extends Activity {
 		roomSpin_4.setOnItemSelectedListener(roomListener_4);
 		roomSpin_5.setOnItemSelectedListener(roomListener_5);
 		
-		myPrefs = getSharedPreferences(PREFERENCE_FILENAME, MODE_PRIVATE);
-        myEditor = myPrefs.edit();
-        
-        build_1 = myPrefs.getString("build_1", "None");
-        build_2 = myPrefs.getString("build_2", "None");
-        build_3 = myPrefs.getString("build_3", "None");
-        build_4 = myPrefs.getString("build_4", "None");
-        build_5 = myPrefs.getString("build_5", "None");
-        
-        favs1.setText(build_1);
-        favs2.setText(build_2);
-        favs3.setText(build_3);
-        favs4.setText(build_4);
-        favs5.setText(build_5);
-        
-        room_1 = myPrefs.getString("room_1", "00");
-        
-        roomSpin_1.setPrompt(room_1);
+//		myPrefs = getSharedPreferences(PREFERENCE_FILENAME, MODE_PRIVATE);
+//        myEditor = myPrefs.edit();
+//        
+//        build_1 = myPrefs.getString("build_1", "None");
+//        build_2 = myPrefs.getString("build_2", "None");
+//        build_3 = myPrefs.getString("build_3", "None");
+//        build_4 = myPrefs.getString("build_4", "None");
+//        build_5 = myPrefs.getString("build_5", "None");
+//        
+//        favs1.setText(build_1);
+//        favs2.setText(build_2);
+//        favs3.setText(build_3);
+//        favs4.setText(build_4);
+//        favs5.setText(build_5);
+//        
+//        room_1 = myPrefs.getString("room_1", "00");
+//        
+//        roomSpin_1.setPrompt(room_1);
 		
 	}
 	

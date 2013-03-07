@@ -25,7 +25,7 @@
         android:layout_below="@+id/edit_Title"
         android:layout_alignParentLeft="true"
         android:completionThreshold="1"
-        android:text="TextView" />
+        android:hint="Enter Building" />
      
      <Spinner
         android:id="@+id/room1"
@@ -43,7 +43,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginTop="20dip"
         android:completionThreshold="1"
-        android:text="TextView" />
+        android:hint="Enter Building" />
      
      <Spinner
         android:id="@+id/room2"
@@ -61,7 +61,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginTop="20dip"
         android:completionThreshold="1"
-        android:text="TextView" />
+        android:hint="Enter Building" />
      
      <Spinner
         android:id="@+id/room3"
@@ -79,7 +79,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginTop="20dip"
         android:completionThreshold="1"
-        android:text="TextView" />
+        android:hint="Enter Building" />
      
      <Spinner
         android:id="@+id/room4"
@@ -97,7 +97,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginTop="20dip"
         android:completionThreshold="1"
-        android:text="TextView" />
+        android:hint="Enter Building" />
      
      <Spinner
         android:id="@+id/room5"
