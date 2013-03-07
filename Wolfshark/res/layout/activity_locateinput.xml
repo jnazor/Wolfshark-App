@@ -1,131 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="top|left"
+    android:layout_margin="0dp"
     android:background="@color/background" >
-    <!-- android:id="@+id/endtext"    //had been inside RelativeLayout & caused problems -->
 
-    <TextView
-        android:id="@+id/Start_text"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/LLtitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dip"
-        android:layout_marginTop="50dip"
-        android:text="@string/start"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-<!-- 
-    <Spinner
-        android:id="@+id/building_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/Start_text"
-        android:layout_toLeftOf="@+id/startFav" />
--->
-    <Button
-        android:id="@+id/locateInput"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:onClick="onGo"
-        android:text="@string/go" />
+        android:layout_margin="0dp"
+        android:background="@color/background"
+        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/startFav"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/start_room"
-        android:text="@string/favs_title" 
-        android:onClick="onFavorites"  />
+        <TextView
+            android:id="@+id/CampusPaths"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="15dp"
+            android:text="@string/main_title"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Spinner
-        android:id="@+id/start_room"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/AutoText1"
-        android:layout_toRightOf="@+id/AutoText1" />
-<!-- 
-    <Spinner
-        android:id="@+id/end_building"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/endtext"
-        android:layout_toLeftOf="@+id/startFav" />
--->
-    <TextView
-        android:id="@+id/endtext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/startFav"
-        android:layout_margin="10dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/end"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="15dp"
+            android:background="@color/background" >
 
-    <Spinner
-        android:id="@+id/end_room"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/AutoText2"
-        android:layout_toRightOf="@+id/AutoText2" />
+            <!-- android:id="@+id/endtext"    //had been inside RelativeLayout & caused problems -->
 
-    <Button
-        android:id="@+id/endFav"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/end_room"
-        android:text="@string/favs_title" 
-        android:onClick="onFavorites"  />
- 
-    <org.example.wolfshark.InstantAutoComplete
-        android:id="@+id/AutoText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Start_text"
-        android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/startFav"
-        android:completionThreshold="1"
-        android:hint="@string/buildingHint" />
-    
-    <org.example.wolfshark.InstantAutoComplete
-        android:id="@+id/AutoText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/endtext"
-        android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/endFav"
-        android:completionThreshold="1"
-        android:hint="@string/buildingHint" />
-    
-    <!--TextView
-        android:id="@+id/testing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/endFav"
-        android:layout_marginLeft="10dip"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        /> -->
+            <TextView
+                android:id="@+id/Start_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="@string/start"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/CampusPaths"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/main_title"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            <Button
+                android:id="@+id/startFav"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/start_room"
+                android:onClick="onFavorites"
+                android:text="@string/favs_title" />
 
-</RelativeLayout>
+            <Spinner
+                android:id="@+id/start_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/AutoText1"
+                android:layout_toRightOf="@+id/AutoText1" />
+
+            <TextView
+                android:id="@+id/endtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/startFav"
+                android:text="@string/end"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Spinner
+                android:id="@+id/end_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/AutoText2"
+                android:layout_toRightOf="@+id/AutoText2" />
+
+            <org.example.wolfshark.InstantAutoComplete
+                android:id="@+id/AutoText1"
+                android:layout_width="235dip"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/Start_text"
+                android:layout_toLeftOf="@+id/startFav"
+                android:completionThreshold="1"
+                android:inputType="text"
+                android:hint="@string/buildingHint" />
+
+            <org.example.wolfshark.InstantAutoComplete
+                android:id="@+id/AutoText2"
+                android:layout_width="235dip"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/endtext"
+                android:layout_toLeftOf="@+id/endFav"
+                android:completionThreshold="1"
+                android:hint="@string/buildingHint" />
+
+            <Button
+                android:id="@+id/endFav"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/end_room"
+                android:onClick="onFavorites"
+                android:text="@string/favs_title" />
+
+            <Button
+                android:id="@+id/locateInput"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/endFav"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:onClick="onGo"
+                android:text="@string/go" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>
