@@ -430,6 +430,8 @@ public class LocateInputActivity extends Activity {
 		
 	}
     
+    //get sharedprefs file.
+    //SharedPreferences sharedpreferences = getSharedPreferences("favsPrefs", 0);
     
     
     
