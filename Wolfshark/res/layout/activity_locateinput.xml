@@ -98,7 +98,7 @@
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@+id/startFav"
         android:completionThreshold="1"
-        android:text="TextView" />
+        android:hint="@string/buildingHint" />
     
     <org.example.wolfshark.InstantAutoComplete
         android:id="@+id/AutoText2"
@@ -108,16 +108,24 @@
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@+id/endFav"
         android:completionThreshold="1"
-        android:text="TextView" />
+        android:hint="@string/buildingHint" />
     
-    <TextView
+    <!--TextView
         android:id="@+id/testing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/endFav"
         android:layout_marginLeft="10dip"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        />
+        /> -->
 
+    <TextView
+        android:id="@+id/CampusPaths"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/main_title"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

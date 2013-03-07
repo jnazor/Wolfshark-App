@@ -26,7 +26,7 @@ public class OpeningActivity extends Activity {
 				}finally{
 					//Use this style of Intent, 
 					//     not the one shown in theNewBoston Tutorial 15
-					Intent openMain = new Intent(OpeningActivity.this, MainActivity.class);
+					Intent openMain = new Intent(OpeningActivity.this, LocateInputActivity.class);
 					startActivity(openMain);
 				}
 			}

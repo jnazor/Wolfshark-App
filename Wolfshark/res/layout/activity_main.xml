@@ -28,7 +28,7 @@
 	    android:text="@string/map"
 	    android:onClick="onMap"/>
 	
-	<Button 
+<!--   <Button 
 	    android:id="@+id/favorites" 
 	    android:layout_width="fill_parent" 
 	    android:layout_height="wrap_content" 
@@ -41,5 +41,5 @@
 	    android:layout_height="wrap_content" 
 	    android:text="@string/about"
 	    android:onClick="onAbout"/>
-	
+-->	
 </LinearLayout>

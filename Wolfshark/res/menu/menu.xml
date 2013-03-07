@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-   <item android:id="@+id/settings"
-      android:title="@string/temp"
-      android:alphabeticShortcut="@string/temp" />
+    <item android:id="@+id/favoritesmenu" android:title="@string/edit_favs"/>
+	<item android:id="@+id/mapmenu" android:title="@string/map"/> 
+    <item android:id="@+id/aboutmenu" android:title="@string/about"/>
 </menu>

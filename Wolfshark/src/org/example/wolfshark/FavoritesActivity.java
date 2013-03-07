@@ -22,6 +22,7 @@ public class FavoritesActivity extends Activity {
 	Button favs5;
 	DatabaseHandler db;
 	Favorite favList;
+	String[] favs;
 	
 	//Button objects have been created and set up in this file 
 	//using setText() so that their values can be changed later
@@ -151,8 +152,26 @@ public class FavoritesActivity extends Activity {
 	
 	public void onFavs1(View v){
 			// Do stuff
-		 	AlertDialog ab2 = new AlertDialog.Builder(this).create();
-		 	ab2.setMessage(favList.getBuilding()+" "+favList.getRoom());
-        	ab2.show();	
+			Toast.makeText(this, "You selected " + favs[0], Toast.LENGTH_LONG).show();			
+//		 	AlertDialog ab2 = new AlertDialog.Builder(this).create();
+//		 	ab2.setMessage(favList.getBuilding()+" "+favList.getRoom());
+//        	ab2.show();	
     }
+	public void onFavs2(View v){
+		// Do stuff
+		Toast.makeText(this, "You selected " + favs[1], Toast.LENGTH_LONG).show();			
+	}
+	public void onFavs3(View v){
+		// Do stuff
+		Toast.makeText(this, "You selected " + favs[2], Toast.LENGTH_LONG).show();			
+	}
+	public void onFavs4(View v){
+		// Do stuff
+		Toast.makeText(this, "You selected " + favs[3], Toast.LENGTH_LONG).show();			
+	}
+	public void onFavs5(View v){
+		// Do stuff
+		Toast.makeText(this, "You selected " + favs[4], Toast.LENGTH_LONG).show();			
+	}
+	
 };

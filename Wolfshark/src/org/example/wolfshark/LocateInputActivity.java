@@ -9,6 +9,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -41,8 +44,8 @@ public class LocateInputActivity extends Activity {
 	InstantAutoComplete textView1;
 	InstantAutoComplete textView2;
 	
-	TextView testing;
-	String testStr;
+//	TextView testing;
+//	String testStr;
 	
 	//values to be sent to MapPath
 	int localStartPos;
@@ -75,10 +78,10 @@ public class LocateInputActivity extends Activity {
 		textView1 = (InstantAutoComplete) findViewById(R.id.AutoText1);
 		textView2 = (InstantAutoComplete) findViewById(R.id.AutoText2);
 		
-		testing = (TextView) findViewById(R.id.testing);
-		testStr = "Test:  All Clear";
-		testing.setText("" + testStr);
-		
+//		testing = (TextView) findViewById(R.id.testing);
+//		testStr = "Test:  All Clear";
+//		testing.setText("" + testStr);
+
 		// Get the string array
 		build_arr = getResources().getStringArray(R.array.buildings_array);
 				
@@ -390,47 +393,7 @@ public class LocateInputActivity extends Activity {
         }
     }
 	
-	
-	
-	
-	public boolean isCorrectName(String name)
-	{		
-		for(int i = 0; i < build_arr.length; ++i)
-			if(name.equals(build_arr[i]))
-				return true;
-		
-		return false;
-	}
-	
-	
-	
-    
-    public void onGo(View v)
-	{
-    	start_build = textView1.getText().toString();
-    	end_build = textView2.getText().toString();
-    	
-    	if(start_build != null && end_build != null && isCorrectName(start_build) && isCorrectName(end_build))
-    	{
-	    	myEditor.putString("startBuild", start_build);
-	    	myEditor.putString("endBuild", end_build);
-	    	myEditor.putString("startRoom", start_room);
-	    	myEditor.putString("endRoom", end_room);
-	    	myEditor.commit();
-	    	
-	    	Intent myMapPath = new Intent(this, MapPathActivity.class);
-			startActivity(myMapPath);
-    	}
-    	else
-    	{
-    		Toast.makeText(this, "Make sure that a start and end building and room has been chosen, "
-    				       + "and that all buidling names have been spelled correctly. ",
-    				       Toast.LENGTH_SHORT).show();
-    	}
-		
-	}
-    
-    //get sharedprefs file.
+	   //get sharedprefs file.
     //SharedPreferences sharedpreferences = getSharedPreferences("favsPrefs", 0);
     
     
@@ -474,5 +437,98 @@ public class LocateInputActivity extends Activity {
 		        	endalert.show();
 		        	break;
 		}
+	}	
+	
+	public boolean isCorrectName(String name)
+	{		
+		for(int i = 0; i < build_arr.length; ++i)
+			if(name.equals(build_arr[i]))
+				return true;
+		
+		return false;
 	}
+	
+    public void onGo(View v)
+	{
+    	start_build = textView1.getText().toString();
+    	end_build = textView2.getText().toString();
+    	
+    	if(start_build != null && end_build != null && isCorrectName(start_build) && isCorrectName(end_build))
+    	{
+	    	myEditor.putString("startBuild", start_build);
+	    	myEditor.putString("endBuild", end_build);
+	    	myEditor.putString("startRoom", start_room);
+	    	myEditor.putString("endRoom", end_room);
+	    	myEditor.commit();
+	    	
+	    	Intent myMapPath = new Intent(this, MapPathActivity.class);
+			startActivity(myMapPath);
+    	}
+    	else
+    	{
+    		Toast.makeText(this, "Make sure that a start and end building and room has been chosen, "
+    				       + "and that all buidling names have been spelled correctly. ",
+    				       Toast.LENGTH_SHORT).show();
+    	}
+		
+	}
+    
+    public boolean onCreateOptionsMenu(Menu menu) {
+    	MenuInflater inflater = getMenuInflater();
+    	inflater.inflate(R.menu.menu, menu);
+    	return true;
+    }
+
+    @SuppressWarnings("deprecation")
+	public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+        	case R.id.favoritesmenu:
+    		Intent favoritesActivity = new Intent (this, EditFavsActivity.class);
+    		startActivity(favoritesActivity);
+        	break;
+        	case R.id.mapmenu:
+        		Intent mapView = new Intent (this, MapActivity.class);
+        		startActivity(mapView);
+        		break;
+        	case R.id.aboutmenu:
+        		Intent about = new Intent (this, AboutActivity.class);
+        		startActivity(about);
+//        		TextView myView = new TextView(getApplicationContext());
+//        		myView.setText(R.string.about_text);
+//        		
+//        		// 1. Instantiate an AlertDialog.Builder with its constructor
+//        		AlertDialog.Builder builder = new AlertDialog.Builder(LocateInputActivity.this);
+//
+//        		// 2. Chain together various setter methods to set the dialog characteristics
+//        		builder.setView(myView);
+//        		builder.setTitle(R.string.about);
+//
+//        		// 3. Get the AlertDialog from create()
+//        		AlertDialog dialog = builder.create();
+//        		dialog.show();
+//        		
+////        		AlertDialog.Builder abbuilder = new AlertDialog.Builder(this);
+////	        	abbuilder.setMessage(R.string.about_text);
+////	        	AlertDialog alert = abbuilder.create();
+////	        	alert.show();
+	            break;
+//	            
+//            	AlertDialog am = new AlertDialog.Builder(this).create();  
+//            	am.setCancelable(false); // This blocks the 'BACK' button  
+//            	am.setMessage(getBaseContext().getString(R.string.about_text));  
+//            	am.setButton("OK", new DialogInterface.OnClickListener() {  
+//            	    @Override  
+//            	    public void onClick(DialogInterface amd2, int which) {  
+//            	        amd2.dismiss();
+//            	    }  
+//            	});
+//            	am.show();
+//            	break;
+        	default:
+                return super.onOptionsItemSelected(item);
+        }
+        return onOptionsItemSelected(item);
+        }; 
+ 
 };

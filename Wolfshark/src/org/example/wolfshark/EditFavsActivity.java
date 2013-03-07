@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.CursorIndexOutOfBoundsException;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -399,9 +401,8 @@ public class EditFavsActivity extends Activity {
 				
 		Toast.makeText(this, "You favorites have been saved",Toast.LENGTH_SHORT).show();
 		
-		
 		//For Testing
-		Intent saveActivity = new Intent (this, FavoritesActivity.class);
+		Intent saveActivity = new Intent (this, LocateInputActivity.class);
 		startActivity(saveActivity);
 		
 		//Intent goToMainActivity = new Intent (this, MainActivity.class);
