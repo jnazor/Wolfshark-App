@@ -49,6 +49,7 @@ public class FavoritesActivity extends Activity {
 		
 		try {
 			String[] favs = new String[5];
+			
 			for (int i = 0; i < favList.size(); i++){
 				favs[i] = favList.get(i).getBuilding() + " " + favList.get(i).getRoom();
 				// For logcat purposes only. you get to see what's happening with the database.
@@ -68,7 +69,7 @@ public class FavoritesActivity extends Activity {
 			favs4.setText(favs[3]); 
 			
 			favs5 = (Button) findViewById(R.id.favs5);
-			favs5.setText(favs[4]);    
+			favs5.setText(favs[4]);
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
 		} catch (CursorIndexOutOfBoundsException e) {

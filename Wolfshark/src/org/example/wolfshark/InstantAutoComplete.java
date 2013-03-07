@@ -33,7 +33,7 @@ public class InstantAutoComplete extends AutoCompleteTextView {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
     	requestFocus();
-    	//setText(""); - so the database doesn't get changed accidentally.
+    	setText("");
     	showDropDown();
     	return true;
     }

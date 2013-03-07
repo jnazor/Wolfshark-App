@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.lang.Integer;
+import java.util.List;
 
 public class EditFavsActivity extends Activity {
 	
@@ -70,8 +71,8 @@ public class EditFavsActivity extends Activity {
 	String room_5 = null;
 
 	public static final String PREFERENCE_FILENAME = "FavsPrefs";
-	private SharedPreferences myPrefs;
-	SharedPreferences.Editor myEditor;
+	private SharedPreferences favPrefs;
+	SharedPreferences.Editor favEditor;
 	
 	
 	
@@ -88,11 +89,6 @@ public class EditFavsActivity extends Activity {
 		favs4 = (InstantAutoComplete) findViewById(R.id.favs4);
 		favs5 = (InstantAutoComplete) findViewById(R.id.favs5);
 		
-		
-//		testing = (TextView) findViewById(R.id.testing);
-//		testStr = "Test:  All Clear";
-//		testing.setText("" + testStr);
-				
 		// Get the string array
 		build_arr = getResources().getStringArray(R.array.buildings_array);
 					
@@ -151,20 +147,36 @@ public class EditFavsActivity extends Activity {
 		roomSpin_4.setOnItemSelectedListener(roomListener_4);
 		roomSpin_5.setOnItemSelectedListener(roomListener_5);
 		
-//		myPrefs = getSharedPreferences(PREFERENCE_FILENAME, MODE_PRIVATE);
-//        myEditor = myPrefs.edit();
-//        
-//        build_1 = myPrefs.getString("build_1", "None");
-//        build_2 = myPrefs.getString("build_2", "None");
-//        build_3 = myPrefs.getString("build_3", "None");
-//        build_4 = myPrefs.getString("build_4", "None");
-//        build_5 = myPrefs.getString("build_5", "None");
-//        
-//        favs1.setText(build_1);
-//        favs2.setText(build_2);
-//        favs3.setText(build_3);
-//        favs4.setText(build_4);
-//        favs5.setText(build_5);
+		favPrefs = getSharedPreferences(PREFERENCE_FILENAME, MODE_PRIVATE);
+      	favEditor = favPrefs.edit();
+        
+        build_1 = favPrefs.getString("build_1", "");
+        build_2 = favPrefs.getString("build_2", "");
+        build_3 = favPrefs.getString("build_3", "");
+        build_4 = favPrefs.getString("build_4", "");
+        build_5 = favPrefs.getString("build_5", "");
+		roomSpin_1.setSelection(favPrefs.getInt("roomPos1", 0));
+		roomSpin_2.setSelection(favPrefs.getInt("roomPos2", 0));
+		roomSpin_3.setSelection(favPrefs.getInt("roomPos3", 0));
+		roomSpin_4.setSelection(favPrefs.getInt("roomPos4", 0));
+		roomSpin_5.setSelection(favPrefs.getInt("roomPos5", 0));
+        
+		//This will select the room values from the array, not from The fav Preferences.
+//		DatabaseHandler db = new DatabaseHandler(this);
+//		List<Favorite> favList = db.getAllFavorites();
+//		String[] builds = new String[5];
+//		
+//		for (int i = 0; i < favList.size(); i++){
+//			builds[i] = favList.get(i).getBuilding();
+			// For logcat purposes only. you get to see what's happening with the database.
+//			String log = favList.get(i).getBuilding() + " " + favList.get(i).getRoom();
+//			Log.d("Testing", log);
+		
+        favs1.setText(build_1);
+        favs2.setText(build_2);
+        favs3.setText(build_3);
+        favs4.setText(build_4);
+        favs5.setText(build_5);
 //        
 //        room_1 = myPrefs.getString("room_1", "00");
 //        
@@ -190,6 +202,8 @@ public class EditFavsActivity extends Activity {
         public void onItemSelected(AdapterView<?> parent, View v, int pos, long row) {
         	roomPos_1 = pos;
         	room_1 = parent.getItemAtPosition(pos).toString();
+        	favEditor.putInt("roomPos1", roomPos_1);
+	    	favEditor.commit();
         }
 
         
@@ -216,6 +230,8 @@ public class EditFavsActivity extends Activity {
         public void onItemSelected(AdapterView<?> parent, View v, int pos, long row) {
         	roomPos_2 = pos;
         	room_2 = parent.getItemAtPosition(pos).toString();
+        	favEditor.putInt("roomPos2", roomPos_2);
+	    	favEditor.commit();
         }
 
         
@@ -242,6 +258,8 @@ public class EditFavsActivity extends Activity {
         public void onItemSelected(AdapterView<?> parent, View v, int pos, long row) {
         	roomPos_3 = pos;
         	room_3 = parent.getItemAtPosition(pos).toString();
+        	favEditor.putInt("roomPos3", roomPos_3);
+	    	favEditor.commit();
         }
 
         
@@ -268,6 +286,8 @@ public class EditFavsActivity extends Activity {
         public void onItemSelected(AdapterView<?> parent, View v, int pos, long row) {
         	roomPos_4 = pos;
         	room_4 = parent.getItemAtPosition(pos).toString();
+        	favEditor.putInt("roomPos4", roomPos_4);
+	    	favEditor.commit();
         }
 
         
@@ -294,6 +314,8 @@ public class EditFavsActivity extends Activity {
         public void onItemSelected(AdapterView<?> parent, View v, int pos, long row) {
         	roomPos_5 = pos;
         	room_5 = parent.getItemAtPosition(pos).toString();
+        	favEditor.putInt("roomPos5", roomPos_5);
+	    	favEditor.commit();
         }
 
         
@@ -305,6 +327,13 @@ public class EditFavsActivity extends Activity {
 	
 	public void onSaveFavs(View v)
 	{
+		favEditor.putString("build_1", build_1);
+		favEditor.putString("build_2", build_2);
+		favEditor.putString("build_3", build_3);
+		favEditor.putString("build_4", build_4);
+		
+		favEditor.commit();
+		
 		DatabaseHandler db = new DatabaseHandler(this);
 		
 		try {
@@ -314,30 +343,53 @@ public class EditFavsActivity extends Activity {
 			Favorite fav4 = new Favorite(4, room_4, favs4.getText().toString());
 			Favorite fav5 = new Favorite(5, room_5, favs5.getText().toString());
 			
-			if (fav1.getBuilding().equals("") || fav1.getBuilding().equals(null))
+			if (fav1.getBuilding().equals("") || fav1.getBuilding().equals(null)){
 			    db.addFavorite(fav1);
-			else
+				favEditor.putString("build_1", favs1.getText().toString());
+				favEditor.commit();
+			} else {
 				db.updateFavorite(fav1);
-			
-			if (fav2.getBuilding().equals("") || fav2.getBuilding().equals(null))
+				favEditor.putString("build_1", favs1.getText().toString());
+				favEditor.commit();
+			}
+			if (fav2.getBuilding().equals("") || fav2.getBuilding().equals(null)){
 			    db.addFavorite(fav2);
-			else
+				favEditor.putString("build_2", favs2.getText().toString());
+				favEditor.commit();
+			} else {
 				db.updateFavorite(fav2);
-			
-			if (fav3.getBuilding().equals("") || fav3.getBuilding().equals(null))
+				favEditor.putString("build_2", favs2.getText().toString());
+				favEditor.commit();
+				}
+			if (fav3.getBuilding().equals("") || fav3.getBuilding().equals(null)){
 			    db.addFavorite(fav3);
-			else
+				favEditor.putString("build_3", favs3.getText().toString());
+				favEditor.commit();
+			} else {
 				db.updateFavorite(fav3);
+				favEditor.putString("build_3", favs3.getText().toString());
+				favEditor.commit();
+			}
 			
-			if (fav4.getBuilding().equals("") || fav4.getBuilding().equals(null))
+			if (fav4.getBuilding().equals("") || fav4.getBuilding().equals(null)){
 			    db.addFavorite(fav4);
-			else
+				favEditor.putString("build_4", favs4.getText().toString());
+				favEditor.commit();
+			} else {
 				db.updateFavorite(fav4);
+				favEditor.putString("build_4", favs4.getText().toString());
+				favEditor.commit();
+			}
 			
-			if (fav5.getBuilding().equals("") || fav5.getBuilding().equals(null))
+			if (fav5.getBuilding().equals("") || fav5.getBuilding().equals(null)){
 			    db.addFavorite(fav5);
-			else
+				favEditor.putString("build_5", favs5.getText().toString());
+				favEditor.commit();
+		} else {
 				db.updateFavorite(fav5);
+				favEditor.putString("build_5", favs5.getText().toString());
+				favEditor.commit();
+		}
 			
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block	

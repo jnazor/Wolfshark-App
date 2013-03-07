@@ -1,9 +1,14 @@
 package org.example.wolfshark;
 
+import java.util.List;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -48,6 +53,9 @@ public class LocateInputActivity extends Activity {
     String end_room;
     int startRmPos;
     String start_room;
+    
+    private List<Favorite> favList;
+    private String[] favs = new String[5];
 	
 	//For Bundle to be passed to MapPath
 	public static final String PREFERENCE_FILENAME = "LocatePrefs";
@@ -60,6 +68,8 @@ public class LocateInputActivity extends Activity {
 		setContentView(R.layout.activity_locateinput);
 		System.out.println("LocateInputActivity Started.");
 	
+		
+		
 		//--------------code for AutoCompletionText.--- developers.android.com helped.
 		// Get a reference to the AutoCompleteTextView in the layout
 		textView1 = (InstantAutoComplete) findViewById(R.id.AutoText1);
@@ -425,55 +435,42 @@ public class LocateInputActivity extends Activity {
     
 	public void onFavorites(View f) {
 		// Do stuff
+		DatabaseHandler db = new DatabaseHandler(this);
+		favList = db.getAllFavorites(); 
+		for (int i = 0; i < favList.size(); i++){
+			favs[i] = favList.get(i).getBuilding() + " " + favList.get(i).getRoom();
+			// For logcat purposes only. you get to see what's happening with the database.
+			String log = favList.get(i).getBuilding() + " " + favList.get(i).getRoom();
+			Log.d("Testing", log);
+		}
+		
 		switch (f.getId()) {
 		        case R.id.startFav: // doStuff
-		        Intent startfavs = new Intent(this,  FavoritesActivity.class);
-		        startfavs.putExtra("start", "true"); //tell favorites that this is the start.
-		        startActivity(startfavs);
+		        	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		        	builder.setTitle("Your Favorites");
+		        	builder.setItems(favs, new DialogInterface.OnClickListener() {
+		        		public void onClick(DialogInterface dialog, int fav) {
+		        			String choice = favs[fav];
+		        			
+		        			Toast.makeText(getBaseContext(), choice, Toast.LENGTH_SHORT).show();	
+						}
+		        	});
+		        	AlertDialog alert = builder.create();
+		        	alert.show();
 		            break;
 		        case R.id.endFav: // doStuff
-		        Intent endfavs = new Intent(this,  FavoritesActivity.class);
-		        endfavs.putExtra("end", "true"); //tell favs that this is the end.
-		        startActivity(endfavs);
-		            break;
+		        	AlertDialog.Builder endbuilder = new AlertDialog.Builder(this);
+		        	endbuilder.setTitle("Your Favorites");
+		        	endbuilder.setItems(favs, new DialogInterface.OnClickListener() {
+		        		public void onClick(DialogInterface dialog, int fav) {
+		        			String choice = favs[fav];
+		        			
+		        			Toast.makeText(getBaseContext(), choice, Toast.LENGTH_SHORT).show();	
+						}
+		        	});
+		        	AlertDialog endalert = endbuilder.create();
+		        	endalert.show();
+		        	break;
 		}
 	}
-}
-    /*Makes AutoCompletTextView Show list even if user hasn't typed anything.
-    public class MyAutoCompleteTextView extends AutoCompleteTextView {
-
-        private int myThreshold;
-
-        public MyAutoCompleteTextView(Context context) {
-            super(context);
-        }
-
-        public MyAutoCompleteTextView(Context context, AttributeSet attrs, int defStyle) {
-            super(context, attrs, defStyle);
-        }
-
-        public MyAutoCompleteTextView(Context context, AttributeSet attrs) {
-            super(context, attrs);
-        }
-
-        @Override
-        public void setThreshold(int threshold) {
-            if (threshold < 1) {
-                threshold = 0;
-            }
-            myThreshold = threshold;
-        }
-
-        @Override
-        public boolean enoughToFilter() {
-            return getText().length() >= myThreshold;
-        }
-
-        @Override
-        public int getThreshold() {
-            return myThreshold;
-        }
-
-    }
-    
-}*/
+};
