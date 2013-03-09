@@ -22,13 +22,29 @@ public final class R {
     public static final class drawable {
         public static final int art_buildings=0x7f020000;
         public static final int campus_map=0x7f020001;
-        public static final int darwin_basement=0x7f020002;
-        public static final int darwin_first=0x7f020003;
-        public static final int darwin_second=0x7f020004;
-        public static final int darwin_third=0x7f020005;
-        public static final int full_logo=0x7f020006;
-        public static final int ic_launcher=0x7f020007;
-        public static final int icon=0x7f020008;
+        public static final int campus_map_ne=0x7f020002;
+        public static final int campus_map_nw=0x7f020003;
+        public static final int campus_map_se=0x7f020004;
+        public static final int campus_map_sw=0x7f020005;
+        public static final int darwin_basement=0x7f020006;
+        public static final int darwin_first=0x7f020007;
+        public static final int darwin_second=0x7f020008;
+        public static final int darwin_third=0x7f020009;
+        public static final int full_logo=0x7f02000a;
+        public static final int ic_launcher=0x7f02000b;
+        public static final int icon=0x7f02000c;
+        public static final int stevenson_onene=0x7f02000d;
+        public static final int stevenson_onenw=0x7f02000e;
+        public static final int stevenson_onese=0x7f02000f;
+        public static final int stevenson_onesw=0x7f020010;
+        public static final int stevenson_threene=0x7f020011;
+        public static final int stevenson_threenw=0x7f020012;
+        public static final int stevenson_threese=0x7f020013;
+        public static final int stevenson_threesw=0x7f020014;
+        public static final int stevenson_twone=0x7f020015;
+        public static final int stevenson_twonw=0x7f020016;
+        public static final int stevenson_twose=0x7f020017;
+        public static final int stevenson_twosw=0x7f020018;
     }
     public static final class id {
         public static final int AutoText1=0x7f090018;

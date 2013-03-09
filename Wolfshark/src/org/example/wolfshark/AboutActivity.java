@@ -30,6 +30,7 @@ public class AboutActivity extends Activity {
     		default:
     			return super.onOptionsItemSelected(item);
         }
-    	return onOptionsItemSelected(item);
+    	//return onOptionsItemSelected(item);  //Dont't use me!
+        return super.onOptionsItemSelected(item);  //apparently I'm the one that must be returned.
    }
 }

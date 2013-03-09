@@ -13,7 +13,7 @@ import android.view.View;
 public class MapView extends View {
 
 	Paint imgPaint;
-	Bitmap mapGraphic = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_basement);
+	Bitmap mapGraphic = BitmapFactory.decodeResource(getResources(), R.drawable.campus_map);
 	Path thePath;
 	Paint pathPaint;
 

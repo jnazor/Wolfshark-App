@@ -484,9 +484,9 @@ public class LocateInputActivity extends Activity {
         // Handle item selection
         switch (item.getItemId()) {
         	case R.id.favoritesmenu:
-    		Intent favoritesActivity = new Intent (this, EditFavsActivity.class);
-    		startActivity(favoritesActivity);
-        	break;
+	    		Intent favoritesActivity = new Intent (this, EditFavsActivity.class);
+	    		startActivity(favoritesActivity);
+	        	break;
         	case R.id.mapmenu:
         		Intent mapView = new Intent (this, MapActivity.class);
         		startActivity(mapView);
@@ -528,7 +528,8 @@ public class LocateInputActivity extends Activity {
         	default:
                 return super.onOptionsItemSelected(item);
         }
-        return onOptionsItemSelected(item);
-        }; 
+        //return onOptionsItemSelected(item);      //not this return statement
+        return super.onOptionsItemSelected(item);  //apparently the function must have this return statement.
+    } 
  
-};
+}
