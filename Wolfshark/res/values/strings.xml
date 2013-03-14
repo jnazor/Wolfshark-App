@@ -35,12 +35,12 @@
 	     crumpled up post it note you wrote your schedule on again."\n"
 	    If you want to save your classes ahead of time, use the My Places screen. 
 	     To edit your Places, open up the menu and press \"Edit Places\". This will
-	     take you to a screen where you can choose from all the locations on campus."\n""\n"
+	     take you to a screen where you can choose from all the locations on campus."\n\n"
 	    <b>ABOUT THE TEAM</b>"\n"
 	    Jolie Nazor - Original Organizer. Jolie kept the team organized and on track, coordinating meetings and checkpoints, as well as contributing essential code."\n"
-	    Micah Gemmell - Android Ambassador. Micah has worked with android apps before, so he was the team's consultant and head programmer."\n"
+	    Micah Gemmell - Android Ambassador. Micah has worked with android apps before, so he was the team\'s consultant and head programmer."\n"
 	    Lauryn Loudermilk - Data Diva. Lauryn did whatever Jolie told her to do. Her main role in the project was getting the databse up and working but she also worked on UI."\n"
-	    Mark Griffith - Map Master. Mark is in charge of graphics and images for the app. Aren't they beautiful?"\n"
-	    Jake Neugass - Logic Leader. Jake spent endless hours figuring out how to make our program work."\n"
+	    Mark Griffith - Map Master. Mark is in charge of graphics and images for the app. Aren\'t they beautiful?"\n"
+	    Jake Neugass - Logic Leader. Jake spent endless hours figuring out how to make our program work. He built the main logic system!"\n"
 	    </string>	
 </resources>
