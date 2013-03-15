@@ -17,24 +17,14 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class LocateInputActivity extends Activity {
 	
-	
-	//protected int mPos;
-	//protected String mSelection;
 	private ArrayAdapter<String> adapter;
 	private ArrayAdapter<Integer> intAdapter;
-//	private OnItemSelectedListener spinnerListener;
-//	private OnItemSelectedListener spinnerListener2;
-//	private OnItemSelectedListener autocomp_listener1;
-//	private OnItemSelectedListener autocomp_listener2;
 	private OnItemSelectedListener startRmSpinListener;
 	private OnItemSelectedListener endRmSpinListener;
-	//private Spinner spinner;
-	//private Spinner spinner2;
 	private Spinner startRoomSpin;
 	private Spinner endRoomSpin;
 	private String[] build_arr;
@@ -43,9 +33,6 @@ public class LocateInputActivity extends Activity {
 	
 	InstantAutoComplete textView1;
 	InstantAutoComplete textView2;
-	
-//	TextView testing;
-//	String testStr;
 	
 	//values to be sent to MapPath
 	int localStartPos;
@@ -78,9 +65,6 @@ public class LocateInputActivity extends Activity {
 		textView1 = (InstantAutoComplete) findViewById(R.id.AutoText1);
 		textView2 = (InstantAutoComplete) findViewById(R.id.AutoText2);
 		
-//		testing = (TextView) findViewById(R.id.testing);
-//		testStr = "Test:  All Clear";
-//		testing.setText("" + testStr);
 
 		// Get the string array
 		build_arr = getResources().getStringArray(R.array.buildings_array);
@@ -92,13 +76,10 @@ public class LocateInputActivity extends Activity {
 		textView2.setAdapter(adapter);
 		
 		//Spinner code.
-		//spinner = (Spinner) findViewById(R.id.building_start);
-		//spinner2 = (Spinner) findViewById(R.id.end_building);
 		startRoomSpin = (Spinner) findViewById(R.id.start_room);
 		endRoomSpin = (Spinner) findViewById(R.id.end_room);
 		
 		// Get the string array
-		//build_arr = getResources().getStringArray(R.array.buildings_array);
 		darRooms_primArr = getResources().getIntArray(R.array.darwin_array);
 		
 		//need to convert for intAdapter
@@ -110,35 +91,21 @@ public class LocateInputActivity extends Activity {
 		
 		
 		// Create an ArrayAdapter using the string array and a default spinner layout
-//		ArrayAdapter<CharSequence> spinadapter = ArrayAdapter.createFromResource(this,
-//		        R.array.buildings_array, android.R.layout.simple_spinner_item);
 		ArrayAdapter<CharSequence> spinRoomAdapter = ArrayAdapter.createFromResource(this,
 		        R.array.darwin_array, android.R.layout.simple_spinner_item);
 		
 		
 		
 		// Specify the layout to use when the list of choices appears
-		//spinadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinRoomAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		
 		// Apply the adapter to the spinner
-		//spinner.setAdapter(spinadapter);
-		//spinner2.setAdapter(spinadapter);
-
 		startRoomSpin.setAdapter(spinRoomAdapter);
 		endRoomSpin.setAdapter(spinRoomAdapter);
 		
-		//spinnerListener = new startBuildOnItemSelectedListener(this, this.adapter);
-		//spinnerListener2 = new endBuildOnItemSelectedListener(this, this.adapter);
-		//autocomp_listener1 = new startBuildOnItemSelectedListener(this, this.adapter);*******************
-		//autocomp_listener2 = new endBuildOnItemSelectedListener(this, this.adapter);*********************
 		startRmSpinListener = new startRoomOnItemSelectedListener(this, this.intAdapter);
 		endRmSpinListener = new endRoomOnItemSelectedListener(this, this.intAdapter);
 		
-		//spinner.setOnItemSelectedListener(spinnerListener);
-		//spinner2.setOnItemSelectedListener(spinnerListener2);
-		//textView1.setOnItemSelectedListener(autocomp_listener1);******************************************
-		//textView2.setOnItemSelectedListener(autocomp_listener2);******************************************
 		startRoomSpin.setOnItemSelectedListener(startRmSpinListener);
 		endRoomSpin.setOnItemSelectedListener(endRmSpinListener);
 	
@@ -154,7 +121,6 @@ public class LocateInputActivity extends Activity {
         startRmPos = 0;
         start_room = null;
 	}
-	
 	
 	
 //	public void onItemSelected(AdapterView<?> parent, View view, 
@@ -176,14 +142,9 @@ public class LocateInputActivity extends Activity {
 //		}
 //	}
 	
-	
-	
-	
 //	public void onNothingSelected(AdapterView<?> parent) {
 //		// Another interface callback
 //	}
-	
-	
 	
 //	//buildOnItemSelectedListener is based off of the example given in:
 //	//Android->Samples->Spinner in the Android SDK directory
@@ -289,10 +250,6 @@ public class LocateInputActivity extends Activity {
 //        
 //    }
 	
-	
-
-	
-	
 	public class startRoomOnItemSelectedListener implements OnItemSelectedListener {
 
         /*
@@ -340,9 +297,6 @@ public class LocateInputActivity extends Activity {
             // do nothing
         }
     }
-	
-	
-	
 	
 	public class endRoomOnItemSelectedListener implements OnItemSelectedListener {
 
@@ -393,11 +347,7 @@ public class LocateInputActivity extends Activity {
         }
     }
 	
-	   //get sharedprefs file.
-    //SharedPreferences sharedpreferences = getSharedPreferences("favsPrefs", 0);
-    
-    
-    
+
 	public void onFavorites(View f) {
 		// Do stuff
 		DatabaseHandler db = new DatabaseHandler(this);
@@ -479,8 +429,7 @@ public class LocateInputActivity extends Activity {
     	return true;
     }
 
-    @SuppressWarnings("deprecation")
-	public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
         	case R.id.favoritesmenu:
@@ -508,10 +457,10 @@ public class LocateInputActivity extends Activity {
 //        		AlertDialog dialog = builder.create();
 //        		dialog.show();
 //        		
-////        		AlertDialog.Builder abbuilder = new AlertDialog.Builder(this);
-////	        	abbuilder.setMessage(R.string.about_text);
-////	        	AlertDialog alert = abbuilder.create();
-////	        	alert.show();
+//        		AlertDialog.Builder abbuilder = new AlertDialog.Builder(this);
+//	    	    abbuilder.setMessage(R.string.about_text);
+//		        AlertDialog alert = abbuilder.create();
+//		        alert.show();
 	            break;
 //	            
 //            	AlertDialog am = new AlertDialog.Builder(this).create();  
@@ -526,7 +475,7 @@ public class LocateInputActivity extends Activity {
 //            	am.show();
 //            	break;
         	default:
-                return super.onOptionsItemSelected(item);
+            return super.onOptionsItemSelected(item);
         }
         //return onOptionsItemSelected(item);      //not this return statement
         return super.onOptionsItemSelected(item);  //apparently the function must have this return statement.

@@ -2,8 +2,6 @@ package org.example.wolfshark;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -12,8 +10,6 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 //Idea for drawing on the map comes from:
 //http://nxsfan.co.uk/blog/2010/06/18/ondraw-drawing-a-simple-line-on-a-background/
