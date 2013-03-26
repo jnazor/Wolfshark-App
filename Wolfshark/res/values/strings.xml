@@ -20,7 +20,12 @@
 	<string name="favs_title">My Places</string>
 	<string name="edit_favs">Edit Places</string>
 	<string name="save_favs">Save Places</string>
-	
+	<string name="places1">Place #1</string>
+	<string name="places2">Place #2</string>
+	<string name="places3">Place #3</string>
+	<string name="places4">Place #4</string>
+	<string name="places5">Place #5</string>
+		
 	<string name="start">Start</string>
 	<string name="end">End</string>
 	

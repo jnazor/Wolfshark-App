@@ -53,7 +53,7 @@ public final class R {
         public static final int full_logo=0x7f02001e;
         public static final int ic_launcher=0x7f02001f;
         public static final int icon=0x7f020020;
-        public static final int laurynslogo=0x7f020021;
+        public static final int llogo=0x7f020021;
         public static final int stevenson_onene=0x7f020022;
         public static final int stevenson_onenw=0x7f020023;
         public static final int stevenson_onese=0x7f020024;
@@ -68,45 +68,49 @@ public final class R {
         public static final int stevenson_twosw=0x7f02002d;
     }
     public static final class id {
-        public static final int AutoText1=0x7f090017;
-        public static final int AutoText2=0x7f09001a;
-        public static final int LLtitle=0x7f090013;
-        public static final int Start_text=0x7f090014;
-        public static final int TextView2=0x7f09000e;
-        public static final int TextView3=0x7f09000f;
-        public static final int TextView4=0x7f090010;
+        public static final int AutoText1=0x7f09001a;
+        public static final int AutoText2=0x7f09001d;
+        public static final int LLtitle=0x7f090016;
+        public static final int Start_text=0x7f090017;
+        public static final int TextView1=0x7f090005;
+        public static final int TextView2=0x7f090008;
+        public static final int TextView3=0x7f09000b;
+        public static final int TextView4=0x7f09000e;
         public static final int TextView5=0x7f090011;
         public static final int about_content=0x7f090000;
-        public static final int aboutmenu=0x7f090026;
-        public static final int back=0x7f090023;
-        public static final int dar_basement=0x7f09001f;
-        public static final int editFavs=0x7f090012;
-        public static final int edit_Title=0x7f090001;
-        public static final int endFav=0x7f09001b;
-        public static final int end_room=0x7f090019;
-        public static final int endtext=0x7f090018;
-        public static final int favoritesmenu=0x7f090024;
-        public static final int favs1=0x7f090002;
-        public static final int favs2=0x7f090004;
-        public static final int favs3=0x7f090006;
-        public static final int favs4=0x7f090008;
-        public static final int favs5=0x7f09000a;
-        public static final int locateInput=0x7f09001c;
-        public static final int map=0x7f09001e;
-        public static final int mapmenu=0x7f090025;
-        public static final int newPath=0x7f090022;
-        public static final int room1=0x7f090003;
-        public static final int room2=0x7f090005;
-        public static final int room3=0x7f090007;
-        public static final int room4=0x7f090009;
-        public static final int room5=0x7f09000b;
-        public static final int roomInstr=0x7f090021;
-        public static final int route=0x7f09001d;
-        public static final int saveFavs=0x7f09000c;
-        public static final int startFav=0x7f090015;
-        public static final int start_room=0x7f090016;
-        public static final int testOutput=0x7f090020;
-        public static final int textView1=0x7f09000d;
+        public static final int aboutmenu=0x7f09002a;
+        public static final int back=0x7f090027;
+        public static final int dar_basement=0x7f090022;
+        public static final int editFavs=0x7f090015;
+        public static final int edit_Title=0x7f090002;
+        public static final int endFav=0x7f09001e;
+        public static final int end_room=0x7f09001c;
+        public static final int endtext=0x7f09001b;
+        public static final int favoritesmenu=0x7f090028;
+        public static final int favs1=0x7f090006;
+        public static final int favs2=0x7f090009;
+        public static final int favs3=0x7f09000c;
+        public static final int favs4=0x7f09000f;
+        public static final int favs5=0x7f090012;
+        public static final int imageView1=0x7f090026;
+        public static final int locateInput=0x7f09001f;
+        public static final int map=0x7f090021;
+        public static final int mapmenu=0x7f090029;
+        public static final int newPath=0x7f090025;
+        public static final int room1=0x7f090007;
+        public static final int room2=0x7f09000a;
+        public static final int room3=0x7f09000d;
+        public static final int room4=0x7f090010;
+        public static final int room5=0x7f090013;
+        public static final int roomInstr=0x7f090024;
+        public static final int route=0x7f090020;
+        public static final int saveFavs=0x7f090014;
+        public static final int startFav=0x7f090018;
+        public static final int start_room=0x7f090019;
+        public static final int testOutput=0x7f090023;
+        public static final int textView6=0x7f090003;
+        public static final int textView7=0x7f090004;
+        public static final int topofeditfavs=0x7f090001;
     }
     public static final class layout {
         public static final int activity_about=0x7f030000;
@@ -123,24 +127,29 @@ public final class R {
     }
     public static final class string {
         public static final int about=0x7f060006;
-        public static final int about_text=0x7f060011;
+        public static final int about_text=0x7f060016;
         public static final int app_name=0x7f060000;
         public static final int buildingHint=0x7f06000b;
         public static final int darBase=0x7f060008;
         public static final int darRmDest=0x7f060009;
         public static final int edit_favs=0x7f06000d;
-        public static final int end=0x7f060010;
+        public static final int end=0x7f060015;
         public static final int favorites=0x7f060004;
         public static final int favs_title=0x7f06000c;
         public static final int go=0x7f060003;
         public static final int main_title=0x7f060001;
         public static final int map=0x7f060005;
         public static final int newPath=0x7f06000a;
+        public static final int places1=0x7f06000f;
+        public static final int places2=0x7f060010;
+        public static final int places3=0x7f060011;
+        public static final int places4=0x7f060012;
+        public static final int places5=0x7f060013;
         /**  Main screen 
          */
         public static final int route=0x7f060002;
         public static final int save_favs=0x7f06000e;
-        public static final int start=0x7f06000f;
+        public static final int start=0x7f060014;
         public static final int temp=0x7f060007;
     }
     public static final class style {

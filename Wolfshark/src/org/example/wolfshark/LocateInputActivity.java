@@ -13,10 +13,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LocateInputActivity extends Activity {
@@ -428,7 +430,71 @@ public class LocateInputActivity extends Activity {
     	inflater.inflate(R.menu.menu, menu);
     	return true;
     }
+    
+    @SuppressWarnings("deprecation")
+	public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+        	case R.id.favoritesmenu:
+	    		Intent favoritesActivity = new Intent (this, EditFavsActivity.class);
+	    		startActivity(favoritesActivity);
+	        	break;
+        	case R.id.mapmenu:
+        		Intent mapView = new Intent (this, MapActivity.class);
+        		startActivity(mapView);
+        		break;
+        	case R.id.aboutmenu:
+//        		if(android.os.Build.VERSION.SDK_INT < 9)
+        		//Intent about = new Intent (this, AboutActivity.class);
+        		//startActivity(about);
+        		TextView myView = new TextView(getApplicationContext());
+        		myView.setText(R.string.about_text);
+        		//myView.setWidth(LayoutParams.WRAP_CONTENT);
+        		//myView.setHeight(LayoutParams.WRAP_CONTENT);
+        		myView.setBackgroundColor(getResources().getColor(R.color.gray));
+        		myView.setTextColor(getResources().getColor(R.color.background));
+        			
+        		// 1. Instantiate an AlertDialog.Builder with its constructor
+        		AlertDialog.Builder builder = new AlertDialog.Builder(LocateInputActivity.this);
 
+        		// 2. Chain together various setter methods to set the dialog characteristics
+        		builder.setView(myView);
+//        		builder.setTitle(R.string.about);
+
+        		// 3. Get the AlertDialog from create()
+        		AlertDialog dialog = builder.create();
+        		dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Close", new DialogInterface.OnClickListener() {
+        		       public void onClick(DialogInterface dialog, int id) {
+        		            dialog.dismiss();
+        		       }});
+        		dialog.show();
+//        		
+////        		AlertDialog.Builder abbuilder = new AlertDialog.Builder(this);
+////	        	abbuilder.setMessage(R.string.about_text);
+////	        	AlertDialog alert = abbuilder.create();
+////	        	alert.show();
+	            break;
+//	            
+//            	AlertDialog am = new AlertDialog.Builder(this).create();  
+//            	am.setCancelable(false); // This blocks the 'BACK' button  
+//            	am.setMessage(getBaseContext().getString(R.string.about_text));  
+//            	am.setButton("OK", new DialogInterface.OnClickListener() {  
+//            	    @Override  
+//            	    public void onClick(DialogInterface amd2, int which) {  
+//            	        amd2.dismiss();
+//            	    }  
+//            	});
+//            	am.show();
+//            	break;
+        	default:
+                return super.onOptionsItemSelected(item);
+        }
+        //return onOptionsItemSelected(item);      //not this return statement
+        return super.onOptionsItemSelected(item);  //apparently the function must have this return statement.
+    } 
+ 
+}
+/*
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
@@ -481,4 +547,4 @@ public class LocateInputActivity extends Activity {
         return super.onOptionsItemSelected(item);  //apparently the function must have this return statement.
     } 
  
-}
+}*/

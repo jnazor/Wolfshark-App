@@ -50,7 +50,7 @@
     </string-array>
     
     <string-array name="darwin_array">
-        <item>---</item>
+        <item>room #</item>
         <item>003</item>
         <item>004</item>
         <item>006</item>
