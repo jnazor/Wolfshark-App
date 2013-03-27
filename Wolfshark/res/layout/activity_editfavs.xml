@@ -12,7 +12,7 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/gray" >
+            android:background="@color/seawolf_blue" >
 
             <TextView
                 android:id="@+id/edit_Title"
@@ -24,7 +24,7 @@
                 android:layout_marginTop="15dp"
                 android:text="@string/edit_favs"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/background" />
+                android:textColor="@color/white" />
 
             <RelativeLayout
                 xmlns:android="http://schemas.android.com/apk/res/android"
@@ -40,7 +40,7 @@
                     android:layout_marginLeft="16dp"
                     android:text="Building Name"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/background" />
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/textView7"
@@ -51,7 +51,7 @@
                     android:layout_marginRight="16dp"
                     android:text="Room Number"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/background" />
+                    android:textColor="@color/white" />
 
             </RelativeLayout>
 

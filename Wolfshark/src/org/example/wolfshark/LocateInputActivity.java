@@ -364,7 +364,7 @@ public class LocateInputActivity extends Activity {
 		switch (f.getId()) {
 		        case R.id.startFav: // doStuff
 		        	AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		        	builder.setTitle("Your Favorites");
+		        	builder.setTitle("Your Places");
 		        	builder.setItems(favs, new DialogInterface.OnClickListener() {
 		        		public void onClick(DialogInterface dialog, int fav) {
 		        			String choice = favs[fav];
@@ -451,22 +451,23 @@ public class LocateInputActivity extends Activity {
         		myView.setText(R.string.about_text);
         		//myView.setWidth(LayoutParams.WRAP_CONTENT);
         		//myView.setHeight(LayoutParams.WRAP_CONTENT);
-        		myView.setBackgroundColor(getResources().getColor(R.color.gray));
-        		myView.setTextColor(getResources().getColor(R.color.background));
+        		myView.setBackgroundColor(getResources().getColor(R.color.seawolf_blue));
+        		myView.setTextColor(getResources().getColor(R.color.white));
         			
         		// 1. Instantiate an AlertDialog.Builder with its constructor
-        		AlertDialog.Builder builder = new AlertDialog.Builder(LocateInputActivity.this);
+        		AlertDialog.Builder b = new AlertDialog.Builder(LocateInputActivity.this);
 
         		// 2. Chain together various setter methods to set the dialog characteristics
-        		builder.setView(myView);
+        		b.setView(myView);
 //        		builder.setTitle(R.string.about);
 
         		// 3. Get the AlertDialog from create()
-        		AlertDialog dialog = builder.create();
+        		AlertDialog dialog = b.create();
         		dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Close", new DialogInterface.OnClickListener() {
         		       public void onClick(DialogInterface dialog, int id) {
         		            dialog.dismiss();
         		       }});
+        		
         		dialog.show();
 //        		
 ////        		AlertDialog.Builder abbuilder = new AlertDialog.Builder(this);
@@ -494,6 +495,21 @@ public class LocateInputActivity extends Activity {
     } 
  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection

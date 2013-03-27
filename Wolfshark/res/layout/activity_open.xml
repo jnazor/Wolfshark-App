@@ -9,11 +9,12 @@
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="15dp"
         android:contentDescription="@string/main_title"
         android:src="@drawable/llogo" />
     
-    <TextView 
+<!--    <TextView 
 	    android:text="@string/main_title" 
 	    android:layout_height="wrap_content"
 	    android:layout_width="wrap_content"
@@ -21,5 +22,5 @@
 	    android:layout_marginLeft="33dip"
 	    android:layout_marginBottom="25dip" 
 	    android:textSize="40sp"/>    
-
+ -->
 </LinearLayout>

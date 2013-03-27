@@ -1,10 +1,12 @@
 package org.example.wolfshark;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.CursorIndexOutOfBoundsException;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -72,12 +74,14 @@ public class EditFavsActivity extends Activity {
 	private SharedPreferences favPrefs;
 	SharedPreferences.Editor favEditor;
 	
-	
-	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_editfavs);
+		//getActionBar().setHomeButtonEnabled(true);
+		if(android.os.Build.VERSION.SDK_INT > 11){
+		getActionBar().setDisplayHomeAsUpEnabled(true); // sets the icon to go home.
+		}
 		
 		//--------------code for AutoCompletionText.--- developers.android.com helped.
 		// Get a reference to the AutoCompleteTextView in the layout
@@ -401,8 +405,27 @@ public class EditFavsActivity extends Activity {
 		Intent saveActivity = new Intent (this, LocateInputActivity.class);
 		startActivity(saveActivity);
 		
+		
 		//Intent goToMainActivity = new Intent (this, MainActivity.class);
 		//startActivity(goToMainActivity);
+		
+			
+	}
+	
+
+	//For the home button.
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	        case android.R.id.home:
+	            // app icon in action bar clicked; go home
+	            Intent intent = new Intent(this, LocateInputActivity.class);
+	            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	            startActivity(intent);
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
 	}
 	
 }

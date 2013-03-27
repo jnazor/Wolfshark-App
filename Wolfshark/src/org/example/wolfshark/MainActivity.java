@@ -29,14 +29,14 @@ public class MainActivity extends Activity {
         // Handle item selection
         switch (item.getItemId()) {
         	case R.id.favoritesmenu:
-    		Intent favoritesActivity = new Intent (this, FavoritesActivity.class);
-    		startActivity(favoritesActivity);
-        	break;
+        		Intent favoritesActivity = new Intent (this, FavoritesActivity.class);
+        		startActivity(favoritesActivity);
+        		break;
         	case R.id.aboutmenu:
             	AlertDialog am = new AlertDialog.Builder(this).create();  
             	am.setCancelable(false); // This blocks the 'BACK' button  
-            	am.setMessage(this.getString(R.string.about_text));  
-            	am.setButton("OK", new DialogInterface.OnClickListener() {  
+            	am.setMessage(this.getString(R.string.about_text));
+            	am.setButton(0, "Close", new DialogInterface.OnClickListener() {  
             	    @Override  
             	    public void onClick(DialogInterface amd2, int which) {  
             	        amd2.dismiss();                      
@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
             	});
             	am.show();
             	break;
-            	default:
+            default:
                 return super.onOptionsItemSelected(item);
         }
         return onOptionsItemSelected(item);

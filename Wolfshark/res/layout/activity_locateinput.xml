@@ -20,8 +20,6 @@
             android:layout_margin="15dp"
             android:background="@color/background" >
 
-            <!-- android:id="@+id/endtext"    //had been inside RelativeLayout & caused problems -->
-
             <TextView
                 android:id="@+id/Start_text"
                 android:layout_width="wrap_content"
