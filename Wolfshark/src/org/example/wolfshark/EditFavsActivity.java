@@ -78,8 +78,8 @@ public class EditFavsActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_editfavs);
-		//getActionBar().setHomeButtonEnabled(true);
-		if(android.os.Build.VERSION.SDK_INT > 11){
+		
+		if(android.os.Build.VERSION.SDK_INT > 10){
 		getActionBar().setDisplayHomeAsUpEnabled(true); // sets the icon to go home.
 		}
 		

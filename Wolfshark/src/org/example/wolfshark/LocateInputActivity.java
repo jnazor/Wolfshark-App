@@ -4,16 +4,20 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
+//import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+//import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -353,7 +357,8 @@ public class LocateInputActivity extends Activity {
 	public void onFavorites(View f) {
 		// Do stuff
 		DatabaseHandler db = new DatabaseHandler(this);
-		favList = db.getAllFavorites(); 
+		favList = db.getAllFavorites();
+
 		for (int i = 0; i < favList.size(); i++){
 			favs[i] = favList.get(i).getBuilding() + " " + favList.get(i).getRoom();
 			// For logcat purposes only. you get to see what's happening with the database.
@@ -366,7 +371,7 @@ public class LocateInputActivity extends Activity {
 		        	AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		        	builder.setTitle("Your Places");
 		        	builder.setItems(favs, new DialogInterface.OnClickListener() {
-		        		public void onClick(DialogInterface dialog, int fav) {
+		        		public void onClick(DialogInterface adialog, int fav) {
 		        			String choice = favs[fav];
 		        			
 		        			Toast.makeText(getBaseContext(), choice, Toast.LENGTH_SHORT).show();	
@@ -377,9 +382,9 @@ public class LocateInputActivity extends Activity {
 		            break;
 		        case R.id.endFav: // doStuff
 		        	AlertDialog.Builder endbuilder = new AlertDialog.Builder(this);
-		        	endbuilder.setTitle("Your Favorites");
+		        	endbuilder.setTitle("Your Places");
 		        	endbuilder.setItems(favs, new DialogInterface.OnClickListener() {
-		        		public void onClick(DialogInterface dialog, int fav) {
+		        		public void onClick(DialogInterface bdialog, int fav) {
 		        			String choice = favs[fav];
 		        			
 		        			Toast.makeText(getBaseContext(), choice, Toast.LENGTH_SHORT).show();	
@@ -431,8 +436,7 @@ public class LocateInputActivity extends Activity {
     	return true;
     }
     
-    @SuppressWarnings("deprecation")
-	public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
         	case R.id.favoritesmenu:
@@ -444,37 +448,48 @@ public class LocateInputActivity extends Activity {
         		startActivity(mapView);
         		break;
         	case R.id.aboutmenu:
-//        		if(android.os.Build.VERSION.SDK_INT < 9)
-        		//Intent about = new Intent (this, AboutActivity.class);
-        		//startActivity(about);
-        		TextView myView = new TextView(getApplicationContext());
-        		myView.setText(R.string.about_text);
-        		//myView.setWidth(LayoutParams.WRAP_CONTENT);
-        		//myView.setHeight(LayoutParams.WRAP_CONTENT);
-        		myView.setBackgroundColor(getResources().getColor(R.color.seawolf_blue));
-        		myView.setTextColor(getResources().getColor(R.color.white));
-        			
-        		// 1. Instantiate an AlertDialog.Builder with its constructor
-        		AlertDialog.Builder b = new AlertDialog.Builder(LocateInputActivity.this);
-
-        		// 2. Chain together various setter methods to set the dialog characteristics
-        		b.setView(myView);
-//        		builder.setTitle(R.string.about);
-
-        		// 3. Get the AlertDialog from create()
-        		AlertDialog dialog = b.create();
-        		dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Close", new DialogInterface.OnClickListener() {
-        		       public void onClick(DialogInterface dialog, int id) {
-        		            dialog.dismiss();
-        		       }});
+        			//-- to start the actual about activity.
+        			//Intent about = new Intent (this, AboutActivity.class);
+        			//startActivity(about);
         		
-        		dialog.show();
+//        		TextView myView = new TextView(getApplicationContext());
+//        		myView.setText(R.string.about_text);
+//        		//myView.setWidth(LayoutParams.WRAP_CONTENT);
+//        		//myView.setHeight(LayoutParams.WRAP_CONTENT);
+//        		myView.setBackgroundColor(getResources().getColor(R.color.seawolf_blue));
+//        		myView.setTextColor(getResources().getColor(R.color.white));
+//        			
+//        		// 1. Instantiate an AlertDialog.Builder with its constructor
+//        		AlertDialog.Builder b = new AlertDialog.Builder(LocateInputActivity.this);
+//
+//        		// 2. Chain together various setter methods to set the dialog characteristics
+//        		b.setView(myView);
+////        		builder.setTitle(R.string.about);
+//
+//        		// 3. Get the AlertDialog from create()
+//        		AlertDialog dialog = b.create();
+//        		dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Close", new DialogInterface.OnClickListener() {
+//        		       public void onClick(DialogInterface dialog, int id) {
+//        		            dialog.dismiss();
+//        		       }});
 //        		
-////        		AlertDialog.Builder abbuilder = new AlertDialog.Builder(this);
-////	        	abbuilder.setMessage(R.string.about_text);
-////	        	AlertDialog alert = abbuilder.create();
-////	        	alert.show();
-	            break;
+//        		dialog.show();
+
+        		// custom dialog
+    			final Dialog aboutdialog = new Dialog(this);
+    			aboutdialog.setContentView(R.layout.activity_about);
+    			aboutdialog.setTitle("Welcome to CampusPaths!");
+    			
+    			// set the custom dialog components - text, image and button
+    			TextView text = (TextView) aboutdialog.findViewById(R.id.about_content);
+    			text.setText(R.string.about_text);
+    			text.setGravity(Gravity.NO_GRAVITY);
+//    			aboutdialog.setButton(DialogInterface.BUTTON_POSITIVE, "Close", new DialogInterface.OnClickListener() {
+//     		       public void onClick(DialogInterface dialog, int id) {
+//     		            dialog.dismiss();
+//     		       }});
+    			aboutdialog.show();
+   	            break;
 //	            
 //            	AlertDialog am = new AlertDialog.Builder(this).create();  
 //            	am.setCancelable(false); // This blocks the 'BACK' button  
