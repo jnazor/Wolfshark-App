@@ -1,5 +1,6 @@
 package org.example.wolfshark;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,10 @@ public class OpeningActivity extends Activity {
 	//of Java programming.
 	//Also has an Intent example
 	public void onCreate(Bundle savedInstanceState) {
+		
+		ActionBar actionBar = getActionBar();
+		actionBar.hide();
+		
 		super.onCreate(savedInstanceState);		//have to have this
 		setContentView(R.layout.activity_open);    //have to have this
 		Thread mythread = new Thread(){

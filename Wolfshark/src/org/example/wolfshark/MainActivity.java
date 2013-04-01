@@ -1,5 +1,8 @@
 package org.example.wolfshark;
 
+//NOTE: We're not using this file! It was being opened at launch, but we switched that
+//when we decided to open to the LocateInput activity. It will be deleted upon app launch.
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,8 +27,7 @@ public class MainActivity extends Activity {
     	return true;
     }
 
-    @SuppressWarnings("deprecation")
-	public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
         	case R.id.favoritesmenu:
@@ -48,7 +50,7 @@ public class MainActivity extends Activity {
                 return super.onOptionsItemSelected(item);
         }
         return onOptionsItemSelected(item);
-        }; 
+    } 
     
 	public void onRoute(View v)
 	{

@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -54,12 +53,10 @@ public class LocateInputActivity extends Activity {
     private SharedPreferences myPrefs;
     SharedPreferences.Editor myEditor;
 	
-	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_locateinput);
 		System.out.println("LocateInputActivity Started.");
-	
 		
 		
 		//--------------code for AutoCompletionText.--- developers.android.com helped.
@@ -123,134 +120,6 @@ public class LocateInputActivity extends Activity {
         startRmPos = 0;
         start_room = null;
 	}
-	
-	
-//	public void onItemSelected(AdapterView<?> parent, View view, 
-//  		  int pos, long id) {
-//		// An item was selected. You can retrieve the selected item using
-//		// parent.getItemAtPosition(pos)
-//		startRmPos = pos;
-//		start_room = parent.getItemAtPosition(pos).toString();
-//
-//		switch (view.getId()) {
-//			case R.id.start_room: // doStuff		
-//					startRmPos = pos;
-//					start_room = parent.getItemAtPosition(pos).toString();
-//					break;
-//			case R.id.end_room:
-//					endRmPos = pos;
-//					end_room = parent.getItemAtPosition(pos).toString();
-//					break;
-//		}
-//	}
-	
-//	public void onNothingSelected(AdapterView<?> parent) {
-//		// Another interface callback
-//	}
-	
-//	//buildOnItemSelectedListener is based off of the example given in:
-//	//Android->Samples->Spinner in the Android SDK directory
-//	public class startBuildOnItemSelectedListener implements OnItemSelectedListener {
-//
-//        /*
-//         * provide local instances of the mLocalAdapter and the mLocalContext
-//         */
-//
-//        ArrayAdapter<String> mLocalAdapter;
-//        Activity mLocalContext;
-//       
-//        /**
-//         *  Constructor
-//         *  @param c - The activity that displays the Spinner.
-//         *  @param ad - The Adapter view that
-//         *    controls the Spinner.
-//         *  Instantiate a new listener object.
-//         */
-//        public startBuildOnItemSelectedListener(Activity c, ArrayAdapter<String> ad) {
-//            this.mLocalContext = c;
-//            this.mLocalAdapter = ad;
-//        }
-//
-//        /**
-//         * When the user selects an item in the spinner, this method is invoked by the callback
-//         * chain. Android calls the item selected listener for the spinner, which invokes the
-//         * onItemSelected method.
-//         *
-//         * @see android.widget.AdapterView.OnItemSelectedListener#onItemSelected(
-//         *  android.widget.AdapterView, android.view.View, int, long)
-//         * @param parent - the AdapterView for this listener
-//         * @param v - the View for this listener
-//         * @param pos - the 0-based position of the selection in the mLocalAdapter
-//         * @param row - the 0-based row number of the selection in the View
-//         */
-//        public void onItemSelected(AdapterView<?> parent, View v, int pos, long row) {
-//        	localStartPos = pos;
-//        	start_build = parent.getItemAtPosition(pos).toString();
-//        }
-//
-//        /**
-//         * The definition of OnItemSelectedListener requires an override
-//         * of onNothingSelected(), even though this implementation does not use it.
-//         * @param parent - The View for this Listener
-//         */
-//        public void onNothingSelected(AdapterView<?> parent) {
-//            // do nothing
-//        }
-//        
-//    }
-//
-//	
-//	
-//	
-//	
-//	public class endBuildOnItemSelectedListener implements OnItemSelectedListener {
-//
-//        /*
-//         * provide local instances of the mLocalAdapter and the mLocalContext
-//         */
-//
-//        ArrayAdapter<String> mLocalAdapter;
-//        Activity mLocalContext;
-//        
-//        /**
-//         *  Constructor
-//         *  @param c - The activity that displays the Spinner.
-//         *  @param ad - The Adapter view that
-//         *    controls the Spinner.
-//         *  Instantiate a new listener object.
-//         */
-//        public endBuildOnItemSelectedListener(Activity c, ArrayAdapter<String> ad) {
-//          this.mLocalContext = c;
-//          this.mLocalAdapter = ad;
-//        }
-//
-//        /**
-//         * When the user selects an item in the spinner, this method is invoked by the callback
-//         * chain. Android calls the item selected listener for the spinner, which invokes the
-//         * onItemSelected method.
-//         *
-//         * @see android.widget.AdapterView.OnItemSelectedListener#onItemSelected(
-//         *  android.widget.AdapterView, android.view.View, int, long)
-//         * @param parent - the AdapterView for this listener
-//         * @param v - the View for this listener
-//         * @param pos - the 0-based position of the selection in the mLocalAdapter
-//         * @param row - the 0-based row number of the selection in the View
-//         */
-//        public void onItemSelected(AdapterView<?> parent, View v, int pos, long row) {
-//        	localEndPos = pos;
-//        	end_build = parent.getItemAtPosition(pos).toString();
-//        }
-//
-//        /**
-//         * The definition of OnItemSelectedListener requires an override
-//         * of onNothingSelected(), even though this implementation does not use it.
-//         * @param parent - The View for this Listener
-//         */
-//        public void onNothingSelected(AdapterView<?> parent) {
-//            // do nothing
-//        }
-//        
-//    }
 	
 	public class startRoomOnItemSelectedListener implements OnItemSelectedListener {
 
@@ -349,7 +218,6 @@ public class LocateInputActivity extends Activity {
         }
     }
 	
-
 	public void onFavorites(View f) {
 		// Do stuff
 		DatabaseHandler db = new DatabaseHandler(this);
@@ -431,8 +299,7 @@ public class LocateInputActivity extends Activity {
     	return true;
     }
     
-    @SuppressWarnings("deprecation")
-	public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
         	case R.id.favoritesmenu:
@@ -444,14 +311,9 @@ public class LocateInputActivity extends Activity {
         		startActivity(mapView);
         		break;
         	case R.id.aboutmenu:
-//        		if(android.os.Build.VERSION.SDK_INT < 9)
-        		//Intent about = new Intent (this, AboutActivity.class);
-        		//startActivity(about);
         		TextView myView = new TextView(getApplicationContext());
         		myView.setText(R.string.about_text);
-        		//myView.setWidth(LayoutParams.WRAP_CONTENT);
-        		//myView.setHeight(LayoutParams.WRAP_CONTENT);
-        		myView.setBackgroundColor(getResources().getColor(R.color.seawolf_blue));
+        		myView.setBackgroundColor(getResources().getColor(R.color.gray));
         		myView.setTextColor(getResources().getColor(R.color.white));
         			
         		// 1. Instantiate an AlertDialog.Builder with its constructor
@@ -459,7 +321,6 @@ public class LocateInputActivity extends Activity {
 
         		// 2. Chain together various setter methods to set the dialog characteristics
         		b.setView(myView);
-//        		builder.setTitle(R.string.about);
 
         		// 3. Get the AlertDialog from create()
         		AlertDialog dialog = b.create();
@@ -469,48 +330,18 @@ public class LocateInputActivity extends Activity {
         		       }});
         		
         		dialog.show();
-//        		
-////        		AlertDialog.Builder abbuilder = new AlertDialog.Builder(this);
-////	        	abbuilder.setMessage(R.string.about_text);
-////	        	AlertDialog alert = abbuilder.create();
-////	        	alert.show();
 	            break;
-//	            
-//            	AlertDialog am = new AlertDialog.Builder(this).create();  
-//            	am.setCancelable(false); // This blocks the 'BACK' button  
-//            	am.setMessage(getBaseContext().getString(R.string.about_text));  
-//            	am.setButton("OK", new DialogInterface.OnClickListener() {  
-//            	    @Override  
-//            	    public void onClick(DialogInterface amd2, int which) {  
-//            	        amd2.dismiss();
-//            	    }  
-//            	});
-//            	am.show();
-//            	break;
+	            
         	default:
                 return super.onOptionsItemSelected(item);
         }
-        //return onOptionsItemSelected(item);      //not this return statement
-        return super.onOptionsItemSelected(item);  //apparently the function must have this return statement.
+        return super.onOptionsItemSelected(item);
     } 
- 
+
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
+/*  CODE FOR OPTIONS MENU - TEST
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
@@ -525,37 +356,37 @@ public class LocateInputActivity extends Activity {
         	case R.id.aboutmenu:
         		Intent about = new Intent (this, AboutActivity.class);
         		startActivity(about);
-//        		TextView myView = new TextView(getApplicationContext());
-//        		myView.setText(R.string.about_text);
-//        		
-//        		// 1. Instantiate an AlertDialog.Builder with its constructor
-//        		AlertDialog.Builder builder = new AlertDialog.Builder(LocateInputActivity.this);
-//
-//        		// 2. Chain together various setter methods to set the dialog characteristics
-//        		builder.setView(myView);
-//        		builder.setTitle(R.string.about);
-//
-//        		// 3. Get the AlertDialog from create()
-//        		AlertDialog dialog = builder.create();
-//        		dialog.show();
-//        		
-//        		AlertDialog.Builder abbuilder = new AlertDialog.Builder(this);
-//	    	    abbuilder.setMessage(R.string.about_text);
-//		        AlertDialog alert = abbuilder.create();
-//		        alert.show();
+        		TextView myView = new TextView(getApplicationContext());
+        		myView.setText(R.string.about_text);
+        		
+        		// 1. Instantiate an AlertDialog.Builder with its constructor
+        		AlertDialog.Builder builder = new AlertDialog.Builder(LocateInputActivity.this);
+
+        		// 2. Chain together various setter methods to set the dialog characteristics
+        		builder.setView(myView);
+        		builder.setTitle(R.string.about);
+
+        		// 3. Get the AlertDialog from create()
+        		AlertDialog dialog = builder.create();
+        		dialog.show();
+        		
+        		AlertDialog.Builder abbuilder = new AlertDialog.Builder(this);
+	    	    abbuilder.setMessage(R.string.about_text);
+		        AlertDialog alert = abbuilder.create();
+		        alert.show();
 	            break;
-//	            
-//            	AlertDialog am = new AlertDialog.Builder(this).create();  
-//            	am.setCancelable(false); // This blocks the 'BACK' button  
-//            	am.setMessage(getBaseContext().getString(R.string.about_text));  
-//            	am.setButton("OK", new DialogInterface.OnClickListener() {  
-//            	    @Override  
-//            	    public void onClick(DialogInterface amd2, int which) {  
-//            	        amd2.dismiss();
-//            	    }  
-//            	});
-//            	am.show();
-//            	break;
+	            
+            	AlertDialog am = new AlertDialog.Builder(this).create();  
+            	am.setCancelable(false); // This blocks the 'BACK' button  
+            	am.setMessage(getBaseContext().getString(R.string.about_text));  
+            	am.setButton("OK", new DialogInterface.OnClickListener() {  
+            	    @Override  
+            	    public void onClick(DialogInterface amd2, int which) {  
+            	        amd2.dismiss();
+            	    }  
+            	});
+            	am.show();
+            	break;
         	default:
             return super.onOptionsItemSelected(item);
         }

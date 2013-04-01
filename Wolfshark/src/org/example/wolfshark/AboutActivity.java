@@ -1,5 +1,8 @@
 package org.example.wolfshark;
 
+//NOTE: This file is not being used. It used to open a screen that showed the "about" text, 
+//but that's being handled with an alert dialog now. It will be deleted upon app launch.
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +15,7 @@ public class AboutActivity extends Activity {
    public void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_about);
+      
    }
    
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -30,7 +34,7 @@ public class AboutActivity extends Activity {
     		default:
     			return super.onOptionsItemSelected(item);
         }
-    	//return onOptionsItemSelected(item);  //Dont't use me!
-        return super.onOptionsItemSelected(item);  //apparently I'm the one that must be returned.
+        
+        return super.onOptionsItemSelected(item);
    }
 }
