@@ -53,11 +53,11 @@ public class LocateInputActivity extends Activity {
     private SharedPreferences myPrefs;
     SharedPreferences.Editor myEditor;
 	
+	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_locateinput);
 		System.out.println("LocateInputActivity Started.");
-		
 		
 		//--------------code for AutoCompletionText.--- developers.android.com helped.
 		// Get a reference to the AutoCompleteTextView in the layout
@@ -121,6 +121,7 @@ public class LocateInputActivity extends Activity {
         start_room = null;
 	}
 	
+
 	public class startRoomOnItemSelectedListener implements OnItemSelectedListener {
 
         /*
@@ -218,6 +219,7 @@ public class LocateInputActivity extends Activity {
         }
     }
 	
+
 	public void onFavorites(View f) {
 		// Do stuff
 		DatabaseHandler db = new DatabaseHandler(this);
@@ -321,7 +323,7 @@ public class LocateInputActivity extends Activity {
 
         		// 2. Chain together various setter methods to set the dialog characteristics
         		b.setView(myView);
-
+        		
         		// 3. Get the AlertDialog from create()
         		AlertDialog dialog = b.create();
         		dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Close", new DialogInterface.OnClickListener() {
@@ -330,18 +332,18 @@ public class LocateInputActivity extends Activity {
         		       }});
         		
         		dialog.show();
+        		
 	            break;
-	            
         	default:
                 return super.onOptionsItemSelected(item);
         }
         return super.onOptionsItemSelected(item);
     } 
-
+ 
 }
 
 
-/*  CODE FOR OPTIONS MENU - TEST
+/*  This is the test code for the options menu. It's correct version is implemented above.
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
