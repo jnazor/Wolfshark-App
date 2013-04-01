@@ -1,7 +1,7 @@
 package org.example.wolfshark;
 
-//NOTE: This file isn't being used. It was originally the opening activity that you got
-//when you started the app, but that's now the LocateInputActivity.
+//NOTE: We're not using this file! It was being opened at launch, but we switched that
+//when we decided to open to the LocateInput activity. It will be deleted upon app launch.
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
                 return super.onOptionsItemSelected(item);
         }
         return onOptionsItemSelected(item);
-        }; 
+    } 
     
 	public void onRoute(View v)
 	{
@@ -58,10 +58,21 @@ public class MainActivity extends Activity {
 		startActivity(locateActivity);
 	}
 	
+//	public void onFavorites(View v)
+//	{
+//		Intent favoritesActivity = new Intent (this, FavoritesActivity.class);
+//		startActivity(favoritesActivity);
+//	}
+	
 	public void onMap(View v)
 	{
 		Intent mapView = new Intent (this, MapActivity.class);
 		startActivity(mapView);
 	}
-
+	
+//	public void onAbout(View v)
+//	{
+//		Intent AboutActivity = new Intent (this, AboutActivity.class);
+//		startActivity(AboutActivity);
+//	}
 }
