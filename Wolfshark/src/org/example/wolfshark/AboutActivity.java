@@ -1,7 +1,7 @@
 package org.example.wolfshark;
 
-//NOTE: This file is not being used. It used to open a screen that showed the "about" text, 
-//but that's being handled with an alert dialog now. It will be deleted upon app launch.
+//NOTE: This file isn't being used anymore. It's old purpose was to display the screen
+//that showed the about text, but that's now in an alert dialog handled by LocateInput
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,7 +15,6 @@ public class AboutActivity extends Activity {
    public void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_about);
-      
    }
    
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -34,7 +33,6 @@ public class AboutActivity extends Activity {
     		default:
     			return super.onOptionsItemSelected(item);
         }
-        
         return super.onOptionsItemSelected(item);
    }
 }

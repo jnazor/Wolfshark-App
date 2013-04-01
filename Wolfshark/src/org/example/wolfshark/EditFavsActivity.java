@@ -185,9 +185,6 @@ public class EditFavsActivity extends Activity {
 		
 	}
 	
-	
-	
-	
 	public class room_1_OnItemSelectedListener implements OnItemSelectedListener {
 
         ArrayAdapter<Integer> mLocalAdapter;
@@ -212,9 +209,6 @@ public class EditFavsActivity extends Activity {
             // do nothing
         }
     }
-	
-	
-	
 	
 	public class room_2_OnItemSelectedListener implements OnItemSelectedListener {
 
@@ -241,9 +235,6 @@ public class EditFavsActivity extends Activity {
         }
     }
 	
-	
-	
-	
 	public class room_3_OnItemSelectedListener implements OnItemSelectedListener {
 
         ArrayAdapter<Integer> mLocalAdapter;
@@ -268,9 +259,6 @@ public class EditFavsActivity extends Activity {
             // do nothing
         }
     }
-	
-	
-	
 	
 	public class room_4_OnItemSelectedListener implements OnItemSelectedListener {
 
@@ -297,9 +285,6 @@ public class EditFavsActivity extends Activity {
         }
     }
 	
-	
-	
-	
 	public class room_5_OnItemSelectedListener implements OnItemSelectedListener {
 
         ArrayAdapter<Integer> mLocalAdapter;
@@ -324,7 +309,6 @@ public class EditFavsActivity extends Activity {
             // do nothing
         }
     }
-	
 	
 	public void onSaveFavs(View v)
 	{
@@ -411,7 +395,6 @@ public class EditFavsActivity extends Activity {
 			
 	}
 	
-
 	//For the home button.
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

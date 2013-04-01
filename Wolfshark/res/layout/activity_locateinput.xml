@@ -6,8 +6,6 @@
     android:background="@color/background" >
 
     <LinearLayout
-        android:scrollbars="vertical" 
-    	android:scrollbarAlwaysDrawVerticalTrack="true"
         android:id="@+id/LLtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -108,4 +106,5 @@
 
         </RelativeLayout>
     </LinearLayout>
+
 </ScrollView>
