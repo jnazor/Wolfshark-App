@@ -217,8 +217,8 @@ public class MapView extends View {
 		{
 			for(int j=0;j<network.NodeList.size();j++)
 			{
-				if(inputNode.neighboringNodes.get(i) == network.NodeList.get(j).Name)				{
-                    if (exploredNodes.contains(network.NodeList.get(j))) continue
+				if(inputNode.neighboringNodes.get(i) == network.NodeList.get(j).Name){				{
+                    			if (exploredNodes.contains(network.NodeList.get(j))) continue
 					depthFirstSearch(network.NodeList.get(j));
 				}
 			}
