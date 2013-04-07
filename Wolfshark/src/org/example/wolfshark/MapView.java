@@ -25,7 +25,7 @@ public class MapView extends View {
 	public static final String PREFERENCE_FILENAME = "LocatePrefs";
 	SharedPreferences myPrefs;
 	Paint imgPaint;
-	Bitmap mapGraphic = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_basement_small);
+	Bitmap mapGraphic = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_basemtse);
 	Path thePath;
 	Paint pathPaint;
 	NodeGraph network;
@@ -217,12 +217,17 @@ public class MapView extends View {
 		{
 			for(int j=0;j<network.NodeList.size();j++)
 			{
-				if(inputNode.neighboringNodes.get(i) == network.NodeList.get(j).Name){				{
-                    			if (exploredNodes.contains(network.NodeList.get(j))) continue
+				if(inputNode.neighboringNodes.get(i) == network.NodeList.get(j).Name)
+				{				
+                    if (exploredNodes.contains(network.NodeList.get(j)))
+                    {
+                    	continue;
+                    }
 					depthFirstSearch(network.NodeList.get(j));
 				}
 			}
 		}
+		
 	}
 	
 	private void depthFirstSearchComplete(Node inputNode)

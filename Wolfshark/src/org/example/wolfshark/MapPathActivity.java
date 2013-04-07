@@ -66,7 +66,6 @@ public class MapPathActivity extends Activity {
 			
 			@Override
 			public boolean onTouch(View v, MotionEvent event){
-
 				int action = event.getAction();
 				int deltaX = 0;
 				int startX = 0;
@@ -74,7 +73,7 @@ public class MapPathActivity extends Activity {
 				int startY = 0;
 				
 
-				Log.d("TOUCH","STARTED A TOUCH");
+				//Log.d("TOUCH","STARTED A TOUCH");
 				
 				switch(action){
 					case MotionEvent.ACTION_UP:
