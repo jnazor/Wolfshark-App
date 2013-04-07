@@ -53,11 +53,12 @@ public class NodeGraph{
 		}
 	}
 	
-	public void addBufferNeighbor(String input)
+	public void addBufferNeighbor(String input, int distance)
 	{
 		if(bufferNode != null)
 		{
-			bufferNode.neighboringNodes.add(input);
+			bufferNode.addNeighborNode(input, distance);
+			//bufferNode.neighboringNodes.add(input);
 		}
 	}
 	
