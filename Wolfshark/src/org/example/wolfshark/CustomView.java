@@ -291,10 +291,10 @@ public class CustomView extends View {
 			{
 				if(inputNode.neighboringNodes.get(i) == network.NodeList.get(j).Name)
 				{				
-                    if (exploredNodes.contains(network.NodeList.get(j)))
-                    {
-                    	continue;
-                    }
+					if (exploredNodes.contains(network.NodeList.get(j)))
+                    			{
+                    				continue;
+                   	 		}
 					depthFirstSearch(network.NodeList.get(j));
 				}
 			}
