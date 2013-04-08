@@ -57,6 +57,12 @@ public class Node {
     	
     }
     
+    public void addNeighborNode(String neighborName)
+    {
+    	neighboringNodes.add(neighborName);
+    	
+    }
+    
     public boolean isNeighbor(String inputName)
     {
     	for(int i=0;i<neighboringNodes.size();i++)

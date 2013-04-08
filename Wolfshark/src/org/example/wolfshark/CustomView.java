@@ -3,6 +3,7 @@ package org.example.wolfshark;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -25,7 +26,8 @@ public class CustomView extends View {
 	Path thePath;
 	Paint pathPaint;
 	
-	
+	public static final String PREFERENCE_FILENAME = "LocatePrefs";
+	SharedPreferences myPrefs;
 
 	int mapX = 0;
 	int mapY = 0;
@@ -73,10 +75,15 @@ public class CustomView extends View {
 		super(myContext);
 		this.setBackgroundColor(Color.WHITE);
 		
+		myPrefs = myContext.getSharedPreferences(PREFERENCE_FILENAME,0);
+		startLocation=myPrefs.getString("startBuild", "Darwin_022");
+		endLocation=myPrefs.getString("endBuild", "Darwin_006");
+
+		
 		network = new NodeGraph();
 		config = new CampusNodeConfig();
 		oldConfig = new NodeConfig();
-		network = oldConfig.populate();
+		network = config.populate(myContext);
 		
 		Log.d("GOT","HERE");
 		
@@ -117,20 +124,25 @@ public class CustomView extends View {
 		
 		pathPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		pathPaint.setColor(Color.BLUE);
-		//pathPaint.setStrokeWidth(3);
-		pathPaint.setStyle(Paint.Style.FILL);
+		pathPaint.setStrokeWidth(3);
+		pathPaint.setStyle(Paint.Style.STROKE);
 		
 		coord_x = (mapGraphic_1.getWidth() - 1200) * (400 / mapGraphic_1.getDensity());
 		coord_y = (mapGraphic_1.getHeight() - 1200) * (400 / mapGraphic_1.getDensity());
 		
-		startLocation = "darwin_" + startLocation;
-		endLocation = "darwin_" + endLocation;
+		//startLocation = "darwin_" + startLocation;
+		//endLocation = "darwin_" + endLocation;
+		
+		Log.d("DEBUG","StartLocation: " + startLocation);
+		Log.d("DEBUG","EndLocation: " + endLocation);
 		
 		for(int i=0;i < network.NodeList.size();i++)
 		{
+			Log.d("DEBUG","Start Search: " + network.NodeList.get(i).Name);
+			
 			if(network.NodeList.get(i).Name.contains(startLocation))
 			{
-				depthFirstSearch(network.NodeList.get(i));
+				//depthFirstSearch(network.NodeList.get(i));
 				depthFirstSearchComplete(network.NodeList.get(i));
 			}
 		}
@@ -149,6 +161,9 @@ public class CustomView extends View {
 			}
 		}
 		
+		Log.d("DEBUG","Size of exploredList:" + exploredNodes.size());
+		
+		Log.d("DEBUG","Size of visitedList:" + vistiedList.size());
 	}
 	
 	
@@ -157,6 +172,8 @@ public class CustomView extends View {
 	{
 		long startTime = System.nanoTime();
 		
+		
+
 		
 		canvas.drawBitmap(mapGraphic_1, mapX + offsetX , mapY + offsetY, imgPaint);
 		canvas.drawBitmap(mapGraphic_2, mapX + offsetX + map1width + 1, mapY + offsetY, imgPaint);
@@ -287,6 +304,7 @@ public class CustomView extends View {
 	
 	private void depthFirstSearchComplete(Node inputNode)
 	{
+		Log.d("DEBUG", "search called on node:" + inputNode.Name);
 
 		if(inputNode.Name.contains(endLocation))
 		{
@@ -310,7 +328,7 @@ public class CustomView extends View {
 			{
 				if(inputNode.neighboringNodes.get(i) == network.NodeList.get(j).Name) 
    				{
-					depthFirstSearch(network.NodeList.get(j));
+					depthFirstSearchComplete(network.NodeList.get(j));
 				}
 
 			}

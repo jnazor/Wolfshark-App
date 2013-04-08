@@ -30,6 +30,18 @@ public class NodeGraph{
 	
 	public void pushNode()
 	{
+		for(int i=0;i<NodeList.size();i++)
+		{
+			for(int j=0;j<bufferNode.neighboringNodes.size();j++)
+			{
+				if(NodeList.get(i).Name==bufferNode.neighboringNodes.get(j) & NodeList.get(i).neighboringNodes.contains(bufferNode.Name) == false)
+				{
+					NodeList.get(i).neighboringNodes.add(bufferNode.Name);
+				}
+			}
+		}
+		
+		
 		bufferNode.globalNodeID = NodeList.size();
 		NodeList.add(bufferNode);
 		bufferNode = null;
@@ -50,6 +62,15 @@ public class NodeGraph{
 		if(bufferNode != null)
 		{
 			bufferNode.setMapAnchor(inX, inY);
+		}
+	}
+	
+	public void addBufferNeighbor(String input)
+	{
+		if(bufferNode != null)
+		{
+			bufferNode.addNeighborNode(input);
+			//bufferNode.neighboringNodes.add(input);
 		}
 	}
 	
