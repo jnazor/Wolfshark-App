@@ -15,6 +15,16 @@ public class NodeGraph{
 		NodeList = new ArrayList<Node>();
 	}
 
+	public void makeNode(String name, String displayName, String mapID, int x, int y, String neighbor)
+	{
+		newNode();
+		setBufferTextAttributes(name,displayName,mapID);
+		setBufferXYAttributes(x,y);
+		addBufferNeighbor(neighbor);
+		pushNode();
+		
+	}
+	
 	public boolean newNode()
 	{
 		if(bufferNode == null)
