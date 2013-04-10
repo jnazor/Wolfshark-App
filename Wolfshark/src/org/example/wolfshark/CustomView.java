@@ -115,7 +115,8 @@ public class CustomView extends View {
 		
 		
 		//options.inSampleSize = 2;
-		options.inDensity =  getResources().getDisplayMetrics().densityDpi; // sets bitmap density to display density, stopping lag and reducing memory footprint
+		// sets bitmap density to display density, stopping lag and reducing memory footprint
+		options.inDensity =  getResources().getDisplayMetrics().densityDpi; 
 		
 		dotPaint  = new Paint(Paint.ANTI_ALIAS_FLAG);
 		dotPaint.setColor(Color.BLACK);

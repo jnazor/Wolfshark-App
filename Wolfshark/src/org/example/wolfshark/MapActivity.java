@@ -92,6 +92,7 @@ public class MapActivity extends Activity
 	public void onNewPath(View v)
 	{ }
 	
+	/*
 	public boolean onCreateOptionsMenu(Menu menu) {
     	MenuInflater inflater = getMenuInflater();
     	inflater.inflate(R.menu.mapmenu, menu);
@@ -110,4 +111,5 @@ public class MapActivity extends Activity
         }
     	return onOptionsItemSelected(item);
    }
+   */
 }

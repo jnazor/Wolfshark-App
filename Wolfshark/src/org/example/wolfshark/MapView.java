@@ -1,9 +1,9 @@
 package org.example.wolfshark;
 
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Vector;
+//import java.util.ArrayList;
+//import java.util.Random;
+//import java.util.Vector;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -12,7 +12,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.util.Log;
+//import android.util.Log;
 import android.view.View;
 import android.content.SharedPreferences;
 
@@ -25,7 +25,21 @@ public class MapView extends View {
 	public static final String PREFERENCE_FILENAME = "LocatePrefs";
 	SharedPreferences myPrefs;
 	Paint imgPaint;
-	Bitmap mapGraphic = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_basemtse);
+	//Bitmap mapGraphic = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_basemtse);
+	
+	BitmapFactory.Options options = new BitmapFactory.Options();
+	
+	
+	Bitmap mapGraphic_1;
+	Bitmap mapGraphic_2;
+	Bitmap mapGraphic_3;
+	Bitmap mapGraphic_4;
+	
+	
+	int map1width;
+	int map1height;
+	
+	
 	Path thePath;
 	Paint pathPaint;
 	NodeGraph network;
@@ -38,10 +52,10 @@ public class MapView extends View {
 	
 	boolean endLocationFound = false;
 	
-	Random rand = new Random();
-	ArrayList<Integer> vistiedList = new ArrayList<Integer>();
-	ArrayList<Integer> explored = new ArrayList<Integer>();
-	ArrayList<Node> exploredNodes = new ArrayList<Node>();
+//	Random rand = new Random();
+//	ArrayList<Integer> vistiedList = new ArrayList<Integer>();
+//	ArrayList<Integer> explored = new ArrayList<Integer>();
+//	ArrayList<Node> exploredNodes = new ArrayList<Node>();
 
 	int mapX = 0;
 	int mapY = 0;
@@ -58,7 +72,26 @@ public class MapView extends View {
 	public MapView(Context context)
 	{
 		super(context);
-		this.setBackgroundColor(Color.rgb(34, 181, 115));
+		//this.setBackgroundColor(Color.rgb(34, 181, 115));
+		
+		//options.inSampleSize = 2;
+		// sets bitmap density to display density, stopping lag and reducing memory footprint
+		options.inDensity =  getResources().getDisplayMetrics().densityDpi; 
+		
+		mapGraphic_1 = BitmapFactory.decodeResource(getResources(), R.drawable.campus_map_nw, options);
+		mapGraphic_2 = BitmapFactory.decodeResource(getResources(), R.drawable.campus_map_ne, options);
+		mapGraphic_3 = BitmapFactory.decodeResource(getResources(), R.drawable.campus_map_sw, options);
+		mapGraphic_4 = BitmapFactory.decodeResource(getResources(), R.drawable.campus_map_se, options);
+		
+		map1width = mapGraphic_1.getWidth();
+		map1height = mapGraphic_1.getHeight();
+		
+		
+		imgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		thePath = new Path();
+		
+		
+        /*
 		myPrefs = context.getSharedPreferences(PREFERENCE_FILENAME,0);
 		startLocation=myPrefs.getString("startRoom", "Darwin_022");
 		endLocation=myPrefs.getString("endRoom", "Darwin_006");
@@ -108,13 +141,24 @@ public class MapView extends View {
 				}
 			}
 		}
+		
+		*/
 	}
 	
 	@Override
 	protected void onDraw(Canvas canvas)
 	{
-		canvas.drawBitmap(mapGraphic, mapX + offsetX, mapY + offsetY, imgPaint);
+		//canvas.drawBitmap(mapGraphic, mapX + offsetX, mapY + offsetY, imgPaint);
+		
+		
+		canvas.drawBitmap(mapGraphic_1, mapX + offsetX , mapY + offsetY, imgPaint);
+		canvas.drawBitmap(mapGraphic_2, mapX + offsetX + map1width /*+ 1*/, mapY + offsetY, imgPaint);
+		canvas.drawBitmap(mapGraphic_3, mapX + offsetX, mapY + offsetY + mapGraphic_1.getHeight(), imgPaint);
+		canvas.drawBitmap(mapGraphic_4, mapX + offsetX + mapGraphic_1.getWidth(), mapY + offsetY + mapGraphic_2.getHeight(), imgPaint);
+		
+		
 		thePath.reset();
+		/*
 		if(vistiedList.size() >= 2)
 		{
 			if(vistiedList.size() > 0)
@@ -136,8 +180,9 @@ public class MapView extends View {
 					network.NodeList.get(i).mapAnchorY+offsetY+mapY+7, textPaint);
 		}
 		canvas.drawPath(thePath, pathPaint);
+		*/
 	}
-	
+	/*
 	private void recursiveSearch(int input)
 	{
 		explored.add(input);
@@ -165,7 +210,9 @@ public class MapView extends View {
 			}
 		}
 	} 
+	*/
 	
+	/*
 	private void depthFirstSearch(int input)
 	{
 		explored.add(input);
@@ -206,6 +253,8 @@ public class MapView extends View {
 		return;
 	}
 	
+	*/
+	/*
 	private void depthFirstSearch(Node inputNode)
 	{
 		exploredNodes.add(inputNode);
@@ -229,7 +278,8 @@ public class MapView extends View {
 		}
 		
 	}
-	
+	*/
+	/*
 	private void depthFirstSearchComplete(Node inputNode)
 	{
 
@@ -261,7 +311,7 @@ public class MapView extends View {
 			}
 		}
 	}
-	
+	*/
 	public void moveMap(int inputX, int inputY)
 	{
 
@@ -277,7 +327,7 @@ public class MapView extends View {
 	{
 		return mapY;
 	}
-	
+	/*
 	private boolean containsByName(String Input)
 	{
 		for(int j=0; j<exploredNodes.size();j++)
@@ -289,8 +339,9 @@ public class MapView extends View {
 		}
 		return false;
 	}
+	*/
 	
-	
+	/*
 	private boolean stubNodesExistDeleteThem()
 	{
 		int connectedNodes = 0;
@@ -320,32 +371,6 @@ public class MapView extends View {
 		
 		
 	}
-	
+	*/
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
