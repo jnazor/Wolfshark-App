@@ -96,8 +96,8 @@
 
             <Button
                 android:id="@+id/locateInput"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="150dip"
+                android:layout_height="75dip"
                 android:layout_below="@+id/endFav"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"

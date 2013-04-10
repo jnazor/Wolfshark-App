@@ -74,6 +74,22 @@ public class Node {
     	}
     	return false;
     }
+    
+    
+    
+    
+    boolean contains(ArrayList<String> myList)
+    {
+    	//boolean equalsNode = false;
+    	
+    	for(int i = 0; i < myList.size() /*&& !equalsNode*/; i++)
+    		if(Name.equals(myList.get(i)))
+    			return true;
+    			//equalsNode = true;
+    	
+    	//return equalsNode;
+    	return false;
+    }
 
 
 }

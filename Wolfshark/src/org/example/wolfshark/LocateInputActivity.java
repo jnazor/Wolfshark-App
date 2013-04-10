@@ -1,5 +1,6 @@
 package org.example.wolfshark;
 
+import java.util.Arrays;
 import java.util.List;
 
 import android.app.Activity;
@@ -44,6 +45,8 @@ public class LocateInputActivity extends Activity {
     String end_room;
     int startRmPos;
     String start_room;
+    int start_pos = 0;
+    int end_pos = 0;
     
     private List<Favorite> favList;
     private String[] favs = new String[5];
@@ -274,6 +277,10 @@ public class LocateInputActivity extends Activity {
 	{
     	start_build = textView1.getText().toString();
     	end_build = textView2.getText().toString();
+    	start_pos = Arrays.asList(build_arr).indexOf(start_build);
+    	end_pos = Arrays.asList(build_arr).indexOf(end_build);
+    	
+    	Toast.makeText(this, "Start Position: " + start_pos + "    End Position:  " + end_pos, Toast.LENGTH_LONG).show();
     	
     	if(start_build != null && end_build != null && isCorrectName(start_build) && isCorrectName(end_build))
     	{
@@ -281,6 +288,8 @@ public class LocateInputActivity extends Activity {
 	    	myEditor.putString("endBuild", end_build);
 	    	myEditor.putString("startRoom", start_room);
 	    	myEditor.putString("endRoom", end_room);
+	    	myEditor.putInt("startPos", start_pos);
+	    	myEditor.putInt("endPos", end_pos);
 	    	myEditor.commit();
 	    	
 	    	Intent myMapPath = new Intent(this, MapPathActivity.class);
