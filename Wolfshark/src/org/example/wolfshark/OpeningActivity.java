@@ -2,6 +2,7 @@ package org.example.wolfshark;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.CursorIndexOutOfBoundsException;
 import android.os.Bundle;
 
 public class OpeningActivity extends Activity {
@@ -19,7 +20,8 @@ public class OpeningActivity extends Activity {
 		Thread mythread = new Thread(){
 			public void run(){
 				try{
-					sleep(2000);    //3000 milliseconds == 2 seconds
+					sleep(1000);    //3000 milliseconds == 2 seconds
+			    	populateDatabase();
 				}catch(InterruptedException e){
 					//print to console, not to Android device
 					System.out.println("Error occurred on Opening Screen.");
@@ -32,5 +34,28 @@ public class OpeningActivity extends Activity {
 			}
 		};
 		mythread.start();
-	}	
+	}
+	
+	private void populateDatabase(){
+        DatabaseHandler pd = new DatabaseHandler(this);
+		try {
+			//right now everytime you open the app, the favorites table will be 
+			//populated, no matter what was in them before.
+			for (int n = 1; n < 6; n++){
+				Favorite one = new Favorite(n, "01", "Anthropology");
+				if((one.getBuilding() == null) && (one.getRoom() == null) 
+						||((one.getBuilding() == "") && (one.getRoom() == "")))
+				{
+					pd.addFavorite(one);
+				} else {
+					pd.deleteFavorite(one);
+					pd.addFavorite(one);
+				}
+			}
+		} catch (NullPointerException e) {
+					// TODO Auto-generated catch block	
+		} catch (CursorIndexOutOfBoundsException e) {
+					// TODO Auto-generated catch block
+		} 
+	}
 }

@@ -332,7 +332,7 @@ public class EditFavsActivity extends Activity {
 			    db.addFavorite(fav1);
 				favEditor.putString("build_1", favs1.getText().toString());
 				favEditor.commit();
-			} else {
+			} else { //if(build_1 != ""){
 				db.updateFavorite(fav1);
 				favEditor.putString("build_1", favs1.getText().toString());
 				favEditor.commit();

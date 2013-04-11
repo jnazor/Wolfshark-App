@@ -10,9 +10,11 @@
 
         <RelativeLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/seawolf_blue" >
+            android:layout_gravity="center_vertical"
+            android:background="@color/seawolf_blue"
+            android:gravity="center_vertical" >
 
             <TextView
                 android:id="@+id/edit_Title"
@@ -25,37 +27,8 @@
                 android:text="@string/edit_favs"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/white" />
-
-            <RelativeLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/edit_Title" >
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:text="Building Name"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginRight="16dp"
-                    android:text="Room Number"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/white" />
-
-            </RelativeLayout>
-
         </RelativeLayout>
+
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -68,28 +41,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background" >
-	
-			<TextView
-                android:id="@+id/TextView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/favs1"
-                android:layout_alignParentLeft="true"
-                android:text="@string/places1"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
 
-            <org.example.wolfshark.InstantAutoComplete
+            <TextView android:id="@+id/TextView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:text="@string/places1" android:textAppearance="?android:attr/textAppearanceSmall" /><org.example.wolfshark.InstantAutoComplete
                 android:id="@+id/favs1"
                 android:layout_width="235dip"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
+                android:layout_below="@+id/TextView1"
                 android:completionThreshold="1"
                 android:hint="@string/buildingHint" />
-
+ 
             <Spinner
                 android:id="@+id/room1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/favs1"
                 android:layout_alignParentRight="true"
                 android:layout_alignTop="@+id/favs1"
                 android:layout_toRightOf="@+id/favs1" />
@@ -210,6 +176,8 @@
                 android:layout_below="@+id/favs5"
                 android:onClick="onSaveFavs"
                 android:text="@string/save_favs" />
+
+			
 
         </RelativeLayout>
 	</ScrollView>

@@ -5,9 +5,11 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.CursorIndexOutOfBoundsException;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -122,8 +124,31 @@ public class LocateInputActivity extends Activity {
         end_room = null;
         startRmPos = 0;
         start_room = null;
+        
+//        populateDatabase();
 	}
 	
+ /*   	private void populateDatabase(){
+        DatabaseHandler pd = new DatabaseHandler(this);
+		try {
+			for (int n = 0; n < 5; n++){
+				Favorite one = new Favorite(n, "Favorite", "Add ");
+				if((one.getBuilding() == null) && (one.getRoom() == null) 
+						||((one.getBuilding() == "") && (one.getRoom() == "")))
+				{
+					pd.addFavorite(one);
+				} else {
+					pd.deleteFavorite(one);
+					pd.addFavorite(one);
+				}
+			}
+		} catch (NullPointerException e) {
+					// TODO Auto-generated catch block	
+		} catch (CursorIndexOutOfBoundsException e) {
+					// TODO Auto-generated catch block
+		} 
+	}
+	*/
 
 	public class startRoomOnItemSelectedListener implements OnItemSelectedListener {
 
@@ -223,6 +248,7 @@ public class LocateInputActivity extends Activity {
     }
 	
 
+
 	public void onFavorites(View f) {
 		// Do stuff
 		DatabaseHandler db = new DatabaseHandler(this);
@@ -233,8 +259,37 @@ public class LocateInputActivity extends Activity {
 			String log = favList.get(i).getBuilding() + " " + favList.get(i).getRoom();
 			Log.d("Testing", log);
 		}
+				switch (f.getId()) {
+			        case R.id.startFav: // doStuff
+			        	BuildDialog();
+		    			break;
+			        case R.id.endFav: // doStuff
+			        	BuildDialog();
+			        	break;
+			}
+		}	
 		
-		switch (f.getId()) {
+		private void BuildDialog() {
+			// TODO Auto-generated method stub
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	    	builder.setTitle("Your Places");
+	    	builder.setItems(favs, new DialogInterface.OnClickListener() {
+	    		public void onClick(DialogInterface bdialog, int fav) {
+	    			String choice = favs[fav];
+	    			/* This method of trying to compare the strings isn't working correctly.
+	    			 * if(choice.toString().equals("Add Favorite")){
+	    				Intent favoritesActivity = new Intent (getBaseContext(), EditFavsActivity.class);
+	    	    		startActivity(favoritesActivity);
+	    			}*/
+	    			
+	    			Toast.makeText(getBaseContext(), choice, Toast.LENGTH_SHORT).show();	
+				}
+	    	});
+	    	AlertDialog alert = builder.create();
+	    	alert.show();
+		}
+		
+/*		switch (f.getId()) {
 		        case R.id.startFav: // doStuff
 		        	AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		        	builder.setTitle("Your Places");
@@ -262,7 +317,7 @@ public class LocateInputActivity extends Activity {
 		        	endalert.show();
 		        	break;
 		}
-	}	
+	}	*/
 	
 	public boolean isCorrectName(String name)
 	{		
@@ -322,28 +377,33 @@ public class LocateInputActivity extends Activity {
         		startActivity(mapView);
         		break;
         	case R.id.aboutmenu:
-        		TextView myView = new TextView(getApplicationContext());
-        		myView.setText(R.string.about_text);
-        		myView.setBackgroundColor(getResources().getColor(R.color.gray));
-        		myView.setTextColor(getResources().getColor(R.color.white));
-        			
-        		// 1. Instantiate an AlertDialog.Builder with its constructor
-        		AlertDialog.Builder b = new AlertDialog.Builder(LocateInputActivity.this);
-
-        		// 2. Chain together various setter methods to set the dialog characteristics
-        		b.setView(myView);
-        		
-        		// 3. Get the AlertDialog from create()
-        		AlertDialog dialog = b.create();
-        		dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Close", new DialogInterface.OnClickListener() {
-        		       public void onClick(DialogInterface dialog, int id) {
-        		            dialog.dismiss();
-        		       }});
-        		
-        		dialog.show();
-        		
-	            break;
-        	default:
+        		//custom dialog
+    			Dialog aboutdialog = new Dialog(this);
+    			aboutdialog.setContentView(R.layout.activity_about);
+    			aboutdialog.setTitle("Welcome to CampusPaths!");
+    			
+    			// set the custom dialog components - text, image and button
+    			TextView text = (TextView) aboutdialog.findViewById(R.id.about_content);
+    			text.setText(R.string.about_text);
+    			//text.setGravity(Gravity.NO_GRAVITY);
+    			
+//    			Button dialogButton = (Button) aboutdialog.findViewById(R.id.dialogButton);
+//    			// if button is clicked, close the custom dialog
+//     			dialogButton.setOnClickListener(new OnClickListener() {
+//    				@Override
+//    				public void onClick(View v) {
+//    					aboutdialog.dismiss();
+//    				}
+//    			});
+    			
+    			
+//    			aboutdialog.setButton(DialogInterface.BUTTON_POSITIVE, "Close", new DialogInterface.OnClickListener() {
+//     		       public void onClick(DialogInterface dialog, int id) {
+//     		            dialog.dismiss();
+//     		       }});
+    			aboutdialog.show();
+   	            break;
+   	         default:
                 return super.onOptionsItemSelected(item);
         }
         return super.onOptionsItemSelected(item);
