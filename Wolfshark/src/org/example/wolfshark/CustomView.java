@@ -10,6 +10,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Path.Direction;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +26,16 @@ public class CustomView extends View {
 	Bitmap mapGraphic_4;
 	Path thePath;
 	Paint pathPaint;
+	Path startCircle;
+	Path endCircle;
+	
+	//int numNodesToRemove;  //ONLY USE INSIDE DEPTHFIRSTSEARCHCOMPLETE!!!
+	
+	private int[] xcoord_primarray;
+	private int[] ycoord_primarray;
+	
+	private Integer[] xcoord_array;
+	private Integer[] ycoord_array;
 	
 	public static final String PREFERENCE_FILENAME = "LocatePrefs";
 	SharedPreferences myPrefs;
@@ -56,6 +67,7 @@ public class CustomView extends View {
 	
 	Paint dotPaint;
 	Paint textPaint;
+	Paint circlePaint;
 	
 	NodeGraph network;
 	CampusNodeConfig config;
@@ -103,7 +115,7 @@ public class CustomView extends View {
 		
 		startentrances = getEntranceList(start_pos);
 		endentrances = getEntranceList(end_pos);
-
+		//numNodesToRemove = 0;
 		
 		network = new NodeGraph();
 		config = new CampusNodeConfig();
@@ -121,6 +133,10 @@ public class CustomView extends View {
 		dotPaint  = new Paint(Paint.ANTI_ALIAS_FLAG);
 		dotPaint.setColor(Color.BLACK);
 		dotPaint.setStyle(Paint.Style.FILL);
+		
+		circlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		circlePaint.setColor(Color.BLUE);
+		circlePaint.setStyle(Paint.Style.FILL);
 		
 		textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		textPaint.setColor(Color.RED);
@@ -140,6 +156,13 @@ public class CustomView extends View {
 		
 		imgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		thePath = new Path();
+		startCircle = new Path();
+		endCircle = new Path();
+		
+		xcoord_primarray = getResources().getIntArray(R.array.xcoord_array);
+		ycoord_primarray = getResources().getIntArray(R.array.ycoord_array);
+		
+
 		
 		
 		Log.d("GOT","HERE3");
@@ -232,6 +255,11 @@ public class CustomView extends View {
 		canvas.drawBitmap(mapGraphic_4, mapX + offsetX + mapGraphic_1.getWidth(), mapY + offsetY + mapGraphic_2.getHeight(), imgPaint);
 		
 		thePath.reset();
+		startCircle.reset();
+		endCircle.reset();
+		
+		startCircle.addCircle(xcoord_primarray[start_pos] + mapX + offsetX, ycoord_primarray[start_pos] + mapY + offsetY, 20, Direction.CW);
+		endCircle.addCircle(xcoord_primarray[end_pos] + mapX + offsetX, ycoord_primarray[end_pos] + mapY + offsetY, 20, Direction.CW);
 		
 		if(vistiedList.size() >= 2)
 		{
@@ -246,14 +274,16 @@ public class CustomView extends View {
 					       network.NodeList.get(vistiedList.get(i)).mapAnchorY+offsetY+mapY);
 			}
 			
-			}
+		}
 		for(int i=0;i<network.NodeList.size();i++)
 		{
-			canvas.drawCircle(network.NodeList.get(i).mapAnchorX+offsetX+mapX, network.NodeList.get(i).mapAnchorY+offsetY+mapY, 5, dotPaint);
+//			canvas.drawCircle(network.NodeList.get(i).mapAnchorX+offsetX+mapX, network.NodeList.get(i).mapAnchorY+offsetY+mapY, 5, dotPaint);
 //			canvas.drawText(network.NodeList.get(i).Name + " " + i, network.NodeList.get(i).mapAnchorX+offsetX+mapX+7, 
 //					network.NodeList.get(i).mapAnchorY+offsetY+mapY+7, textPaint);
 		}
 		canvas.drawPath(thePath, pathPaint);
+		canvas.drawPath(startCircle, circlePaint);
+		canvas.drawPath(endCircle, circlePaint);
 		
 		
 //		thePath.moveTo(250+offsetX+mapX, 250+offsetY+mapY);
@@ -378,20 +408,21 @@ public class CustomView extends View {
 	
 	
 	
-	
+	/*
 	private void depthFirstSearchComplete(Node inputNode)
 	{
 		//Log.d("DEBUG", "search called on node:" + inputNode.Name);
 
 		//if(inputNode.Name.contains(endLocation))
-		if(inputNode.contains(endentrances))
+		if(inputNode.contains(endentrances))  //If the inputNode is in the list of end location entrances
 		{
 			endLocationFound = true;
 		}
-		if(exploredNodes.contains(inputNode) == false)
+		if(exploredNodes.contains(inputNode) == false)  //If the inputNode is not in the list of exploredNodes
 		{
 			exploredNodes.add(inputNode);
 		}
+		//If exploredNodes does contain the inputNode
 		else if(exploredNodes.contains(inputNode) == true)  //Can these two expressions be consolidated using an ||??
 		{
 			return;
@@ -405,6 +436,7 @@ public class CustomView extends View {
 			for(int j=0;j<network.NodeList.size();j++)
 			{
 				//if(inputNode.neighboringNodes.get(i) == network.NodeList.get(j).Name) 
+				//If inputNode matches the name of a node in the network and if the end entrance is not in the exploredNodes Arraylist
 				if(inputNode.neighboringNodes.get(i).equals(network.NodeList.get(j).Name) && !exploredNodes.get(exploredNodes.size()-1).contains(endentrances))
 				{
 					depthFirstSearchComplete(network.NodeList.get(j));
@@ -412,6 +444,114 @@ public class CustomView extends View {
 
 			}
 		}
+	}
+	*/
+	
+	
+	//TEST VERSION!!!
+	private void depthFirstSearchComplete(Node inputNode)
+	{
+		//Log.d("DEBUG", "search called on node:" + inputNode.Name);
+
+		//if(inputNode.Name.contains(endLocation))
+		if(inputNode.contains(endentrances))  //If the inputNode is in the list of end location entrances
+		{
+			endLocationFound = true;
+		}
+		if(exploredNodes.contains(inputNode) == false)  //If the inputNode is not in the list of exploredNodes
+		{
+			exploredNodes.add(inputNode);
+		}
+		//If exploredNodes does contain the inputNode
+		else if(exploredNodes.contains(inputNode) == true)  //Can these two expressions be consolidated using an ||??
+		{
+			return;
+		}
+		if(endLocationFound == true)
+		{
+			return;
+		}
+		
+		//If an ending destination is in the list of neighboring nodes
+		//If checkForNeighboringEnd() is true, the ending neighbor node
+		//gets added to exploredNodes, and returns out of the method.
+		//Also, it ignores the first node entered into exploredNodes.
+		if(exploredNodes.size() > 0 && checkForNeighboringEnd(inputNode))
+		{
+			return;
+		}
+		for(int i=0;i<inputNode.neighboringNodes.size();i++)
+		{
+			for(int j=0;j<network.NodeList.size();j++)
+			{
+				//if(inputNode.neighboringNodes.get(i) == network.NodeList.get(j).Name) 
+				//If inputNode matches the name of a node in the network and if the end entrance is not in the exploredNodes Arraylist
+				if(inputNode.neighboringNodes.get(i).equals(network.NodeList.get(j).Name) && !exploredNodes.get(exploredNodes.size()-1).contains(endentrances))
+				{
+					depthFirstSearchComplete(network.NodeList.get(j));
+					//numNodesToRemove = checkNeighbors(inputNode.neighboringNodes);
+				}
+				/*
+				else if(numNodesToRemove > 0)
+				{
+					exploredNodes.remove(exploredNodes.size() - 1);
+					numNodesToRemove--;
+					return;
+				}
+				*/
+
+			}
+		}
+	}
+	
+	
+	
+	
+	boolean checkForNeighboringEnd(Node input)
+	{
+		//boolean found = false;
+		
+		for(int i = 0; i < input.neighboringNodes.size(); i++)
+		    for(int j = 0; j < endentrances.size(); j++)
+			    if(input.neighboringNodes.get(i).equals(endentrances.get(j)))
+			    {
+			    	for(int k = 0; k < network.NodeList.size(); k++)
+			    		if(input.neighboringNodes.get(i).equals(network.NodeList.get(k).Name))
+			    		{
+			    			exploredNodes.add(network.NodeList.get(k));
+			    			return true;
+			    		}
+			    }
+				
+		
+		return false;
+	}
+	
+	
+	
+	//Isn't working how I would have hoped it would have worked...
+	//Attempting to find a neighbor of inputNode from depthFirstSearchComplete()
+	//earlier in the exploredNodes list and delete nodes in the list to the index
+	//of the already inserted neighbor, to then insert the current inputNode, thereby
+	//redirecting the graph and eliminating unneeded side trips...
+	int checkNeighbors(ArrayList<String> neighbors)
+	{
+		boolean found = false;
+		int index = 0;
+		
+		for(int i = 0; i < neighbors.size() && !found; i++)
+		{
+			for(int j = 0; j < exploredNodes.size() && !found; j++)
+			{
+				if(neighbors.get(i).equals(exploredNodes.get(j).Name) && j != exploredNodes.size() - 1)
+				{
+						index = exploredNodes.size() - j;
+						found = true;
+				}
+			}
+		}
+		
+		return index;
 	}
 	
 	
@@ -423,82 +563,133 @@ public class CustomView extends View {
 		
 		switch(pos)
 		{
-			case 0:  entrances.add("not available");  break;
-			case 1:  entrances.add("art_1");
+			case 0:  entrances.add("facilities_1");  break; //Anthropology
+			case 1:  entrances.add("art_1");  //Art Buildings
 					 entrances.add("art_2");
 					 break;
-			case 2:  entrances.add("not available");  break;
-			case 3:  entrances.add("not available");  break;
-			case 4:  entrances.add("not available");  break;
-			case 5:  entrances.add("cab_1");  
+			case 2:  entrances.add("bouj_1");  break; //Beaujolais
+			case 3:  entrances.add("path_306");  break; //Boiler Plant
+			case 4:  entrances.add("facilities_1");  break; //Building 49
+			case 5:  entrances.add("cab_1");  //Cabernet Village
 					 entrances.add("cab_2");
 					 break;
-			case 6:  entrances.add("carson_1");  
+			case 6:  entrances.add("carson_1");  //Carson Hall
 			         entrances.add("carson_2");
 			         entrances.add("carson_3");
 			         break;
-			case 7:  entrances.add("childrens_school_1");  
+			case 7:  entrances.add("childrens_school_1");  //Children's School
 					 break;
-			case 8:  entrances.add("commons_1");
+			case 8:  entrances.add("commons_1");  //Commons
 			         entrances.add("commons_2");
 			         break;
-			case 9:  entrances.add("not available");  break;
-			case 10:  entrances.add("not available");  break;
-			case 11:  entrances.add("environment");  
+			case 9:  entrances.add("coop_1");  break;  //Cooperage 
+			case 10:  entrances.add("darwin_1");  //Darwin Hall
+			          entrances.add("darwin_2");
+					  entrances.add("darwin_3");
+					  break; 
+			case 11:  entrances.add("environment");  //Environmental Tech Center
 			          break;
-			case 12:  entrances.add("not available");  break;
-			case 13:  entrances.add("not available");  break;
-			case 14:  entrances.add("not available");  break;
-			case 15:  entrances.add("not available");  break;
-			case 16:  entrances.add("not available");  break;
-			case 17:  entrances.add("not available");  break;
-			case 18:  entrances.add("not available");  break;
-			case 19:  entrances.add("not available");  break;
-			case 20:  entrances.add("not available");  break;
-			case 21:  entrances.add("nichols_1");
+			case 12:  entrances.add("person_1");  break;  //Person Theatre
+			case 13:  entrances.add("facilities_1");  break;  //Facilities
+			case 14:  entrances.add("field_house_1");  break;  //FieldHouse
+			case 15:  entrances.add("gmc_1");  break;  //Green Music Center
+			case 16:  entrances.add("pe_1");   //Gymnasium
+			          entrances.add("pool_1");
+					  break;  
+			case 17:  entrances.add("parking_info_1");  break;  //Info Booth North
+			case 18:  entrances.add("path_303");  
+			          entrances.add("path_305");  
+					  entrances.add("path_302");  
+					  entrances.add("path_300");
+					  entrances.add("path_310");  					  
+					  break;  //Info Booth South
+			case 19:  entrances.add("ives_1");  //Ives Hall
+					  entrances.add("ives_3");
+					  break;  
+			case 20:  entrances.add("path_150");  
+					  entrances.add("path_221");
+					  break;  //Lakes
+			case 21:  entrances.add("nichols_1");    //Nichols Hall
 					  break;
-			case 22:  entrances.add("not available");  break;
-			case 23:  entrances.add("path_57");
+			case 22:  entrances.add("bouj_1");  break;  //Observatory
+			case 23:  entrances.add("path_57");    //Parking Lot A
 					  entrances.add("path_56");
 					  entrances.add("path_91");
 					  entrances.add("path_92");
 					  entrances.add("path_93");
 					  break;
-			case 24:  entrances.add("not available");  break;
-			case 25:  entrances.add("not available");  break;
-			case 26:  entrances.add("not available");  break;
-			case 27:  entrances.add("not available");  break;
-			case 28:  entrances.add("not available");  break;
-			case 29:  entrances.add("not available");  break;
-			case 30:  entrances.add("not available");  break;
-			case 31:  entrances.add("not available");  break;
-			case 32:  entrances.add("not available");  break;
-			case 33:  entrances.add("not available");  break;
-			case 34:  entrances.add("not available");  break;
-			case 35:  entrances.add("not available");  break;
-			case 36:  entrances.add("not available");  break;
-			case 37:  entrances.add("not available");  break;
-			case 38:  entrances.add("not available");  break;
-			case 39:  entrances.add("stevenson_1");  
+			case 24:  entrances.add("path_368");  //Parking Lot C, D
+			          entrances.add("path_370");
+					  entrances.add("path_273");
+					  entrances.add("path_265");
+			          break;  
+			case 25:  entrances.add("path_207");  //Parking Lot E
+			          entrances.add("path_206");
+					  entrances.add("path_346");
+					  entrances.add("path_316");
+					  entrances.add("path_315");
+					  break;  
+			case 26:  entrances.add("tuscany_1");  break;  //Parking Lot F
+			case 27:  entrances.add("path_169");  //Parking Lot G
+                      entrances.add("path_172");
+					  break;  
+			case 28:  entrances.add("path_167");  //Parking Lot H
+			          entrances.add("path_165");
+					  break;  
+			case 29:  entrances.add("path_291");
+					  entrances.add("path_285");
+					  entrances.add("path_282");
+					  break;  //Parking Lot J
+			case 30:  entrances.add("path_183");  //Parking Lot Juniper Lane
+                      entrances.add("path_185");
+					  break;  
+			case 31:  entrances.add("path_158");  break;  //Parking Lots L, M, N, O
+			case 32:  entrances.add("path_264");  break;  //Police and Parking Services
+			case 33:  entrances.add("rec_1");  break;  //Recreation Center
+			case 34:  entrances.add("salazar_1");  //Salazar Hall
+			          entrances.add("salazar_2");
+					  entrances.add("salazar_3");
+					  break;  
+			case 35:  entrances.add("sauv_1");  //Sauvignon Village
+			          entrances.add("sauv_4");
+					  entrances.add("sauv_5");
+					  entrances.add("sauv_3");
+					  entrances.add("sauv_2");
+					  break;  
+			case 36:  entrances.add("library_2");  //Schultz Info Center
+			          entrances.add("library_1");
+			          break;  
+			case 37:  entrances.add("path_175");  break;  //Seawolf Shops
+			case 38:  entrances.add("tuscany_1");  break;  //Seawolf Stadium
+			case 39:  entrances.add("stevenson_1");    //Stevenson Hall
+					  entrances.add("stevenson_2");
+					  entrances.add("stevenson_3");
+					  entrances.add("stevenson_4");
 					  break;
-			case 40:  entrances.add("health_1");
+			case 40:  entrances.add("path_368");  //Student Center
+			          entrances.add("path_329");
+					  break;  
+			case 41:  entrances.add("health_1");   //Student Health Center
 					  entrances.add("health_2");
 					  break;
-			case 41:  entrances.add("su_1");
+			case 42:  entrances.add("su_1");  //Student Union
 					  entrances.add("pub_1");
 					  break;
-			case 42:  entrances.add("not available");  break;
-			case 43:  entrances.add("not available");  break;
-			case 44:  entrances.add("not available");  break;
-			case 45:  entrances.add("zin_1");
+			case 43:  entrances.add("path_245");  
+					  entrances.add("path_253");
+					  break; //Toast
+			case 44:  entrances.add("tuscany_1");  break; //Tuscany Village
+			case 45:  entrances.add("verdot_1");  break; //Verdot Village
+			case 46:  entrances.add("zin_1");           //Zinfandel Village
 					  entrances.add("zin_2");
 					  entrances.add("zin_3");
 					  entrances.add("zin_4");
 					  entrances.add("zin_5");
 					  entrances.add("zin_6");
 					  entrances.add("zin_7");
+					  entrances.add("zin_8");
 			          break;
-			//case 46:  entrances.add("not available");  break;
+			//case 47:  entrances.add("not available");  break;
 			default:  entrances.add("not available");  break;
 		}
 		
