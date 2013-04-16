@@ -10,8 +10,6 @@ def distance(x1, y1, x2, y2):
 parser = OptionParser(description='parse csv file for nodes on campus map, dump to Java Code')
 parser.add_option('-c','--csv',dest='csv_file',default=os.path.abspath('./wolfshark.csv'),
                   help='specify path to csv file, default: %s'%os.path.abspath('./wolfshark.csv'), metavar='PATH TO CSV FILE')
-parser.add_option('-o','--output',dest='output_file',default=False,
-                  help='specify path to output file', metavar='PATH TO OUTPUT FILE')
 p_args = parser.parse_args()[0]
 
 node_dict = {}
@@ -58,8 +56,8 @@ for node in node_dict.keys():
 
     for neighbor in node_dict[node]['neighbors']:
         try:
-            distance = distance(x,y, node_dict[neighbor]['mapAnchorX'],  node_dict[neighbor]['mapAnchorY'])
-            java_code+='''		graph.addBufferNeighbor("%s", %d);\n'''%(node_dict[neighbor]['node_name'], distance)
+            java_code+='''		graph.addBufferNeighbor("%s", %d);\n'''%(node_dict[neighbor]['node_name'], distance(x,y,
+														 node_dict[neighbor]['mapAnchorX'],node_dict[neighbor]['mapAnchorY']))
         except:
             continue
     java_code += "		graph.pushNode();\n\n"
@@ -73,9 +71,4 @@ java_code += '''
 	}
 }
 '''
-if p_args.output_file:
-    output_file = open(p_args.output_file,'w')
-    output_file.write(java_code)
-    output_file.close()
-else:
-    print java_code
+print java_code
