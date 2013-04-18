@@ -258,8 +258,8 @@ public class CustomView extends View {
 		startCircle.reset();
 		endCircle.reset();
 		
-		startCircle.addCircle(xcoord_primarray[start_pos] + mapX + offsetX, ycoord_primarray[start_pos] + mapY + offsetY, 20, Direction.CW);
-		endCircle.addCircle(xcoord_primarray[end_pos] + mapX + offsetX, ycoord_primarray[end_pos] + mapY + offsetY, 20, Direction.CW);
+		startCircle.addCircle(xcoord_primarray[start_pos] + mapX + offsetX, ycoord_primarray[start_pos] + mapY + offsetY, 15, Direction.CW);
+		endCircle.addCircle(xcoord_primarray[end_pos] + mapX + offsetX, ycoord_primarray[end_pos] + mapY + offsetY, 15, Direction.CW);
 		
 		if(vistiedList.size() >= 2)
 		{
@@ -563,124 +563,231 @@ public class CustomView extends View {
 		
 		switch(pos)
 		{
-			case 0:  entrances.add("facilities_1");  break; //Anthropology
-			case 1:  entrances.add("art_1");  //Art Buildings
+			case 0:  entrances.add("path_328"); //Alumni Ampitheater
+					 entrances.add("path_341");
+					 break;
+			case 1:  entrances.add("path_221"); //Alumni Grove
+					 break;
+			case 2:  entrances.add("ameci_1");  //Ameci's
+					 break;
+			case 3:  entrances.add("facilities_1");  //Anthropology
+			         break;
+			case 4:  entrances.add("arbor_1"); // Arbor
+					 break;
+			case 5:  
+			case 6:  entrances.add("art_1");  //Art Buildings and Gallery
 					 entrances.add("art_2");
 					 break;
-			case 2:  entrances.add("bouj_1");  break; //Beaujolais
-			case 3:  entrances.add("path_306");  break; //Boiler Plant
-			case 4:  entrances.add("facilities_1");  break; //Building 49
-			case 5:  entrances.add("cab_1");  //Cabernet Village
+			case 7:  entrances.add("art_2");  //Art Building Lake
+			case 8:  entrances.add("path_197"); //Athletic Field
+					 break;
+			case 9:  entrances.add("path_244");  //Bacon Statue
+					 entrances.add("path_254");
+			         break;
+			case 10:  entrances.add("path_184");  //Baseball Diamond
+			          break;
+			case 11: entrances.add("path_201");  //Beaujolais Lake
+					 entrances.add("path_198");
+			         break;
+			case 12: entrances.add("bouj_1");  //Beaujolais
+					 break;
+			case 13: entrances.add("path_306");  //Boiler Plant
+					 break;
+			case 14: entrances.add("facilities_1");  //Building 49
+					 break;
+			case 15: entrances.add("garden_1");  //Butterfly Garden
+			         break;
+			case 16: entrances.add("cab_1");  //Cabernet Village
 					 entrances.add("cab_2");
 					 break;
-			case 6:  entrances.add("carson_1");  //Carson Hall
+			case 17:  //Campus Prints
+			case 38:  //JUMP
+			case 40: entrances.add("su_1");  //MCC
+					 entrances.add("path_118");
+					 entrances.add("path_121");
+					 entrances.add("pub_1");
+			         break;
+			case 18: entrances.add("carson_1");  //Carson Hall
 			         entrances.add("carson_2");
 			         entrances.add("carson_3");
 			         break;
-			case 7:  entrances.add("childrens_school_1");  //Children's School
+			case 19: entrances.add("chalkhill_1");  //Chalk Hill
+			         break;
+			case 20: entrances.add("cb_1");  //Charlie Brown's
+					 entrances.add("cb_2");
+			         break;
+			case 21: entrances.add("childrens_school_1");  //Children's School
 					 break;
-			case 8:  entrances.add("commons_1");  //Commons
+			case 22: entrances.add("path_143");  //Commencement Lake
+					 entrances.add("path_150");  
+					 entrances.add("path_147");  
+					 entrances.add("path_150");  
+			         break;
+			case 23: entrances.add("path_116");  //Commencement Lawn
+					 entrances.add("path_117");
+					 entrances.add("path_118");
+					 entrances.add("path_119");
+					 entrances.add("path_120");
+					 entrances.add("path_139");
+			         break;	 
+			case 24: entrances.add("commons_1");  //Commons
 			         entrances.add("commons_2");
 			         break;
-			case 9:  entrances.add("coop_1");  break;  //Cooperage 
-			case 10:  entrances.add("darwin_1");  //Darwin Hall
+			case 25:  entrances.add("coop_1");   //Cooperage 
+					  break;
+			case 26:  entrances.add("path_197");  //Cypress Drive Entrance
+			case 27:  entrances.add("darwin_1");  //Darwin Hall
 			          entrances.add("darwin_2");
 					  entrances.add("darwin_3");
 					  break; 
-			case 11:  entrances.add("environment");  //Environmental Tech Center
+			case 28:  entrances.add("environment");  //Environmental Tech Center
 			          break;
-			case 12:  entrances.add("person_1");  break;  //Person Theatre
-			case 13:  entrances.add("facilities_1");  break;  //Facilities
-			case 14:  entrances.add("field_house_1");  break;  //FieldHouse
-			case 15:  entrances.add("gmc_1");  break;  //Green Music Center
-			case 16:  entrances.add("pe_1");   //Gymnasium
+			case 29:  entrances.add("person_1");    //Everet B. Person Theatre
+			          break;
+			case 30:  entrances.add("facilities_1");    //Facilities
+					  break;
+			case 31:  entrances.add("field_house_1");    //Field House
+					  break;
+			case 32:  entrances.add("gmc_1");  //Green Music Center
+					  break;
+			case 33:  entrances.add("pe_1");   //Gymnasium
 			          entrances.add("pool_1");
 					  break;  
-			case 17:  entrances.add("parking_info_1");  break;  //Info Booth North
-			case 18:  entrances.add("path_303");  
+			case 34:  entrances.add("pool_1");  //Gymnasium Pool
+				      break;
+			case 35:  entrances.add("parking_info_1");   //Info Booth North
+					  break;
+			case 36:  entrances.add("path_303");  //Info Booth South
 			          entrances.add("path_305");  
 					  entrances.add("path_302");  
 					  entrances.add("path_300");
 					  entrances.add("path_310");  					  
-					  break;  //Info Booth South
-			case 19:  entrances.add("ives_1");  //Ives Hall
+					  break;  
+			case 37:  entrances.add("ives_1");  //Ives Hall
 					  entrances.add("ives_3");
 					  break;  
-			case 20:  entrances.add("path_150");  
+			case 39:  entrances.add("path_150");  //Lakes
 					  entrances.add("path_221");
-					  break;  //Lakes
-			case 21:  entrances.add("nichols_1");    //Nichols Hall
+					  break;  
+			case 41:  entrances.add("mccabe");  //McCabe Plaza
 					  break;
-			case 22:  entrances.add("bouj_1");  break;  //Observatory
-			case 23:  entrances.add("path_57");    //Parking Lot A
+			case 42:  entrances.add("nichols_1");    //Nichols Hall
+					  break;
+			case 43:  entrances.add("parking_info_1");  //North Entrance
+					  break;
+			case 44:  entrances.add("bouj_1");  //Observatory
+					  break;  
+			case 45:  entrances.add("pe_1");  //P.E.
+					  break;
+			case 46:  entrances.add("path_57");    //Parking Lot A
 					  entrances.add("path_56");
 					  entrances.add("path_91");
 					  entrances.add("path_92");
 					  entrances.add("path_93");
 					  break;
-			case 24:  entrances.add("path_368");  //Parking Lot C, D
+			case 47:  entrances.add("path_216");  //Parking Lot B
+					  entrances.add("path_261");
+					  break;
+			case 48:  entrances.add("path_368");  //Parking Lot C
 			          entrances.add("path_370");
-					  entrances.add("path_273");
-					  entrances.add("path_265");
+					  entrances.add("path_373");
 			          break;  
-			case 25:  entrances.add("path_207");  //Parking Lot E
+			case 49:  entrances.add("path_265");  //Parking Lot D
+					  entrances.add("path_273");
+					  entrances.add("path_274");
+					  entrances.add("path_287");
+					  entrances.add("path_288");
+					  entrances.add("path_313");
+					  entrances.add("path_373");
+					  break;
+			case 50:  entrances.add("path_207");  //Parking Lot E
 			          entrances.add("path_206");
 					  entrances.add("path_346");
 					  entrances.add("path_316");
 					  entrances.add("path_315");
 					  break;  
-			case 26:  entrances.add("tuscany_1");  break;  //Parking Lot F
-			case 27:  entrances.add("path_169");  //Parking Lot G
+			case 51:  entrances.add("tuscany_1");  //Parking Lot F
+					  break;
+			case 52:  entrances.add("path_169");  //Parking Lot G
                       entrances.add("path_172");
 					  break;  
-			case 28:  entrances.add("path_167");  //Parking Lot H
+			case 53:  entrances.add("path_167");  //Parking Lot H
 			          entrances.add("path_165");
 					  break;  
-			case 29:  entrances.add("path_291");
+			case 54:  entrances.add("path_291");  //Parking Lot J
 					  entrances.add("path_285");
 					  entrances.add("path_282");
-					  break;  //Parking Lot J
-			case 30:  entrances.add("path_183");  //Parking Lot Juniper Lane
+					  break;  
+			case 55:  entrances.add("path_183");  //Parking Lot Juniper Lane
                       entrances.add("path_185");
 					  break;  
-			case 31:  entrances.add("path_158");  break;  //Parking Lots L, M, N, O
-			case 32:  entrances.add("path_264");  break;  //Police and Parking Services
-			case 33:  entrances.add("rec_1");  break;  //Recreation Center
-			case 34:  entrances.add("salazar_1");  //Salazar Hall
+			case 56:
+			case 57:
+			case 58:
+			case 59:  entrances.add("path_158");  //Parking Lots L, M, N, O
+					  break;
+			case 60:  entrances.add("path_264");  //Police and Parking Services
+					  break;
+			case 61:  entrances.add("pub_1");  //Pub
+					  break;
+			case 62:  entrances.add("rec_1");  //Recreation Center
+					  break;
+			case 63:  entrances.add("salazar_1");  //Salazar Hall
 			          entrances.add("salazar_2");
 					  entrances.add("salazar_3");
 					  break;  
-			case 35:  entrances.add("sauv_1");  //Sauvignon Village
+			case 64:  entrances.add("sauv_1");  //Sauvignon Village
 			          entrances.add("sauv_4");
 					  entrances.add("sauv_5");
 					  entrances.add("sauv_3");
 					  entrances.add("sauv_2");
 					  break;  
-			case 36:  entrances.add("library_2");  //Schultz Info Center
+			case 65:  entrances.add("library_2");  //Schultz Info Center
 			          entrances.add("library_1");
 			          break;  
-			case 37:  entrances.add("path_175");  break;  //Seawolf Shops
-			case 38:  entrances.add("tuscany_1");  break;  //Seawolf Stadium
-			case 39:  entrances.add("stevenson_1");    //Stevenson Hall
+			case 66:  entrances.add("path_175");  //Seawolf Shops
+					  break;
+			case 67:  entrances.add("tuscany_1");  //Seawolf Stadium
+					  break;
+			case 68:  entrances.add("path_185");  //Soccer Field
+					  entrances.add("path_205");
+					  break;
+			case 69:  entrances.add("path_183");  //Softball Diamond
+					  break;
+			case 70:  entrances.add("south_1");  //South Entrance
+					  entrances.add("south_2");
+					  break;
+			case 71:  entrances.add("stevenson_1");    //Stevenson Hall
 					  entrances.add("stevenson_2");
 					  entrances.add("stevenson_3");
 					  entrances.add("stevenson_4");
 					  break;
-			case 40:  entrances.add("path_368");  //Student Center
+			case 72:  entrances.add("path_368");  //Student Center
 			          entrances.add("path_329");
 					  break;  
-			case 41:  entrances.add("health_1");   //Student Health Center
+			case 73:  entrances.add("health_1");   //Student Health Center
 					  entrances.add("health_2");
 					  break;
-			case 42:  entrances.add("su_1");  //Student Union
+			case 74:  entrances.add("su_1");  //Student Union
 					  entrances.add("pub_1");
 					  break;
-			case 43:  entrances.add("path_245");  
+			case 75:  entrances.add("courts_1");  //Tennis Courts
+					  break;
+			case 76:  entrances.add("path_245");  //Toast
 					  entrances.add("path_253");
-					  break; //Toast
-			case 44:  entrances.add("tuscany_1");  break; //Tuscany Village
-			case 45:  entrances.add("verdot_1");  break; //Verdot Village
-			case 46:  entrances.add("zin_1");           //Zinfandel Village
+					  break; 
+			case 77:  entrances.add("bouj_1");  //Tuscany Fountain
+					  break;
+			case 78:  //Tuscany Mail
+			case 79:  entrances.add("tuscany_1");  //Tuscany Village
+					  break;
+			case 80:  entrances.add("verdot_1");  //Verdot Village
+					  break;
+			case 81:  entrances.add("south_entrance");  //Vine Street Entrance
+					  break;
+			case 82:  entrances.add("zin_8");  //Vineyard
+					  break;
+			case 83:  entrances.add("zin_1");           //Zinfandel Village
 					  entrances.add("zin_2");
 					  entrances.add("zin_3");
 					  entrances.add("zin_4");
@@ -689,6 +796,14 @@ public class CustomView extends View {
 					  entrances.add("zin_7");
 					  entrances.add("zin_8");
 			          break;
+			case 84:                             //Zinfandel Cafeteria
+			case 86:                             //Zinfandel Marketplace
+			case 88:  entrances.add("path_33");  //Zinfandel Post Office
+					  break;                     
+			case 85:  entrances.add("path_34");  //Zinfandel Housing Office
+					  break;
+			case 87:  entrances.add("path_28");  //Zinfandel Pool
+					  break;
 			//case 47:  entrances.add("not available");  break;
 			default:  entrances.add("not available");  break;
 		}

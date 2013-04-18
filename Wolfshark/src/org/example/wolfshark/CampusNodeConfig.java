@@ -2394,13 +2394,31 @@ class CampusNodeConfig{
 		graph.setBufferXYAttributes(1690, 1249);
 		graph.addBufferNeighbor("courts_1", 21);
 		graph.pushNode();
+		
+		
+		graph.newNode();
+		graph.setBufferTextAttributes("path_183", null, "campus_se");
+		graph.setBufferXYAttributes(1689, 1350);
+		graph.addBufferNeighbor("path_182", 101);
+		graph.addBufferNeighbor("path_184", 21);
+		graph.addBufferNeighbor("path_185", 287);
+		graph.pushNode();
+		
+		
+		graph.newNode();
+		graph.setBufferTextAttributes("path_184", null, "campus_se");
+		graph.setBufferXYAttributes(1710, 1350);
+		graph.addBufferNeighbor("path_183", 21);
+		graph.addBufferNeighbor("path_195", 200);
+		graph.addBufferNeighbor("courts_1", 97);
+		graph.pushNode();
 
 
 		graph.newNode();
 		graph.setBufferTextAttributes("path_185", null, "campus_se");
 		graph.setBufferXYAttributes(1689, 1350);
-		graph.addBufferNeighbor("path_182", 101);
-		graph.addBufferNeighbor("path_185", 0);
+		graph.addBufferNeighbor("path_183", 287);
+		graph.addBufferNeighbor("path_186", 28);
 		graph.pushNode();
 
 
@@ -2414,9 +2432,9 @@ class CampusNodeConfig{
 
 		graph.newNode();
 		graph.setBufferTextAttributes("path_186", null, "campus_se");
-		graph.setBufferXYAttributes(1710, 1350);
-		graph.addBufferNeighbor("courts_1", 97);
-		graph.addBufferNeighbor("path_195", 170);
+		graph.setBufferXYAttributes(1392, 1333);
+		graph.addBufferNeighbor("path_185", 21);
+		graph.addBufferNeighbor("field_house_1", 26);
 		graph.pushNode();
 
 
@@ -3612,7 +3630,7 @@ class CampusNodeConfig{
 
 		graph.newNode();
 		graph.setBufferTextAttributes("path_152", null, "campus_nw");
-		graph.setBufferXYAttributes(1183, 1084);
+		graph.setBufferXYAttributes(1183, 1024);
 		graph.addBufferNeighbor("path_143", 75);
 		graph.addBufferNeighbor("path_153", 53);
 		graph.pushNode();

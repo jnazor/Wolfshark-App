@@ -15,6 +15,9 @@ public class NodeGraph{
 		NodeList = new ArrayList<Node>();
 	}
 
+	
+	
+	//??
 	public void makeNode(String name, String displayName, String mapID, int x, int y, String neighbor)
 	{
 		newNode();
@@ -25,6 +28,10 @@ public class NodeGraph{
 		
 	}
 	
+	
+	
+	//sets bufferNode to a the value of a new node 
+	//only if bufferNode == null
 	public boolean newNode()
 	{
 		if(bufferNode == null)
@@ -38,6 +45,9 @@ public class NodeGraph{
 		}
 	}
 	
+	
+	
+	//adds/pushes the calling node onto the network
 	public void pushNode()
 	{
 		for(int i=0;i<NodeList.size();i++)
@@ -57,6 +67,9 @@ public class NodeGraph{
 		bufferNode = null;
 	}
 	
+	
+	
+	//sets multiple node attributes: Name, DisplayText, and MapID
 	public void setBufferTextAttributes(String nameInput, String displayTextinpt, String mapIDInput)
 	{
 		if(bufferNode != null)
@@ -67,6 +80,9 @@ public class NodeGraph{
 		}
 	}
 	
+	
+	
+	//sets inX and inY values of the calling node
 	public void setBufferXYAttributes(int inX, int inY)
 	{
 		if(bufferNode != null)
@@ -75,6 +91,10 @@ public class NodeGraph{
 		}
 	}
 	
+	
+	
+	
+	//adds the name of a neighbor to the array of neighboring node names
 	public void addBufferNeighbor(String input)
 	{
 		if(bufferNode != null)
@@ -84,6 +104,11 @@ public class NodeGraph{
 		}
 	}
 	
+	
+	
+	
+	//adds the name and distance of a neighbor to the array of neighboring node
+	//names and distances
 	public void addBufferNeighbor(String input, int distance)
 	{
 		if(bufferNode != null)

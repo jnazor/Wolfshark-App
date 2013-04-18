@@ -29,6 +29,10 @@ public class Node {
     }
     
 
+    
+    
+    //sets the name of the of the node to that
+    //of the value of input.
     public void setName(String input)
     {
     	Name = input;
@@ -39,6 +43,11 @@ public class Node {
     	DisplayText = input;
     }
     
+    
+    
+    
+    //sets the x and y values of the node's location on the image/map
+    //inX >= 0 && inY >= 0
     public void setMapAnchor(int inX, int inY)
     {
     	mapAnchorX = inX;
@@ -50,6 +59,12 @@ public class Node {
     	MapID = input;
     }
     
+    
+    
+    
+    //Adds the name of a node and the distance between that node and the
+    //node that called this method to the arrays of neighboring node
+    //names and neighboring node distances.
     public void addNeighborNode(String neighborName, int neighborDistance)
     {
     	neighboringNodes.add(neighborName);
@@ -57,12 +72,23 @@ public class Node {
     	
     }
     
+    
+    
+    
+    //Adds the name of a node to the list of neighboring nodes
+    //to the node that called this method.
     public void addNeighborNode(String neighborName)
     {
     	neighboringNodes.add(neighborName);
     	
     }
     
+    
+    
+    
+    //Returns true if the given inputName (String name of
+    //a node) is included in the array of names of 
+    //neighboring nodes to the node that called this method
     public boolean isNeighbor(String inputName)
     {
     	for(int i=0;i<neighboringNodes.size();i++)
@@ -78,16 +104,15 @@ public class Node {
     
     
     
+    //returns true if the name of the node is included
+    //in the passed array of String values
+    //myList.size() > 0
     boolean contains(ArrayList<String> myList)
     {
-    	//boolean equalsNode = false;
-    	
-    	for(int i = 0; i < myList.size() /*&& !equalsNode*/; i++)
+    	for(int i = 0; i < myList.size(); i++)
     		if(Name.equals(myList.get(i)))
     			return true;
-    			//equalsNode = true;
-    	
-    	//return equalsNode;
+
     	return false;
     }
 
