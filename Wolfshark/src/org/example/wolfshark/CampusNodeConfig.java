@@ -1285,6 +1285,8 @@ class CampusNodeConfig{
 		graph.newNode();
 		graph.setBufferTextAttributes("path_195", null, "campus_se");
 		graph.setBufferXYAttributes(1710, 1520);
+		graph.addBufferNeighbor("path_196", 33);
+		graph.addBufferNeighbor("path_184", 170);
 		graph.pushNode();
 
 

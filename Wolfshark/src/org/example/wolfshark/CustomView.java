@@ -1,6 +1,9 @@
 package org.example.wolfshark;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Vector;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -186,6 +189,7 @@ public class CustomView extends View {
 		//Log.d("DEBUG","StartLocation: " + startLocation);
 		//Log.d("DEBUG","EndLocation: " + endLocation);
 		
+		/*  Depth-First Search version:
 		for(int i=0;i < network.NodeList.size();i++)
 		{
 			//Log.d("DEBUG","Start Search: " + network.NodeList.get(i).Name);
@@ -198,6 +202,95 @@ public class CustomView extends View {
 				break;
 			}
 		}
+		*/
+		
+		
+		
+		//Start Micah and Mark's Algorithm
+		Comparator<Node> nodeComparator = new DijkstraComparator();
+		PriorityQueue<Node> m = new PriorityQueue<Node>(10, nodeComparator);
+		Node start = null;
+		//Node end = null;   //Modified algorithm such that we don't need the end node when starting
+		Node current = null;
+		Vector<Node> visited = new Vector<Node>();
+		Vector<Node> unvisited = new Vector<Node>(network.NodeList);
+		
+
+		for (int d = 0; d < unvisited.size() && start == null; d++)
+		{
+			//if(unvisited.get(d).Name.equals(start_build))
+			if(unvisited.get(d).contains(startentrances) && start == null)
+			{
+				unvisited.get(d).DijkstraDistance = 0;
+				start = unvisited.get(d);
+				Log.d("DEBUG: ", "Dijk. Start Node: " + start.Name);
+			}
+			//We shouldn't need this area of code, but leaving it in just in case for now...
+			//if(unvisited.get(d).Name.equals(end_build))
+//			if(unvisited.get(d).contains(endentrances) && end == null)
+//			{
+//				end = unvisited.get(d); 
+//				Log.d("DEBUG: ", "Dijk. End Node: " + end.Name);
+//			}
+		}
+		
+		m.add(start);
+		int newDDistance = 0;  //moved declaration to here -- we should start thinking about minimizing memory usage.
+		
+		while(!m.isEmpty()){
+			current = m.poll(); // think its akin to pop.  ->  Yes it is, and returns the object being popped.
+			Node neighbor = new Node();
+			Log.d("CURRENT: ", current.Name);
+			
+			for(int n = 0; n < current.neighboringNodes.size() && n < current.neighboringNodeDistance.size(); n++){
+				neighbor = getNeighborNode_2(current.neighboringNodes.get(n), unvisited);
+				
+				if(unvisited.contains(neighbor)){
+					newDDistance = 0;
+					newDDistance = current.DijkstraDistance + current.neighboringNodeDistance.get(n);
+
+					
+					if(newDDistance < neighbor.DijkstraDistance){
+						neighbor.DijkstraDistance = newDDistance;
+						neighbor.DijkstraPrevious = current.Name;
+					}
+					m.add(neighbor);
+				}
+			}
+		
+			//Node popped = current;
+			unvisited.remove(current);
+			//visited.add(popped);
+			visited.add(current);
+			String nextNode = "";
+			
+			//if(current.Name.equals(end.Name))
+			//Modified to search for closest entrance to destination building
+			if(current.contains(endentrances))
+			{
+				// follow Dijksta's Previous to draw path.
+				//Log.d("DEBUG: ", "Size of vector visited: " + visited.size());
+				exploredNodes.add(current);
+				nextNode = current.DijkstraPrevious;
+				
+				while(!nextNode.equals(start.Name))
+				{
+					for(int i = 0; i < visited.size(); i++)
+					{
+						if(nextNode.equals(visited.get(i).Name))
+						{
+							exploredNodes.add(visited.get(i));
+							nextNode = visited.get(i).DijkstraPrevious;
+							visited.remove(i);
+							break;  //add to reduce calculations
+						}
+					}
+				}
+				
+				exploredNodes.add(visited.get(0));
+				m.clear();
+			}
+		}
 		
 
 		
@@ -205,7 +298,7 @@ public class CustomView extends View {
 		// this stubNodesExistDeleteThem method returns true upon finding a stub node, 
 		// false upon looping through all the nodes and not finding a stub node.
 		// this while loop will remove all stub nodes from the exploredNodes list
-		while(stubNodesExistDeleteThem() == true) {} //looping over method call, returns true if method is successful
+		//while(stubNodesExistDeleteThem() == true) {} //looping over method call, returns true if method is successful
 
 		
 		//still need to check this out...
@@ -552,6 +645,36 @@ public class CustomView extends View {
 		}
 		
 		return index;
+	}
+	
+	
+	
+	
+	private Node getNeighborNode(String string, Vector<Node> unvisited) {
+		Node neighbor = null;
+		for (int d = 0; d < unvisited.size(); d++){
+			//if(unvisited.get(d).Name.equals(start_build)){
+			if(unvisited.get(d).contains(startentrances)){
+				neighbor = unvisited.get(d);
+			}
+		}	
+		return neighbor;
+		// TODO Auto-generated method stub
+	}
+	
+	
+	
+	private Node getNeighborNode_2(String name, Vector<Node> unvisited)
+	{
+		Node localNode = null;
+		
+		for(int d = 0; d < unvisited.size(); d++)
+		{
+			if(unvisited.get(d).Name.equals(name))
+				localNode = unvisited.get(d);
+		}
+		
+		return localNode;
 	}
 	
 	

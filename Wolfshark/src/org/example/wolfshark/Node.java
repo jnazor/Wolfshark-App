@@ -15,6 +15,9 @@ public class Node {
 	//boolean room; //true of a room node
 	//boolean mapBoundry; //true if node leads to another section of map
 	
+	//For use with Dijkstra's Algorithm in CustomView.java
+	int DijkstraDistance;
+	String DijkstraPrevious;
 
     public Node(){
     	
@@ -26,6 +29,8 @@ public class Node {
     	neighboringNodes = new ArrayList<String>();
     	neighboringNodeDistance = new ArrayList<Integer>();
     	globalNodeID = 0;
+    	DijkstraDistance = 100000;
+    	DijkstraPrevious = "";
     }
     
 
@@ -93,7 +98,7 @@ public class Node {
     {
     	for(int i=0;i<neighboringNodes.size();i++)
     	{
-    		if(neighboringNodes.get(i) == inputName)
+    		if(neighboringNodes.get(i).equals(inputName))
     		{
     			return true;
     		}
