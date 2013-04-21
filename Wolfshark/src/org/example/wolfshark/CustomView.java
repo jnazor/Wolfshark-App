@@ -303,6 +303,7 @@ public class CustomView extends View {
 		
 		//still need to check this out...
 		//I believe we can adjust the code in onDraw() such that we don't need this loop or vistied. ~ Jolie
+		/*
 		for(int i=0;i<exploredNodes.size();i++)
 		{
 			for(int j=0;j<network.NodeList.size();j++)
@@ -313,7 +314,7 @@ public class CustomView extends View {
 				}
 			}
 		}
-		
+		*/
 		
 		Log.d("EXPLORED NODES: ", " ");
 		
@@ -354,26 +355,43 @@ public class CustomView extends View {
 		startCircle.addCircle(xcoord_primarray[start_pos] + mapX + offsetX, ycoord_primarray[start_pos] + mapY + offsetY, 15, Direction.CW);
 		endCircle.addCircle(xcoord_primarray[end_pos] + mapX + offsetX, ycoord_primarray[end_pos] + mapY + offsetY, 15, Direction.CW);
 		
-		if(vistiedList.size() >= 2)
+//		if(vistiedList.size() >= 2)
+//		{
+//			if(vistiedList.size() > 0)
+//			{
+//				thePath.moveTo(network.NodeList.get(vistiedList.get(1)).mapAnchorX+offsetX+mapX, 
+//					       network.NodeList.get(vistiedList.get(1)).mapAnchorY+offsetY+mapY);
+//			}
+//			for(int i=0;i<vistiedList.size();i++)
+//			{
+//				thePath.lineTo(network.NodeList.get(vistiedList.get(i)).mapAnchorX+offsetX+mapX, 
+//					       network.NodeList.get(vistiedList.get(i)).mapAnchorY+offsetY+mapY);
+//			}
+//			
+//		}
+		
+		
+		
+		if(exploredNodes.size() >= 2)
 		{
-			if(vistiedList.size() > 0)
-			{
-				thePath.moveTo(network.NodeList.get(vistiedList.get(1)).mapAnchorX+offsetX+mapX, 
-					       network.NodeList.get(vistiedList.get(1)).mapAnchorY+offsetY+mapY);
-			}
-			for(int i=0;i<vistiedList.size();i++)
-			{
-				thePath.lineTo(network.NodeList.get(vistiedList.get(i)).mapAnchorX+offsetX+mapX, 
-					       network.NodeList.get(vistiedList.get(i)).mapAnchorY+offsetY+mapY);
-			}
+			thePath.moveTo(exploredNodes.get(0).mapAnchorX+offsetX+mapX, exploredNodes.get(0).mapAnchorY+offsetY+mapY);
 			
+			for(int i = 1; i < exploredNodes.size(); i++)
+			{
+				thePath.lineTo(exploredNodes.get(i).mapAnchorX+offsetX+mapX, exploredNodes.get(i).mapAnchorY+offsetY+mapY);
+			}
+			//thePath.close();
 		}
-		for(int i=0;i<network.NodeList.size();i++)
-		{
+		
+		
+		
+		
+//		for(int i=0;i<network.NodeList.size();i++)
+//		{
 //			canvas.drawCircle(network.NodeList.get(i).mapAnchorX+offsetX+mapX, network.NodeList.get(i).mapAnchorY+offsetY+mapY, 5, dotPaint);
 //			canvas.drawText(network.NodeList.get(i).Name + " " + i, network.NodeList.get(i).mapAnchorX+offsetX+mapX+7, 
 //					network.NodeList.get(i).mapAnchorY+offsetY+mapY+7, textPaint);
-		}
+//		}
 		canvas.drawPath(thePath, pathPaint);
 		canvas.drawPath(startCircle, circlePaint);
 		canvas.drawPath(endCircle, circlePaint);

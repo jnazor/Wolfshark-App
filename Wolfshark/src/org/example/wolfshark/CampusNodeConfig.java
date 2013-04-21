@@ -3315,7 +3315,7 @@ class CampusNodeConfig{
 		graph.setBufferXYAttributes(397, 1423);
 		graph.addBufferNeighbor("path_261", 70);
 		graph.addBufferNeighbor("path_263", 19);
-		graph.addBufferNeighbor("path_274", 420);
+		graph.addBufferNeighbor("path_374", 155);
 		graph.pushNode();
 
 
