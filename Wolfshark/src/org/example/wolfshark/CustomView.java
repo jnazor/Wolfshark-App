@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Vector;
+import java.lang.Math.*;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -27,8 +28,8 @@ public class CustomView extends View {
 	Bitmap mapGraphic_2;
 	Bitmap mapGraphic_3;
 	Bitmap mapGraphic_4;
-	Path thePath;
-	Paint pathPaint;
+	Path[] thePath;
+	Paint[] pathPaint;
 	Path startCircle;
 	Path endCircle;
 	
@@ -71,6 +72,7 @@ public class CustomView extends View {
 	Paint dotPaint;
 	Paint textPaint;
 	Paint circlePaint;
+	int[] myColors = new int[3];
 	
 	NodeGraph network;
 	CampusNodeConfig config;
@@ -82,8 +84,10 @@ public class CustomView extends View {
 	boolean endLocationFound = false;
 	
 	ArrayList<Integer> vistiedList = new ArrayList<Integer>();
-	ArrayList<Integer> explored = new ArrayList<Integer>();
+	//ArrayList<Integer> explored = new ArrayList<Integer>();
 	ArrayList<Node> exploredNodes = new ArrayList<Node>();
+	ArrayList<ArrayList<Node> > mypaths = new ArrayList<ArrayList<Node> >();
+	ArrayList<ArrayList<Node> > topThree = new ArrayList<ArrayList<Node> >();
 	
 	ArrayList<String> startentrances = new ArrayList<String>();
 	ArrayList<String> endentrances = new ArrayList<String>();
@@ -144,6 +148,11 @@ public class CustomView extends View {
 		textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		textPaint.setColor(Color.RED);
 		textPaint.setTextSize(10);
+		/*
+		myColors[0] = Color.BLUE;
+		myColors[1] = Color.CYAN;
+		myColors[2] = Color.YELLOW;
+		*/
 		
 		Log.d("GOT","HERE2");
 		
@@ -158,7 +167,7 @@ public class CustomView extends View {
 		metrics = getResources().getDisplayMetrics();
 		
 		imgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		thePath = new Path();
+		thePath = new Path[3];
 		startCircle = new Path();
 		endCircle = new Path();
 		
@@ -174,11 +183,26 @@ public class CustomView extends View {
 //		pathPaint.setStrokeWidth(3);
 //		pathPaint.setStyle(Paint.Style.STROKE);
 		
+		thePath = new Path[3];
+		thePath[0] = new Path();
+		thePath[1] = new Path();
+		thePath[2] = new Path();
 		
-		pathPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		pathPaint.setColor(Color.BLUE);
-		pathPaint.setStrokeWidth(3);
-		pathPaint.setStyle(Paint.Style.STROKE);
+		pathPaint = new Paint[3];
+		pathPaint[0] = new Paint(Paint.ANTI_ALIAS_FLAG);
+		pathPaint[0].setColor(Color.BLUE);
+		pathPaint[0].setStrokeWidth(3);
+		pathPaint[0].setStyle(Paint.Style.STROKE);
+		
+		pathPaint[1] = new Paint(Paint.ANTI_ALIAS_FLAG);
+		pathPaint[1].setColor(Color.CYAN);
+		pathPaint[1].setStrokeWidth(3);
+		pathPaint[1].setStyle(Paint.Style.STROKE);
+		
+		pathPaint[2] = new Paint(Paint.ANTI_ALIAS_FLAG);
+		pathPaint[2].setColor(Color.YELLOW);
+		pathPaint[2].setStrokeWidth(3);
+		pathPaint[2].setStyle(Paint.Style.STROKE);
 		
 		coord_x = (mapGraphic_1.getWidth() - 1200) * (400 / mapGraphic_1.getDensity());
 		coord_y = (mapGraphic_1.getHeight() - 1200) * (400 / mapGraphic_1.getDensity());
@@ -205,7 +229,7 @@ public class CustomView extends View {
 		*/
 		
 		
-		
+		/*
 		//Start Micah and Mark's Algorithm
 		Comparator<Node> nodeComparator = new DijkstraComparator();
 		PriorityQueue<Node> m = new PriorityQueue<Node>(10, nodeComparator);
@@ -291,8 +315,40 @@ public class CustomView extends View {
 				m.clear();
 			}
 		}
+		*/
 		
-
+		
+		//Attempting to find the top three shortest paths:
+		topThree.add(DijkstrasAlgorithm(/*i*/));
+		
+		
+		/*USED IN VERSION THAT FINDS A PATH FROM ALL STARTING BUILDING ENTRANCES  *****************
+		for(int i = 0; i < startentrances.size(); i++)
+			mypaths.add(DijkstrasAlgorithm(i));
+		
+		int local_Dijk = 10000000;
+		int index = 0;
+		int compare_Dijk = 0;
+		for(int j = 0; j < startentrances.size() && j < 3; j++)
+		{
+			for(int n = 0; n < mypaths.size(); n++)
+			{
+				compare_Dijk = mypaths.get(n).get(0).DijkstraDistance;
+				if(compare_Dijk < local_Dijk)
+				{
+					index = n;
+					local_Dijk = compare_Dijk;
+				}
+			}
+			local_Dijk = 10000000;
+			compare_Dijk = 0;
+			topThree.add(mypaths.remove(index));
+		}
+		
+		
+		for(int k = 0; k < topThree.size(); k++)
+			Log.d("DIJK_DISTANCE: ", k + ": " + topThree.get(k).get(0).DijkstraDistance);
+        ******************************************************************************************/
 		
 		// given the algorithm, a stubNode is a node that only has one neighbor
 		// this stubNodesExistDeleteThem method returns true upon finding a stub node, 
@@ -348,7 +404,9 @@ public class CustomView extends View {
 		canvas.drawBitmap(mapGraphic_3, mapX + offsetX, mapY + offsetY + mapGraphic_1.getHeight(), imgPaint);
 		canvas.drawBitmap(mapGraphic_4, mapX + offsetX + mapGraphic_1.getWidth(), mapY + offsetY + mapGraphic_2.getHeight(), imgPaint);
 		
-		thePath.reset();
+		thePath[0].reset();
+		thePath[1].reset();
+		thePath[2].reset();
 		startCircle.reset();
 		endCircle.reset();
 		
@@ -371,16 +429,22 @@ public class CustomView extends View {
 //		}
 		
 		
-		
-		if(exploredNodes.size() >= 2)
+		for(int j = topThree.size() - 1; j >= 0; j--)
 		{
-			thePath.moveTo(exploredNodes.get(0).mapAnchorX+offsetX+mapX, exploredNodes.get(0).mapAnchorY+offsetY+mapY);
+			exploredNodes = topThree.get(j);
 			
-			for(int i = 1; i < exploredNodes.size(); i++)
+			if(exploredNodes.size() >= 2)
 			{
-				thePath.lineTo(exploredNodes.get(i).mapAnchorX+offsetX+mapX, exploredNodes.get(i).mapAnchorY+offsetY+mapY);
+				thePath[j].moveTo(exploredNodes.get(0).mapAnchorX+offsetX+mapX, exploredNodes.get(0).mapAnchorY+offsetY+mapY);
+				
+				for(int i = 1; i < exploredNodes.size(); i++)
+				{
+					thePath[j].lineTo(exploredNodes.get(i).mapAnchorX+offsetX+mapX, exploredNodes.get(i).mapAnchorY+offsetY+mapY);
+				}
+				//thePath.close();  Note:  DON'T NEED THIS!!  (Has already been tried.)
 			}
-			//thePath.close();
+			
+			canvas.drawPath(thePath[j], pathPaint[j]);
 		}
 		
 		
@@ -392,7 +456,7 @@ public class CustomView extends View {
 //			canvas.drawText(network.NodeList.get(i).Name + " " + i, network.NodeList.get(i).mapAnchorX+offsetX+mapX+7, 
 //					network.NodeList.get(i).mapAnchorY+offsetY+mapY+7, textPaint);
 //		}
-		canvas.drawPath(thePath, pathPaint);
+		//canvas.drawPath(thePath, pathPaint);
 		canvas.drawPath(startCircle, circlePaint);
 		canvas.drawPath(endCircle, circlePaint);
 		
@@ -409,6 +473,39 @@ public class CustomView extends View {
 		
 		//Log.d("TIMING","draw execution time: "+ (endTime - startTime));
 	
+	}
+	
+	
+	
+	public boolean contains_start (int X, int Y)
+	{
+		Log.d("DEBUG: ", "Inside contains_start()");
+		int deltaX = X - (xcoord_primarray[start_pos] + mapX + offsetX);
+		int deltaY = Y - (ycoord_primarray[start_pos] + mapY + offsetY);
+		double dist = Math.sqrt (deltaX * deltaX + deltaY * deltaY);
+		
+//		Log.d("X: ", "" + X);
+//		Log.d("Y: ", "" + Y);
+//		Log.d("DELTA X: ", "" + deltaX);
+//		Log.d("DELTA Y: ", "" + deltaY);
+//		Log.d("ADJUST X: ", "" +(xcoord_primarray[start_pos] + mapX + offsetX));
+//		Log.d("ADJUST Y: ", "" +(ycoord_primarray[start_pos] + mapY + offsetY));
+//		Log.d("DIST: ", "" + dist);
+		
+		return dist <= 8;
+	}
+	
+	
+	
+	
+	public boolean contains_end (int X, int Y)
+	{
+		Log.d("DEBUG: ", "Inside contains_end()");
+		int deltaX = X - (xcoord_primarray[end_pos] + mapX + offsetX);
+		int deltaY = Y - (ycoord_primarray[end_pos] + mapY + offsetY);
+		double dist = Math.sqrt (deltaX * deltaX + deltaY * deltaY);
+		
+		return dist <= 8;
 	}
 	
 	
@@ -613,6 +710,103 @@ public class CustomView extends View {
 
 			}
 		}
+	}
+	
+	
+	
+	
+	public ArrayList<Node> DijkstrasAlgorithm(/*int index*/)
+	{
+		Comparator<Node> nodeComparator = new DijkstraComparator();
+		PriorityQueue<Node> m = new PriorityQueue<Node>(10, nodeComparator);
+		Node start = null;
+		//Node end = null;   //Modified algorithm such that we don't need the end node when starting
+		Node current = null;
+		Vector<Node> visited = new Vector<Node>();
+		Vector<Node> unvisited = new Vector<Node>(network.NodeList);
+		ArrayList<Node> myexplored = new ArrayList<Node>();
+		
+		
+		for (int d = 0; d < unvisited.size() && start == null; d++)
+		{
+			//if(unvisited.get(d).Name.equals(start_build))
+			//switch out the current if statement with the one below this comment
+			//to use the version that finds a path from each starting building entrance
+			//if(unvisited.get(d).Name.equals(startentrances.get(index)) && start == null)
+			if(unvisited.get(d).contains(startentrances) && start == null)
+			{
+				unvisited.get(d).DijkstraDistance = 0;
+				start = unvisited.get(d);
+				Log.d("DEBUG: ", "Dijk. Start Node: " + start.Name);
+			}
+			//We shouldn't need this area of code, but leaving it in just in case for now...
+			//if(unvisited.get(d).Name.equals(end_build))
+//			if(unvisited.get(d).contains(endentrances) && end == null)
+//			{
+//				end = unvisited.get(d); 
+//				Log.d("DEBUG: ", "Dijk. End Node: " + end.Name);
+//			}
+		}
+		
+		m.add(start);
+		int newDDistance = 0;  //moved declaration to here -- we should start thinking about minimizing memory usage.
+		
+		while(!m.isEmpty()){
+			current = m.poll(); // think its akin to pop.  ->  Yes it is, and returns the object being popped.
+			Node neighbor = new Node();
+			Log.d("CURRENT: ", current.Name);
+			
+			for(int n = 0; n < current.neighboringNodes.size() && n < current.neighboringNodeDistance.size(); n++){
+				neighbor = getNeighborNode_2(current.neighboringNodes.get(n), unvisited);
+				
+				if(unvisited.contains(neighbor)){
+					newDDistance = 0;
+					newDDistance = current.DijkstraDistance + current.neighboringNodeDistance.get(n);
+
+					
+					if(newDDistance < neighbor.DijkstraDistance){
+						neighbor.DijkstraDistance = newDDistance;
+						neighbor.DijkstraPrevious = current.Name;
+					}
+					m.add(neighbor);
+				}
+			}
+		
+			//Node popped = current;
+			unvisited.remove(current);
+			//visited.add(popped);
+			visited.add(current);
+			String nextNode = "";
+			
+			//if(current.Name.equals(end.Name))
+			//Modified to search for closest entrance to destination building
+			if(current.contains(endentrances))
+			{
+				// follow Dijksta's Previous to draw path.
+				//Log.d("DEBUG: ", "Size of vector visited: " + visited.size());
+				myexplored.add(current);
+				nextNode = current.DijkstraPrevious;
+				
+				while(!nextNode.equals(start.Name))
+				{
+					for(int i = 0; i < visited.size(); i++)
+					{
+						if(nextNode.equals(visited.get(i).Name))
+						{
+							myexplored.add(visited.get(i));
+							nextNode = visited.get(i).DijkstraPrevious;
+							visited.remove(i);
+							break;  //add to reduce calculations
+						}
+					}
+				}
+				
+				myexplored.add(visited.get(0));
+				m.clear();
+			}
+		}	
+		
+		return myexplored;
 	}
 	
 	

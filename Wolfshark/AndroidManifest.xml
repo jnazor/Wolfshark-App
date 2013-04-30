@@ -95,6 +95,16 @@
             </intent-filter>
         </activity>
         
+        <activity
+            android:name="org.example.wolfshark.FloorPlanActivity"
+            android:label="@string/edit_favs" >
+            <intent-filter>
+                <action android:name="android.intent.action.FLOORPLANACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
     </application>
 
 </manifest>
