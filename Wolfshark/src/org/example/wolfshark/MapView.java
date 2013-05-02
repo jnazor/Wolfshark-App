@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 //import android.util.Log;
+import android.util.Log;
 import android.view.View;
 import android.content.SharedPreferences;
 
@@ -35,6 +36,8 @@ public class MapView extends View {
 	Bitmap mapGraphic_3;
 	Bitmap mapGraphic_4;
 	
+	private int[] xcoord_primarray;
+	private int[] ycoord_primarray;	
 	
 	int map1width;
 	int map1height;
@@ -66,6 +69,7 @@ public class MapView extends View {
 
 	int startX;
 	int startY;
+	int building_num = 0;
 	
 	boolean moved = false;
 	
@@ -89,6 +93,9 @@ public class MapView extends View {
 		
 		imgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		thePath = new Path();
+		
+		xcoord_primarray = getResources().getIntArray(R.array.xcoord_array);
+		ycoord_primarray = getResources().getIntArray(R.array.ycoord_array);
 		
 		
         /*
@@ -158,160 +165,35 @@ public class MapView extends View {
 		
 		
 		thePath.reset();
-		/*
-		if(vistiedList.size() >= 2)
-		{
-			if(vistiedList.size() > 0)
-			{
-				thePath.moveTo(network.NodeList.get(vistiedList.get(1)).mapAnchorX+offsetX+mapX, 
-					       network.NodeList.get(vistiedList.get(1)).mapAnchorY+offsetY+mapY);
-			}
-			for(int i=0;i<vistiedList.size();i++)
-			{
-				thePath.lineTo(network.NodeList.get(vistiedList.get(i)).mapAnchorX+offsetX+mapX, 
-					       network.NodeList.get(vistiedList.get(i)).mapAnchorY+offsetY+mapY);
-			}
-			
-			}
-		for(int i=0;i<network.NodeList.size();i++)
-		{
-			canvas.drawCircle(network.NodeList.get(i).mapAnchorX+offsetX+mapX, network.NodeList.get(i).mapAnchorY+offsetY+mapY, 5, dotPaint);
-			canvas.drawText(network.NodeList.get(i).Name + " " + i, network.NodeList.get(i).mapAnchorX+offsetX+mapX+7, 
-					network.NodeList.get(i).mapAnchorY+offsetY+mapY+7, textPaint);
-		}
-		canvas.drawPath(thePath, pathPaint);
-		*/
-	}
-	/*
-	private void recursiveSearch(int input)
-	{
-		explored.add(input);
-		for(int i=0; i < network.NodeList.get(input).neighboringNodes.size();i++)
-		{
-			for(int j=0;j<network.NodeList.size();j++)
-			{
-				if(network.NodeList.get(j).Name == network.NodeList.get(input).neighboringNodes.get(i))
-				{
-					if(explored.contains(j) == false)
-					{
-						recursiveSearch(j);
-					}
-					else
-					{
-						for(int l=0;l<vistiedList.size();l++)
-						{
-							if(j == vistiedList.get(l));
-							{
-								//vistiedList.remove(l);
-							}
-						}
-					}
-				}
-			}
-		}
-	} 
-	*/
-	
-	/*
-	private void depthFirstSearch(int input)
-	{
-		explored.add(input);
-		int numConnected = network.NodeList.get(input).neighboringNodes.size();
-		for(int i=0;i<network.NodeList.get(input).neighboringNodes.size();i++)
-		{
-			if(explored.contains(network.NodeList.get(input).neighboringNodes.get(i)) == true)
-			{
-				numConnected--;
-			}
-		}
-		for(int i=0;i<network.NodeList.get(input).neighboringNodes.size();i++)
-		{
-			boolean doesContain = false;
-			for(int j=0;j<network.NodeList.size();j++)
-			{
-				if(network.NodeList.get(j).Name == network.NodeList.get(input).neighboringNodes.get(i))
-				{
-					if(explored.contains(i) == true)
-					{
-						doesContain = true;
-					}
-				}
-			}
-			
-
-			if(doesContain == false)
-			{
-				for(int q=0;q<network.NodeList.size();q++)
-				{
-					if(network.NodeList.get(q).Name == network.NodeList.get(input).neighboringNodes.get(i))
-					{
-						depthFirstSearch(q);
-					}
-				}
-			}
-		}
-		return;
-	}
-	
-	*/
-	/*
-	private void depthFirstSearch(Node inputNode)
-	{
-		exploredNodes.add(inputNode);
-		if(inputNode.Name.contains(endLocation))
-		{
-			return;
-		}
-		for(int i=0;i<inputNode.neighboringNodes.size();i++)
-		{
-			for(int j=0;j<network.NodeList.size();j++)
-			{
-				if(inputNode.neighboringNodes.get(i) == network.NodeList.get(j).Name)
-				{				
-                    if (exploredNodes.contains(network.NodeList.get(j)))
-                    {
-                    	continue;
-                    }
-					depthFirstSearch(network.NodeList.get(j));
-				}
-			}
-		}
 		
 	}
-	*/
-	/*
-	private void depthFirstSearchComplete(Node inputNode)
+	
+	
+	
+
+	public boolean contains (int X, int Y, int index)
 	{
-
-		if(inputNode.Name.contains(endLocation))
-		{
-			endLocationFound = true;
-		}
-		if(exploredNodes.contains(inputNode) == false)
-		{
-			exploredNodes.add(inputNode);
-		}
-		else if(exploredNodes.contains(inputNode) == true)
-		{
-			return;
-		}
-		if(endLocationFound == true)
-		{
-			return;
-		}
-		for(int i=0;i<inputNode.neighboringNodes.size();i++)
-		{
-			for(int j=0;j<network.NodeList.size();j++)
-			{
-				if(inputNode.neighboringNodes.get(i) == network.NodeList.get(j).Name) 
-   				{
-					depthFirstSearch(network.NodeList.get(j));
-				}
-
-			}
-		}
+		//Log.d("DEBUG: ", "Inside contains_start()");
+		int deltaX = X - (xcoord_primarray[index] + mapX + offsetX);
+		int deltaY = Y - (ycoord_primarray[index] + mapY + offsetY);
+		double dist = Math.sqrt (deltaX * deltaX + deltaY * deltaY);
+		
+		if( dist <= 30)
+			building_num = index;
+		
+		return dist <= 30;
 	}
-	*/
+	
+	
+	
+	public int getBuilding_Num()
+	{
+		return building_num;
+	}
+	
+	
+	
+
 	public void moveMap(int inputX, int inputY)
 	{
 
@@ -327,50 +209,6 @@ public class MapView extends View {
 	{
 		return mapY;
 	}
-	/*
-	private boolean containsByName(String Input)
-	{
-		for(int j=0; j<exploredNodes.size();j++)
-		{
-			if(exploredNodes.get(j).Name.contains(Input) == true)
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-	*/
 	
-	/*
-	private boolean stubNodesExistDeleteThem()
-	{
-		int connectedNodes = 0;
-		boolean removedNodes = false;
-		
-		for(int i=0;i<exploredNodes.size();i++)
-		{
-			connectedNodes = 0;
-			
-			for(int j=0; j<exploredNodes.get(i).neighboringNodes.size();j++)
-			{
-				if(containsByName(exploredNodes.get(i).neighboringNodes.get(j)) == true )
-				{
-					connectedNodes++;
-				}
-			}
-			if(connectedNodes == 1 && exploredNodes.get(i).Name.contains(startLocation) == false &&	exploredNodes.get(i).Name.contains(endLocation) == false)
-			{
-				exploredNodes.remove(i);
-				return true;
-			}
-			
-		}
-		
-
-		return false;
-		
-		
-	}
-	*/
 }
 

@@ -9,9 +9,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 
-public class FloorPlanActivity extends Activity {
+public class FloorSwipeActivity extends Activity {
 	
-	FloorPlanView mainView;
+	FloorSwipeView mainView;
 	
 	public static final String FLOORPREFS_FILE = "FloorPrefs";
 	SharedPreferences floorPrefs;
@@ -26,14 +26,16 @@ public class FloorPlanActivity extends Activity {
 		floorPrefs = getSharedPreferences(FLOORPREFS_FILE,0);
 		pos = floorPrefs.getInt("position", 0);
 		
+		//If the value of 'pos' is not one of the buildings that has floor plans in this app.
+		//then restart MapActivity.
 		if( !(pos == 5 || pos == 27 || pos == 37 || pos == 42 || pos == 63 || pos == 71))
 		{
-		    Intent mapPath = new Intent(FloorPlanActivity.this, MapPathActivity.class);
-		    startActivity(mapPath);
+		    Intent map = new Intent(FloorSwipeActivity.this, MapActivity.class);
+		    startActivity(map);
 		}
 		
 
-		mainView = new FloorPlanView(this);
+		mainView = new FloorSwipeView(this);
 		
 		mainView.setOnTouchListener(new View.OnTouchListener(){
 			

@@ -492,7 +492,7 @@ public class CustomView extends View {
 //		Log.d("ADJUST Y: ", "" +(ycoord_primarray[start_pos] + mapY + offsetY));
 //		Log.d("DIST: ", "" + dist);
 		
-		return dist <= 8;
+		return dist <= 30;
 	}
 	
 	
@@ -505,7 +505,7 @@ public class CustomView extends View {
 		int deltaY = Y - (ycoord_primarray[end_pos] + mapY + offsetY);
 		double dist = Math.sqrt (deltaX * deltaX + deltaY * deltaY);
 		
-		return dist <= 8;
+		return dist <= 30;
 	}
 	
 	

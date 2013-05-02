@@ -105,6 +105,16 @@
             </intent-filter>
         </activity>
         
+        <activity
+            android:name="org.example.wolfshark.FloorSwipeActivity"
+            android:label="@string/edit_favs" >
+            <intent-filter>
+                <action android:name="android.intent.action.FLOORSWIPEACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
     </application>
 
 </manifest>

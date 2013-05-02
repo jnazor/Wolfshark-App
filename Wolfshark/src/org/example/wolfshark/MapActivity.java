@@ -2,6 +2,7 @@ package org.example.wolfshark;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -15,11 +16,17 @@ public class MapActivity extends Activity
 {
 	MapView mainView;
 	
+	public static final String FLOORPREFS_FILE = "FloorPrefs";
+	SharedPreferences floorPrefs;
+	SharedPreferences.Editor floorEditor;	
 
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		
+		floorPrefs = getSharedPreferences(FLOORPREFS_FILE,  MODE_PRIVATE);
+		floorEditor = floorPrefs.edit();
 		
 
 		mainView = new MapView(this);
@@ -52,6 +59,23 @@ public class MapActivity extends Activity
 						
 						mainView.startX = startX;
 						mainView.startY = startY;
+						
+						//Art Building:  5		Darwin Hall:  27
+						//Ives Hall:	37		Nichols Hall: 42
+						//Salazar Hall:  63		Stevenson Hall: 71
+						if (mainView.contains(startX, startY, 5) ||
+							mainView.contains(startX, startY, 27) ||
+							mainView.contains(startX, startY, 37) ||
+							mainView.contains(startX, startY, 42) ||
+							mainView.contains(startX, startY, 63) ||
+							mainView.contains(startX, startY, 71) )
+						{
+							floorEditor.putInt("build_num", mainView.getBuilding_Num());
+							floorEditor.commit();
+							
+							Intent floorSwipe = new Intent(MapActivity.this, FloorSwipeActivity.class);
+							startActivity(floorSwipe);
+						}
 						
 						break;
 					case MotionEvent.ACTION_POINTER_DOWN:
@@ -92,24 +116,5 @@ public class MapActivity extends Activity
 	public void onNewPath(View v)
 	{ }
 	
-	/*
-	public boolean onCreateOptionsMenu(Menu menu) {
-    	MenuInflater inflater = getMenuInflater();
-    	inflater.inflate(R.menu.mapmenu, menu);
-    	return true;
-    }
-	
-	public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-        	case R.id.back:
-    		Intent back = new Intent (this, LocateInputActivity.class);
-    		startActivity(back);
-    		break;
-    		default:
-    			return super.onOptionsItemSelected(item);
-        }
-    	return onOptionsItemSelected(item);
-   }
-   */
+
 }
