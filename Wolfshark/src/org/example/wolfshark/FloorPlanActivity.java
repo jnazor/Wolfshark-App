@@ -35,7 +35,24 @@ public class FloorPlanActivity extends Activity {
 
 		mainView = new FloorPlanView(this);
 		
+		mainView.setOnLongClickListener(new View.OnLongClickListener() {
+			  public boolean onLongClick(View view) {
+			    
+				  
+				  mainView.superfloorNum++;
+				  mainView.setMaps(mainView.pos, mainView.superfloorNum);
+				  mainView.invalidate();
+				  
+				  
+			    return true;  // avoid extra click events
+			  }
+			});
+		
+		mainView.setLongClickable(true);
+		
 		mainView.setOnTouchListener(new View.OnTouchListener(){
+			
+			
 			
 			@Override
 			public boolean onTouch(View v, MotionEvent event){

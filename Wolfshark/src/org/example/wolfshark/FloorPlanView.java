@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.Log;
@@ -33,6 +34,7 @@ public class FloorPlanView extends View {
 	
 	Path circlePath;
 	Paint imgPaint;
+	int superfloorNum;
 	
 	Bitmap floor_nw;
 	Bitmap floor_ne;
@@ -51,7 +53,8 @@ public class FloorPlanView extends View {
 	{
 		super(context);
 		
-		options.inDensity =  getResources().getDisplayMetrics().densityDpi; 
+		options.inDensity =  getResources().getDisplayMetrics().densityDpi*2; 
+		this.setBackgroundColor(Color.GRAY);
 		
 		//need to get value for switch statement - comes from value of building that was clicked on.
 		
@@ -61,7 +64,9 @@ public class FloorPlanView extends View {
 		
 		Log.d("ROOMNUM: ", roomNum);
 		
-		setMaps(pos);
+		superfloorNum = floorPrefs.getInt("floor",0);
+		
+		setMaps(pos,superfloorNum);
 		
 		map1width = floor_nw.getWidth();
 		map1height = floor_nw.getHeight();
@@ -78,8 +83,9 @@ public class FloorPlanView extends View {
 		canvas.drawBitmap(floor_se, (mapX + offsetX + map1width)/* + (map1width * 2)*/, mapY + offsetY + map1height, imgPaint);	
 	}
 	
-	private void setMaps(int position)
+	public void setMaps(int position, int floorNum)
 	{
+		floorNum = floorPrefs.getInt("floor",0);
 		switch(position)
 		{
 			case 5:  //Art Building
@@ -89,7 +95,7 @@ public class FloorPlanView extends View {
 				floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.art_se, options);
 				break;
 			case 27:  //Darwin  
-				if(Integer.parseInt(roomNum.toString()) < 100)
+				if(floorNum == 0)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_basemtnw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_basemtne, options);
@@ -97,7 +103,7 @@ public class FloorPlanView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_basemtse, options);
 				}
 				
-				else if(Integer.parseInt(roomNum.toString()) < 200)
+				else if(floorNum == 1)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_onenw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_onene, options);
@@ -105,7 +111,7 @@ public class FloorPlanView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_onese, options);
 				}
 				
-				else if(Integer.parseInt(roomNum.toString()) < 300)
+				else if(floorNum == 2)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_twonw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_twone, options);
@@ -113,7 +119,7 @@ public class FloorPlanView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_twose, options);
 				}
 				
-				else if(Integer.parseInt(roomNum.toString()) > 299)
+				else if(floorNum == 3)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_threenw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.darwin_threene, options);
@@ -124,7 +130,7 @@ public class FloorPlanView extends View {
 				break;
 				
 			case 37:  //Ives
-				if(Integer.parseInt(roomNum.toString()) < 100)
+				if(floorNum == 0)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.ives_onenw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.ives_onene, options);
@@ -132,7 +138,7 @@ public class FloorPlanView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.ives_onese, options);
 				}
 				
-				else if(Integer.parseInt(roomNum.toString()) < 200)
+				else if(floorNum == 1)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.ives_twonw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.ives_twone, options);
@@ -140,7 +146,7 @@ public class FloorPlanView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.ives_twose, options);
 				}
 				
-				else if(Integer.parseInt(roomNum.toString()) > 199)
+				else if(floorNum == 2)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.ives_threenw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.ives_threene, options);
@@ -150,7 +156,7 @@ public class FloorPlanView extends View {
 				
 				break;
 			case 42:  //Nichols
-			    if(Integer.parseInt(roomNum.toString()) < 200)
+			    if(floorNum == 0)
 			    {
 			        floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.nichols_onenw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.nichols_onene, options);
@@ -158,7 +164,7 @@ public class FloorPlanView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.nichols_onese, options);
 			    }
 			    
-			    else if (Integer.parseInt(roomNum.toString()) < 300)
+			    else if (floorNum == 1)
 			    {
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.nichols_twonw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.nichols_twone, options);
@@ -166,7 +172,7 @@ public class FloorPlanView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.nichols_twose, options);
 			    }
 			    
-			    else if (Integer.parseInt(roomNum.toString()) > 299)
+			    else if (floorNum == 2)
 			    {
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.nichols_threenw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.nichols_threene, options);
@@ -176,7 +182,7 @@ public class FloorPlanView extends View {
 			    
 				break;
 			case 63:  //Salazar
-				if(Integer.parseInt(roomNum.toString()) < 2000)
+				if(floorNum == 0)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.salazar_onenw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.salazar_onene, options);
@@ -184,7 +190,7 @@ public class FloorPlanView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.salazar_onese, options);
 				}
 				
-				else if(Integer.parseInt(roomNum.toString()) > 1999)
+				else if(floorNum == 1)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.salazar_twonw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.salazar_twone, options);
@@ -194,7 +200,7 @@ public class FloorPlanView extends View {
 				
 				break;
 			case 71:  //Stevenson
-				if(Integer.parseInt(roomNum.toString()) < 2000)
+				if(floorNum == 0)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.stevenson_onenw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.stevenson_onene, options);
@@ -202,7 +208,7 @@ public class FloorPlanView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.stevenson_onese, options);
 				}
 				
-				else if(Integer.parseInt(roomNum.toString()) < 3000)
+				else if(floorNum == 1)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.stevenson_twonw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.stevenson_twone, options);
@@ -210,7 +216,7 @@ public class FloorPlanView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.stevenson_twose, options);
 				}
 				
-				else if(Integer.parseInt(roomNum.toString()) > 2999)
+				else if(floorNum == 2)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.stevenson_threenw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.stevenson_threene, options);
@@ -227,6 +233,8 @@ public class FloorPlanView extends View {
 
 
 	}
+	
+	
 	
 	public int getMapX()
 	{

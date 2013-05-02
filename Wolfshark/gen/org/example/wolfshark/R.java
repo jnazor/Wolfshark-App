@@ -9,14 +9,20 @@ package org.example.wolfshark;
 
 public final class R {
     public static final class array {
-        public static final int art_rooms=0x7f040004;
+        public static final int art_floors=0x7f040008;
+        public static final int art_rooms=0x7f04000a;
         public static final int buildings_array=0x7f040000;
         public static final int darwin_array=0x7f040001;
-        public static final int darwin_rooms=0x7f040005;
-        public static final int ives_rooms=0x7f040006;
-        public static final int nichols_rooms=0x7f040007;
-        public static final int salazar_rooms=0x7f040008;
-        public static final int stevenson_rooms=0x7f040009;
+        public static final int darwin_floors=0x7f040004;
+        public static final int darwin_rooms=0x7f04000b;
+        public static final int ives_floors=0x7f040005;
+        public static final int ives_rooms=0x7f04000c;
+        public static final int nichols_floors=0x7f040009;
+        public static final int nichols_rooms=0x7f04000d;
+        public static final int salazar_floors=0x7f040007;
+        public static final int salazar_rooms=0x7f04000e;
+        public static final int stevenson_floors=0x7f040006;
+        public static final int stevenson_rooms=0x7f04000f;
         public static final int xcoord_array=0x7f040002;
         public static final int ycoord_array=0x7f040003;
     }

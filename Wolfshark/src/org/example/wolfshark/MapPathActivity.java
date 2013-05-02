@@ -217,13 +217,14 @@ public class MapPathActivity extends Activity {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		ScrollView myScrollV = new ScrollView(getApplicationContext());
 		builder.setView(myScrollV);
-    	builder.setTitle("Room Number");
+    	builder.setTitle("Choose Floor");
     	builder.setItems(rooms, new DialogInterface.OnClickListener() {
     		public void onClick(DialogInterface bdialog, int index) {
     			choice = rooms[index];
     			
     			floorEditor.putInt("position", build_index);
 				floorEditor.putString("roomNum", choice);
+				floorEditor.putInt("floor", index);
 				floorEditor.commit();
     			
     			Toast.makeText(getBaseContext(), choice, Toast.LENGTH_SHORT).show();
@@ -241,12 +242,12 @@ public class MapPathActivity extends Activity {
 	{
 		switch(position)
 		{
-			case 5:		rooms = getResources().getStringArray(R.array.art_rooms);  		break;
-			case 27:	rooms = getResources().getStringArray(R.array.darwin_rooms);  	break;
-			case 37:	rooms = getResources().getStringArray(R.array.ives_rooms);  	break;
-			case 42:	rooms = getResources().getStringArray(R.array.nichols_rooms);  	break;
-			case 63:	rooms = getResources().getStringArray(R.array.salazar_rooms);  	break;
-			case 71:	rooms = getResources().getStringArray(R.array.stevenson_rooms); break;
+			case 5:		rooms = getResources().getStringArray(R.array.art_floors);  		break;
+			case 27:	rooms = getResources().getStringArray(R.array.darwin_floors);  	break;
+			case 37:	rooms = getResources().getStringArray(R.array.ives_floors);  	break;
+			case 42:	rooms = getResources().getStringArray(R.array.nichols_floors);  	break;
+			case 63:	rooms = getResources().getStringArray(R.array.salazar_floors);  	break;
+			case 71:	rooms = getResources().getStringArray(R.array.stevenson_floors); break;
 		}
 	}
 	
