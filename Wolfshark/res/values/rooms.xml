@@ -562,4 +562,38 @@
 		<item>3099</item>
     </string-array>
     
+    <string-array name="art_floors">
+        <item>First Floor</item>
+    </string-array>
+    
+    <string-array name="darwin_floors">
+        <item>Basement</item>
+        <item>First Floor</item>
+        <item>Second Floor</item>
+        <item>Third Floor</item>
+    </string-array>
+    
+    <string-array name="ives_floors">
+        <item>First Floor</item>
+        <item>Second Floor</item>
+        <item>Third Floor</item>
+    </string-array>
+
+    <string-array name="nichols_floors">
+        <item>First Floor</item>
+        <item>Second Floor</item>
+        <item>Third Floor</item>
+    </string-array>
+    
+    <string-array name="salazar_floors">
+        <item>First Floor</item>
+        <item>Second Floor</item>
+    </string-array>
+    
+    <string-array name="stevenson_floors">
+        <item>First Floor</item>
+        <item>Second Floor</item>
+        <item>Third Floor</item>
+    </string-array>
+
 </resources>

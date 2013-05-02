@@ -24,7 +24,8 @@ public class FloorSwipeActivity extends Activity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
 		floorPrefs = getSharedPreferences(FLOORPREFS_FILE,0);
-		pos = floorPrefs.getInt("position", 0);
+		//pos = floorPrefs.getInt("position", 0);
+		pos = floorPrefs.getInt("build_num", 0);
 		
 		//If the value of 'pos' is not one of the buildings that has floor plans in this app.
 		//then restart MapActivity.

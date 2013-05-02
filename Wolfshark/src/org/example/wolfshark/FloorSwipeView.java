@@ -53,7 +53,7 @@ public class FloorSwipeView extends View {
 	{
 		super(context);
 		
-		options.inDensity =  getResources().getDisplayMetrics().densityDpi; 
+		options.inDensity =  getResources().getDisplayMetrics().densityDpi * 2; 
 		
 		floorPrefs = context.getSharedPreferences(FLOORPREFS_FILE,0);
 		pos = floorPrefs.getInt("position", 0);
@@ -62,7 +62,8 @@ public class FloorSwipeView extends View {
 		//Gets value of building that was pressed by user.
 		building_num = floorPrefs.getInt("build_num", 0);
 		//"Display the floor plan for the first floor."
-		floor_num = 1;
+		//floor_num = floorPrefs.getInt("roomNum", 0);
+		floor_num = floorPrefs.getInt("floor",0);
 		
 		//Grab first floor map
 		setMaps(building_num, floor_num);
@@ -110,10 +111,10 @@ public class FloorSwipeView extends View {
 			case 5:  //Art Building
 				
 				//Guards against floorNum value not matching available floors for building.
-				if(floorNum < 0 || floorNum > 1)  
-					floorNum = 1;
+//				if(floorNum < 0 || floorNum > 1)  
+//					floorNum = 1;
 				
-				if (floorNum == 1)
+				if (floorNum == 0)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.art_nw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.art_ne, options);
@@ -124,10 +125,10 @@ public class FloorSwipeView extends View {
 				break;
 			case 27:  //Darwin 
 				
-				if(floorNum < 0)
-					floorNum = 0;
-				else if(floorNum > 3)
-					floorNum = 3;
+//				if(floorNum < 0)
+//					floorNum = 0;
+//				else if(floorNum > 3)
+//					floorNum = 3;
 				
 				if(floorNum == 0)
 				{
@@ -165,12 +166,12 @@ public class FloorSwipeView extends View {
 				
 			case 37:  //Ives
 				
-				if(floorNum < 1)
-					floorNum = 1;
-				else if(floorNum > 3)
-					floorNum = 3;
+//				if(floorNum < 1)
+//					floorNum = 1;
+//				else if(floorNum > 3)
+//					floorNum = 3;
 				
-				if(floorNum == 1)
+				if(floorNum == 0)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.ives_onenw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.ives_onene, options);
@@ -178,7 +179,7 @@ public class FloorSwipeView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.ives_onese, options);
 				}
 				
-				else if(floorNum == 2)
+				else if(floorNum == 1)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.ives_twonw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.ives_twone, options);
@@ -186,7 +187,7 @@ public class FloorSwipeView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.ives_twose, options);
 				}
 				
-				else if(floorNum == 3)
+				else if(floorNum == 2)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.ives_threenw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.ives_threene, options);
@@ -197,12 +198,12 @@ public class FloorSwipeView extends View {
 				break;
 			case 42:  //Nichols
 				
-				if(floorNum < 1)
-					floorNum = 1;
-				else if(floorNum > 3)
-					floorNum = 3;
+//				if(floorNum < 1)
+//					floorNum = 1;
+//				else if(floorNum > 3)
+//					floorNum = 3;
 				
-			    if(floorNum == 1)
+			    if(floorNum == 0)
 			    {
 			        floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.nichols_onenw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.nichols_onene, options);
@@ -210,7 +211,7 @@ public class FloorSwipeView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.nichols_onese, options);
 			    }
 			    
-			    else if(floorNum == 2)
+			    else if(floorNum == 1)
 			    {
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.nichols_twonw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.nichols_twone, options);
@@ -218,7 +219,7 @@ public class FloorSwipeView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.nichols_twose, options);
 			    }
 			    
-			    else if(floorNum == 3)
+			    else if(floorNum == 2)
 			    {
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.nichols_threenw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.nichols_threene, options);
@@ -229,12 +230,12 @@ public class FloorSwipeView extends View {
 				break;
 			case 63:  //Salazar
 				
-				if(floorNum < 1)
-					floorNum = 1;
-				else if(floorNum > 2)
-					floorNum = 2;
+//				if(floorNum < 1)
+//					floorNum = 1;
+//				else if(floorNum > 2)
+//					floorNum = 2;
 				
-				if(floorNum == 1)
+				if(floorNum == 0)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.salazar_onenw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.salazar_onene, options);
@@ -242,7 +243,7 @@ public class FloorSwipeView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.salazar_onese, options);
 				}
 				
-				else if(floorNum == 2)
+				else if(floorNum == 1)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.salazar_twonw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.salazar_twone, options);
@@ -252,13 +253,13 @@ public class FloorSwipeView extends View {
 				
 				break;
 			case 71:  //Stevenson
+//				
+//				if(floorNum < 1)
+//					floorNum = 1;
+//				else if(floorNum > 3)
+//					floorNum = 3;
 				
-				if(floorNum < 1)
-					floorNum = 1;
-				else if(floorNum > 3)
-					floorNum = 3;
-				
-				if(floorNum == 1)
+				if(floorNum == 0)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.stevenson_onenw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.stevenson_onene, options);
@@ -266,7 +267,7 @@ public class FloorSwipeView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.stevenson_onese, options);
 				}
 				
-				else if(floorNum == 2)
+				else if(floorNum == 1)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.stevenson_twonw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.stevenson_twone, options);
@@ -274,7 +275,7 @@ public class FloorSwipeView extends View {
 					floor_se = BitmapFactory.decodeResource(getResources(), R.drawable.stevenson_twose, options);
 				}
 				
-				else if(floorNum == 3)
+				else if(floorNum == 2)
 				{
 					floor_nw = BitmapFactory.decodeResource(getResources(), R.drawable.stevenson_threenw, options);
 					floor_ne = BitmapFactory.decodeResource(getResources(), R.drawable.stevenson_threene, options);

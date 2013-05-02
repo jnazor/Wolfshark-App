@@ -1,6 +1,8 @@
 package org.example.wolfshark;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +13,8 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.ScrollView;
+import android.widget.Toast;
 
 public class MapActivity extends Activity
 {
@@ -19,6 +23,10 @@ public class MapActivity extends Activity
 	public static final String FLOORPREFS_FILE = "FloorPrefs";
 	SharedPreferences floorPrefs;
 	SharedPreferences.Editor floorEditor;	
+	
+	String[] rooms;
+	String choice = " ";
+	int build_index = 0;
 
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -71,10 +79,12 @@ public class MapActivity extends Activity
 							mainView.contains(startX, startY, 71) )
 						{
 							floorEditor.putInt("build_num", mainView.getBuilding_Num());
-							floorEditor.commit();
+							//floorEditor.commit();
 							
-							Intent floorSwipe = new Intent(MapActivity.this, FloorSwipeActivity.class);
-							startActivity(floorSwipe);
+							roomNumDialog(mainView.getBuilding_Num());
+							
+//							Intent floorSwipe = new Intent(MapActivity.this, FloorSwipeActivity.class);
+//							startActivity(floorSwipe);
 						}
 						
 						break;
@@ -115,6 +125,48 @@ public class MapActivity extends Activity
 	
 	public void onNewPath(View v)
 	{ }
+	
+	
+	
+	private void roomNumDialog(int position)
+	{
+		//rooms = getResources().getStringArray(R.array.darwin_array);
+		setRooms(position);
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		ScrollView myScrollV = new ScrollView(getApplicationContext());
+		builder.setView(myScrollV);
+    	builder.setTitle("Choose Floor");
+    	builder.setItems(rooms, new DialogInterface.OnClickListener() {
+    		public void onClick(DialogInterface bdialog, int index) {
+    			choice = rooms[index];
+    			
+    			floorEditor.putInt("position", build_index);
+				floorEditor.putString("roomNum", choice);
+				floorEditor.putInt("floor", index);
+				floorEditor.commit();
+    			
+    			Toast.makeText(getBaseContext(), choice, Toast.LENGTH_SHORT).show();
+    			Intent floorActivity = new Intent(MapActivity.this, FloorSwipeActivity.class);
+				startActivity(floorActivity);
+			}
+    	});
+    	AlertDialog alert = builder.create();
+    	alert.show();
+	}
+	
+	
+	private void setRooms(int position)
+	{
+		switch(position)
+		{
+			case 5:		rooms = getResources().getStringArray(R.array.art_floors);  		break;
+			case 27:	rooms = getResources().getStringArray(R.array.darwin_floors);  	break;
+			case 37:	rooms = getResources().getStringArray(R.array.ives_floors);  	break;
+			case 42:	rooms = getResources().getStringArray(R.array.nichols_floors);  	break;
+			case 63:	rooms = getResources().getStringArray(R.array.salazar_floors);  	break;
+			case 71:	rooms = getResources().getStringArray(R.array.stevenson_floors); break;
+		}
+	}
 	
 
 }
